@@ -11,22 +11,19 @@ Create the database weather_v2
 ## Installation
 
 ### 1. Install ulmo 
-- from git@gitlab.com:scotthavens/ulmo.git
+- from git@gitlab.com:ars-snow/ulmo.git
 - sudo python setup.py install
     - This should install all the necessary discrepancies
     - sudo pip install html5lib
 
 
 ### 2. Create database connection 
-Create
-    - database_connect.php
-    - database_connect.py
-    - db_connect.sh
+Create:
+* database_connect.php
+* database_connect.py
+* db_connect.sh
 
 Look at the examples for clues
-
-### 3.
-
 
 
 ## Station metadata
