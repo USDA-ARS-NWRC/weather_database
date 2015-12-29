@@ -56,7 +56,7 @@ REPEAT
 	DELETE FROM tbl_level1 WHERE station_id=c_station_id AND date_time=c_date_time;
 
 	/* average the values in duplicates */
-	INSERT INTO tbl_level1 SELECT user,date_fixed,station_id,date_time,AVG(air_temp),AVG(dew_point_temperature),AVG(relative_humidity),AVG(wind_speed),AVG(wind_direction),AVG(wind_gust),AVG(solar_radiation),AVG(snow_smoothed),AVG(precip_accum),AVG(snow_depth),AVG(snow_accum),AVG(precip_storm),AVG(snow_interval),AVG(snow_water_equiv) FROM duplicates;
+	INSERT INTO tbl_level1 SELECT station_id,date_time,AVG(air_temp),AVG(dew_point_temperature),AVG(relative_humidity),AVG(wind_speed),AVG(wind_direction),AVG(wind_gust),AVG(solar_radiation),AVG(snow_smoothed),AVG(precip_accum),AVG(snow_depth),AVG(snow_accum),AVG(precip_storm),AVG(snow_interval),AVG(snow_water_equiv),AVG(vapor_pressure) FROM duplicates;
 	-- SELECT * from duplicates;
 
 

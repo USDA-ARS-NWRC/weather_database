@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS tbl_raw_data (
     precip_storm DECIMAL(10 , 3 ),
     snow_interval DECIMAL(10 , 3 ),
     snow_water_equiv DECIMAL(10 , 3 ),
+	vapor_pressure DECIMAL (10 , 3),
     PRIMARY KEY(station_id,date_time)
 );
 
