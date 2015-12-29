@@ -2,3 +2,7 @@
 .project
 .DS_Store
 
+# database connectors
+database_connect.php
+database_connect.py
+db_connect.sh

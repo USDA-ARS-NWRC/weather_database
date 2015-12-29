@@ -7,12 +7,10 @@ Connect to the database
 import mysql.connector
 from mysql.connector import errorcode
 
-host = '10.200.28.203'
-# host = 'localhost'
-user = 'wxuser_v2'
-password = 'x340hm4h980r'
-
-db = 'weather_v2'
+host = 'host'
+user = 'user'
+password = 'password'
+db = 'database'
 
 try:
     cnx = mysql.connector.connect(user=user, password=password,

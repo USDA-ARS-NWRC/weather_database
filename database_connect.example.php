@@ -1,10 +1,8 @@
 <?php
-$host = 'localhost';
-$user = 'wxuser_v2';
-$pass = 'x340hm4h980r';
-$db = 'weather_v2';
-
-$host = '10.200.28.203';
+$host = 'host';
+$user = 'user';
+$pass = 'password';
+$db = 'database';
     
 $conn = new mysqli($host,$user, $pass, $db);
 if ($conn->connect_errno) {

@@ -3,9 +3,8 @@
 #
 # MySQL login info
 
-host=localhost
-host=10.200.28.203
-user=wxuser_v2
-pass=x340hm4h980r
-db=weather_v2
+host=host
+user=user
+pass=pass
+db=database
 
