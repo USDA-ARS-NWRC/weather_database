@@ -4,8 +4,8 @@
 Load the metadata table
 */
 
--- LOAD DATA LOCAL INFILE '/home/scott/LocalHost/Mesowest/WeatherDB/data/mesowest_csv.awk'
-LOAD DATA LOCAL INFILE '/Users/scott/Documents/Projects/Snowserver/DownloadData/Mesowest/data/mesowest_metadata.awk'
+-- LOAD DATA LOCAL INFILE '/home/scott/LocalHost/WxDataDownload/Mesowest/data/mesowest_metadata.awk'
+LOAD DATA LOCAL INFILE '/Users/scott/Documents/Projects/Snowserver/WxDataDownload/Mesowest/data/mesowest_metadata.awk'
 REPLACE INTO TABLE tbl_metadata
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n' 
