@@ -6,7 +6,7 @@ WxDataDownload
 - The 2nd version of the API which will hopefully clean up some of the tables in the database as not all 100 variables are needed.  This will make it fasters and more manageable.
 - Added CDEC data to the mix
 
-Create the database weather_v2
+# Create the database weather_v2
 
 ** Station metadata **
 
