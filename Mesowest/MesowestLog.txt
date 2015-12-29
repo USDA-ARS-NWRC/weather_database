@@ -1,0 +1,2111 @@
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-11 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-11 07:00 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-11 07:00 -- 85 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-11 07:00 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-11 07:00 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-11 07:00 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-11 07:00 -- 7 updated to tbl_raw_data -- updated to tbl_level1
+No data for AS859
+
+Warning: array_key_exists() expects parameter 2 to be array, null given in /Users/scott/MesowestAPI_v2/getData.php on line 204
+ATAI1 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-11 07:02 -- 152 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-11 07:02 -- 3 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+BECI1 -- 2015-12-11 07:02 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-11 07:02 -- 52 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-11 07:02 -- 77 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-11 07:02 -- 44 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-11 07:02 -- 77 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-11 07:02 -- 6 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-11 07:02 -- 5 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-11 07:02 -- 6 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-11 07:02 -- 6 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-11 07:02 -- 5 updated to tbl_raw_data -- updated to tbl_level1
+CBFI1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-11 07:02 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+CHOI1 -- 2015-12-11 07:02 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-11 07:02 -- 76 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+D4689 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-11 07:02 -- 47 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-11 07:02 -- 52 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-11 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+GARI1 -- 2015-12-11 07:02 -- 15 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-11 07:02 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-11 07:02 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-11 07:02 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-11 07:02 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+HLSI1 -- 2015-12-11 07:02 -- 52 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+HYNI1 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+ITD29 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+ITD30 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-11 07:02 -- 52 updated to tbl_raw_data -- updated to tbl_level1
+ITD50 -- 2015-12-11 07:02 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-11 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ITD57 -- 2015-12-11 07:02 -- 28 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-11 07:02 -- 50 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-11 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-11 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-11 07:02 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-11 07:02 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+KETI1 -- 2015-12-11 07:02 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-11 07:03 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+KSUN -- 2015-12-11 07:03 -- 19 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-11 07:03 -- 39 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-11 07:03 -- 36 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-11 07:03 -- 8 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-11 07:03 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-11 07:03 -- 7 updated to tbl_raw_data -- updated to tbl_level1
+LWDI1 -- 2015-12-11 07:03 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-11 07:03 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+MLKI1 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+NFFI1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+OHOI1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-11 07:03 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-11 07:03 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+PICI -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-11 07:03 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-11 07:03 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-11 07:03 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-11 07:03 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-11 07:03 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+SMMI1 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-11 07:03 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+STMI1 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+SVB1H -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+SWPI1 -- 2015-12-11 07:03 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-11 07:03 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+TL -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-11 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-11 07:03 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-11 07:03 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-11 07:03 -- 3 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-11 07:03 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-11 07:03 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+WODI1 -- 2015-12-11 07:03 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-11 07:03 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-11 07:03 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-11 07:03 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-11 07:03 -- 49 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-12 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-12 07:00 -- 75 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-12 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-12 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-12 07:00 -- 131 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-12 07:00 -- 34 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-12 07:00 -- 17 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-12 07:00 -- 41 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-12 07:00 -- 61 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-12 07:00 -- 36 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-12 07:00 -- 67 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-12 07:00 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-12 07:00 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-12 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-12 07:00 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-12 07:00 -- 66 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-12 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-12 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-12 07:00 -- 32 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-12 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-12 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-12 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-12 07:01 -- 42 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-12 07:01 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-12 07:01 -- 5 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-12 07:01 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-12 07:01 -- 89 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-12 07:01 -- 44 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-12 07:01 -- 18 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-12 07:01 -- 29 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-12 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-12 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-12 07:01 -- 34 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-12 07:01 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-12 07:01 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-12 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-12 07:02 -- 5 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-12 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-12 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-12 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-12 07:02 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-12 07:02 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-12 07:02 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-12 07:02 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-12 07:02 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-12 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-12 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-12 07:02 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-12 07:02 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-12 07:02 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-12 07:02 -- 19 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-12 07:02 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-12 07:02 -- 29 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-12 07:02 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-12 07:02 -- 133 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-12 07:02 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-13 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-13 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-13 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-13 07:00 -- 15 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-13 07:00 -- 290 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-13 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-13 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-13 07:00 -- 70 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-13 07:00 -- 102 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-13 07:00 -- 92 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-13 07:00 -- 143 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-13 07:00 -- 2 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-13 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-13 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-13 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-13 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-13 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-13 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-13 07:00 -- 35 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-13 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-13 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-13 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-13 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-13 07:00 -- 80 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-13 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-13 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-13 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-13 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-13 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-13 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-13 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-13 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-13 07:01 -- 29 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-13 07:01 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-13 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-13 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-13 07:01 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-13 07:01 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-13 07:01 -- 167 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-13 07:01 -- 50 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-13 07:01 -- 90 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-13 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-13 07:01 -- 28 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-13 07:01 -- 18 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-13 07:01 -- 73 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-13 07:01 -- 70 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-13 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-13 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-13 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-13 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-13 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-13 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-13 07:02 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-13 07:02 -- 36 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-13 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-13 07:02 -- 18 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-13 07:02 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-13 07:02 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-13 07:02 -- 43 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-13 07:02 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-13 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-13 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-13 07:02 -- 36 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-13 07:02 -- 37 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-13 07:02 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-13 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-13 07:02 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-13 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-14 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-14 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-14 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-14 07:00 -- 67 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-14 07:00 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-14 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-14 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-14 07:00 -- 81 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-14 07:00 -- 78 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-14 07:00 -- 70 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-14 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-14 07:00 -- 8 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-14 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-14 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-14 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-14 07:00 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-14 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-14 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-14 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-14 07:00 -- 87 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-14 07:00 -- 84 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-14 07:00 -- 51 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-14 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-14 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-14 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-14 07:01 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-14 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-14 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-14 07:01 -- 44 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-14 07:01 -- 35 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-14 07:01 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-14 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-14 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-14 07:01 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-14 07:01 -- 190 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-14 07:01 -- 32 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-14 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-14 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-14 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-14 07:01 -- 62 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-14 07:01 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-14 07:01 -- 34 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-14 07:01 -- 73 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-14 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-14 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-14 07:01 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-14 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-14 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-14 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-14 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-14 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-14 07:02 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-14 07:02 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-14 07:02 -- 34 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-14 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-14 07:02 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-14 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-14 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-14 07:02 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-14 07:02 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-14 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-14 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-14 07:02 -- 40 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-14 07:02 -- 41 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-14 07:02 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-14 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-14 07:02 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-14 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-15 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-15 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-15 07:00 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-15 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-15 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-15 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-15 07:00 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-15 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-15 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-15 07:00 -- 77 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-15 07:00 -- 77 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-15 07:00 -- 142 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-15 07:00 -- 5 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-15 07:00 -- 13 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-15 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-15 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-15 07:00 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-15 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-15 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-15 07:01 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-15 07:01 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-15 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-15 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-15 07:01 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-15 07:01 -- 79 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-15 07:01 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-15 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-15 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-15 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-15 07:01 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-15 07:01 -- 6 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-15 07:01 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-15 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-15 07:01 -- 18 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-15 07:01 -- 33 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-15 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-15 07:02 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-15 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-15 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-15 07:02 -- 98 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-15 07:02 -- 98 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-15 07:02 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-15 07:02 -- 190 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-15 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-15 07:02 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-15 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-15 07:02 -- 37 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-15 07:02 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-15 07:02 -- 30 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-15 07:02 -- 60 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-15 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-15 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-15 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-15 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-15 07:02 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-15 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-15 07:02 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-15 07:02 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-15 07:02 -- 19 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-15 07:02 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-15 07:03 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-15 07:03 -- 27 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-15 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-15 07:03 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-15 07:03 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-15 07:03 -- 52 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-15 07:03 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-15 07:03 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-15 07:03 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-15 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-15 07:03 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-15 07:03 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-15 07:03 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-15 07:04 -- 39 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-15 07:04 -- 41 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-15 07:04 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-15 07:04 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-15 07:04 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-15 07:04 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-15 07:04 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-15 07:04 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-15 07:04 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-15 07:04 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-15 07:04 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-15 07:04 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-16 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-16 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-16 07:00 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-16 07:00 -- 6 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-16 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-16 07:00 -- 90 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-16 07:00 -- 103 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-16 07:00 -- 80 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-16 07:00 -- 146 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-16 07:00 -- 8 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-16 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-16 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-16 07:00 -- 19 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-16 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-16 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-16 07:00 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-16 07:00 -- 83 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-16 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-16 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-16 07:00 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-16 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-16 07:00 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-16 07:00 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-16 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-16 07:00 -- 98 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-16 07:00 -- 194 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-16 07:00 -- 55 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-16 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-16 07:00 -- 27 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-16 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-16 07:00 -- 73 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-16 07:00 -- 70 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-16 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-16 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-16 07:00 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-16 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-16 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-16 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-16 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-16 07:01 -- 12 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-16 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-16 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-16 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-16 07:01 -- 19 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-16 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-16 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-16 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-16 07:01 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-16 07:01 -- 38 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-16 07:01 -- 40 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-16 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-16 07:01 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-16 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-16 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-16 07:01 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-16 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-16 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-17 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-17 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-17 07:00 -- 52 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-17 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-17 07:00 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-17 07:00 -- 86 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-17 07:00 -- 103 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-17 07:00 -- 84 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-17 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-17 07:00 -- 8 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-17 07:00 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-17 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-17 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-17 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-17 07:00 -- 85 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-17 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-17 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-17 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-17 07:00 -- 35 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-17 07:00 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-17 07:00 -- 191 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-17 07:00 -- 98 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-17 07:00 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-17 07:00 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-17 07:00 -- 27 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-17 07:00 -- 17 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-17 07:00 -- 69 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-17 07:00 -- 72 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-17 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-17 07:00 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-17 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-17 07:00 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-17 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-17 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-17 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-17 07:01 -- 22 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-17 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-17 07:01 -- 39 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-17 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-17 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-17 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-17 07:01 -- 39 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-17 07:01 -- 41 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-17 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-17 07:01 -- 29 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-17 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-17 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-17 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-17 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-17 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-17 07:01 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-17 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-18 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-18 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-18 07:00 -- 39 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-18 07:00 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-18 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-18 07:00 -- 11 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-18 07:00 -- 86 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-18 07:00 -- 102 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-18 07:00 -- 83 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-18 07:00 -- 144 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-18 07:00 -- 9 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-18 07:00 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-18 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-18 07:00 -- 144 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-18 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-18 07:00 -- 80 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-18 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-18 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-18 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-18 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-18 07:00 -- 15 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-18 07:00 -- 35 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-18 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-18 07:00 -- 98 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-18 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-18 07:00 -- 190 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-18 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-18 07:00 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-18 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-18 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-18 07:00 -- 73 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-18 07:00 -- 72 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-18 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-18 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-18 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-18 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-18 07:01 -- 32 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-18 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-18 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-18 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-18 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-18 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-18 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-18 07:01 -- 32 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-18 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-18 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-18 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-18 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-18 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-18 07:01 -- 38 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-18 07:01 -- 34 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-18 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-18 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-18 07:01 -- 277 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-18 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-18 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-19 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-19 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-19 07:00 -- 48 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-19 07:00 -- 60 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-19 07:00 -- 53 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-19 07:00 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-19 07:00 -- 85 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-19 07:00 -- 103 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-19 07:00 -- 84 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-19 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-19 07:00 -- 8 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-19 07:00 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-19 07:00 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-19 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-19 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-19 07:00 -- 74 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-19 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-19 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-19 07:00 -- 100 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-19 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-19 07:00 -- 36 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-19 07:00 -- 37 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-19 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-19 07:00 -- 88 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-19 07:00 -- 194 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-19 07:00 -- 32 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-19 07:00 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-19 07:00 -- 54 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-19 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-19 07:00 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-19 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-19 07:00 -- 70 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-19 07:00 -- 71 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-19 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-19 07:00 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-19 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-19 07:00 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-19 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-19 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-19 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-19 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-19 07:01 -- 38 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-19 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-19 07:01 -- 15 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-19 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-19 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-19 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-19 07:01 -- 54 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-19 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-19 07:01 -- 7 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-19 07:01 -- 42 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-19 07:01 -- 37 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-19 07:01 -- 28 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-19 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-19 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-19 07:01 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-19 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-19 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-20 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-20 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-20 07:00 -- 29 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-20 07:00 -- 9 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-20 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-20 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-20 07:00 -- 15 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-20 07:00 -- 85 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-20 07:00 -- 144 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-20 07:00 -- 78 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-20 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-20 07:00 -- 8 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-20 07:00 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-20 07:00 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-20 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-20 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-20 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-20 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-20 07:00 -- 86 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-20 07:00 -- 87 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-20 07:00 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-20 07:00 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-20 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-20 07:00 -- 193 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-20 07:00 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-20 07:00 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-20 07:00 -- 48 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-20 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-20 07:00 -- 69 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-20 07:00 -- 62 updated to tbl_raw_data -- updated to tbl_level1
+LELC1 -- 2015-12-20 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+LIZC2 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-20 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-20 07:00 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-20 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-20 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-20 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-20 07:01 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-20 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-20 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-20 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-20 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-20 07:01 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-20 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-20 07:01 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-20 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-20 07:01 -- 10 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-20 07:01 -- 39 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-20 07:01 -- 40 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-20 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-20 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-20 07:01 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-20 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
+PHP Warning:  PHP Startup: pdo_pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+PHP Warning:  PHP Startup: pgsql: Unable to initialize module
+Module compiled with module API=20100525
+PHP    compiled with module API=20121212
+These options need to match
+ in Unknown on line 0
+------------------------------------------------------------------------------
+2015-12-21 07:00
+About to get data from Mesowest ...
+No data for A1276
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+No data for A1279
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+AGPC1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AHIC1 -- 2015-12-21 07:00 -- 145 updated to tbl_raw_data -- updated to tbl_level1
+ANBC2 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARAI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ARKI1 -- 2015-12-21 07:00 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+AS728 -- 2015-12-21 07:00 -- 43 updated to tbl_raw_data -- updated to tbl_level1
+ATAI1 -- 2015-12-21 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+ATLI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+AU912 -- 2015-12-21 07:00 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+BASI1 -- 2015-12-21 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+BCFI1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BNRI1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BOGI1 -- 2015-12-21 07:00 -- 35 updated to tbl_raw_data -- updated to tbl_level1
+BOII -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BPOC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+BRFI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+BSKI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+C0406 -- 2015-12-21 07:00 -- 86 updated to tbl_raw_data -- updated to tbl_level1
+C0810 -- 2015-12-21 07:00 -- 138 updated to tbl_raw_data -- updated to tbl_level1
+C2998 -- 2015-12-21 07:00 -- 87 updated to tbl_raw_data -- updated to tbl_level1
+C4643 -- 2015-12-21 07:00 -- 142 updated to tbl_raw_data -- updated to tbl_level1
+CAABR -- 2015-12-21 07:00 -- 6 updated to tbl_raw_data -- updated to tbl_level1
+CAEGE -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAGDH -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAKDL -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMLP -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAMON -- 2015-12-21 07:00 -- 20 updated to tbl_raw_data -- updated to tbl_level1
+CAPBA -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CAPTY -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASBK -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CASWP -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CATEL -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CCDI1 -- 2015-12-21 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+CEVC1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CLOC2 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+CNFC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CO055 -- 2015-12-21 07:00 -- 144 updated to tbl_raw_data -- updated to tbl_level1
+COZI1 -- 2015-12-21 07:00 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+CQ160 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CRVC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+CVAI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D5868 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D6226 -- 2015-12-21 07:00 -- 88 updated to tbl_raw_data -- updated to tbl_level1
+D8224 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+D8425 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DCKC2 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DDMC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DEDI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DEHI1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+DHDI1 -- 2015-12-21 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+DMSC2 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+DPPC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+E0715 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+E3821 -- 2015-12-21 07:00 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+EDSC2 -- 2015-12-21 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+EPWC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ERYC1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+FAFI -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+FLEI1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GAVI1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GBMC2 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GFTC1 -- 2015-12-21 07:00 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+GGSI1 -- 2015-12-21 07:00 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+GLNI1 -- 2015-12-21 07:00 -- 14 updated to tbl_raw_data -- updated to tbl_level1
+GLSI1 -- 2015-12-21 07:00 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+GNLC1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+GRMC1 -- 2015-12-21 07:00 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+No data for HDMCA
+Array
+(
+    [NUMBER_OF_OBJECTS] => 0
+    [RESPONSE_CODE] => -1
+    [RESPONSE_MESSAGE] => No stations found for this request.
+    [RESPONSE_TIME] => 0
+)
+HHWC1 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+HPFI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+HRSC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+IDRC2 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+IROC2 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+ITD36 -- 2015-12-21 07:01 -- 98 updated to tbl_raw_data -- updated to tbl_level1
+ITD38 -- 2015-12-21 07:01 -- 96 updated to tbl_raw_data -- updated to tbl_level1
+ITD42 -- 2015-12-21 07:01 -- 95 updated to tbl_raw_data -- updated to tbl_level1
+ITD51 -- 2015-12-21 07:01 -- 191 updated to tbl_raw_data -- updated to tbl_level1
+ITD53 -- 2015-12-21 07:01 -- 54 updated to tbl_raw_data -- updated to tbl_level1
+ITD71 -- 2015-12-21 07:01 -- 94 updated to tbl_raw_data -- updated to tbl_level1
+JEMC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JKPI1 -- 2015-12-21 07:01 -- 4 updated to tbl_raw_data -- updated to tbl_level1
+JMTC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JMWC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+JSDC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KBAN -- 2015-12-21 07:01 -- 34 updated to tbl_raw_data -- updated to tbl_level1
+KIBC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KO57 -- 2015-12-21 07:01 -- 16 updated to tbl_raw_data -- updated to tbl_level1
+KSNT -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+KTEX -- 2015-12-21 07:01 -- 72 updated to tbl_raw_data -- updated to tbl_level1
+KU76 -- 2015-12-21 07:01 -- 71 updated to tbl_raw_data -- updated to tbl_level1
+
+Warning: file_get_contents(http://api.mesowest.net/v2/stations/timeseries?stid=LELC1&start=201512200600&end=201512210700&obstimezone=utc&units=metric&vars=air_temp%2Cdew_point_temperature%2Crelative_humidity%2Cwind_speed%2Cwind_direction%2Cwind_gust%2Csolar_radiation%2Csnow_smoothed%2Cprecip_accum%2Csnow_depth%2Csnow_accum%2Cprecip_storm%2Csnow_interval%2Csnow_water_equiv&token=e505002015c74fa6850b2fc13f70d2da): failed to open stream: HTTP request failed! HTTP/1.1 502 Bad Gateway
+ in /Users/scott/MesowestAPI_v2/getData.php on line 98
+No data for LELC1
+
+Warning: array_key_exists() expects parameter 2 to be array, null given in /Users/scott/MesowestAPI_v2/getData.php on line 204
+LIZC2 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+LPSC2 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+LTAI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+LVTC1 -- 2015-12-21 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+MAMC1 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+MBBC1 -- 2015-12-21 07:01 -- 93 updated to tbl_raw_data -- updated to tbl_level1
+MIIC1 -- 2015-12-21 07:01 -- 24 updated to tbl_raw_data -- updated to tbl_level1
+MINC2 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MLHC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+MLSC2 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+MPOC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OMMCA -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+ORRI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+OSTC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PDSC1 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+PMSC2 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+PNCC1 -- 2015-12-21 07:01 -- 88 updated to tbl_raw_data -- updated to tbl_level1
+PNFI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PNWC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+POJC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+PRAI1 -- 2015-12-21 07:01 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+PRLI1 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+RELC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+RMPC2 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SCR -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+SDWC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SJAC2 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SLDMS -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLDMT -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SLIC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SMXC2 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+SRAC1 -- 2015-12-21 07:01 -- 26 updated to tbl_raw_data -- updated to tbl_level1
+SRSI1 -- 2015-12-21 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+STNI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+SVT -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TCFI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TGCC1 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+THYC1 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+TIOC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TR216 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TRMI1 -- 2015-12-21 07:01 -- 5 updated to tbl_raw_data -- updated to tbl_level1
+TS042 -- 2015-12-21 07:01 -- 1 updated to tbl_raw_data -- updated to tbl_level1
+TS718 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS960 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS961 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TS962 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TTSID -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+TUMC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+UNRC2 -- 2015-12-21 07:01 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+UP174 -- 2015-12-21 07:01 -- 45 updated to tbl_raw_data -- updated to tbl_level1
+UP237 -- 2015-12-21 07:01 -- 43 updated to tbl_raw_data -- updated to tbl_level1
+VGAC1 -- 2015-12-21 07:01 -- 21 updated to tbl_raw_data -- updated to tbl_level1
+VNNI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WAGI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WRGC2 -- 2015-12-21 07:01 -- 23 updated to tbl_raw_data -- updated to tbl_level1
+WWNC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+WWRC1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YFFI1 -- 2015-12-21 07:01 -- 25 updated to tbl_raw_data -- updated to tbl_level1
+YVVC1 -- 2015-12-21 07:01 -- 289 updated to tbl_raw_data -- updated to tbl_level1
+YWAC1 -- 2015-12-21 07:02 -- 89 updated to tbl_raw_data -- updated to tbl_level1
+YYVC1 -- 2015-12-21 07:02 -- 97 updated to tbl_raw_data -- updated to tbl_level1
+Averaging and deleting duplicates from tbl_level1... 
