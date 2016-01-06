@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS tbl_raw_data (
     snow_interval DECIMAL(10 , 3 ),
     snow_water_equiv DECIMAL(10 , 3 ),
 	vapor_pressure DECIMAL (10 , 3),
+	cloud_factor DECIMAL(10 , 3),
     PRIMARY KEY(station_id,date_time)
 );
 
@@ -27,3 +28,5 @@ CREATE TABLE IF NOT EXISTS tbl_level2 LIKE tbl_raw_data;
 
 ALTER IGNORE TABLE tbl_level2 ADD COLUMN user VARCHAR(20) FIRST,
 ADD COLUMN date_fixed DATETIME AFTER user;
+
+-- ALTER IGNORE TABLE tbl_level1 ADD COLUMN cloud_factor DECIMAL(10 , 3);
