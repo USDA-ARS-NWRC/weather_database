@@ -7,7 +7,7 @@
 printf '%50s\n' | tr ' ' -
 
 # top level directory for the WeatherDB
-path=$(dirname $0)
+path=$PWD
 #path=/Users/scott/Documents/Projects/Snowserver/DownloadData
 
 # MySQL login info

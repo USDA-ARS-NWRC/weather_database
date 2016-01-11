@@ -16,13 +16,15 @@ cursor = cnx.cursor()
 # stationCoords.csv
 with open('stationCoords.csv', 'rU') as f:
     
-    qstr = "INSERT INTO tbl_metadata (primary_id,latitude,longitude,elevation) VALUES ('%s',%s,%s,%s)" \
-        " ON DUPLICATE KEY UPDATE latitude='%s',longitude='%s',elevation='%s'";
+    qstr = "INSERT INTO tbl_metadata (primary_id,latitude,longitude,elevation,X,Y) VALUES ('%s',%s,%s,%s,%s,%s)" \
+        " ON DUPLICATE KEY UPDATE latitude='%s',longitude='%s',elevation='%s',X='%s',Y='%s'";
 
     for row in csv.DictReader(f):
-                
-        qry = qstr % (row['primary_id'], row['latitude'], row['longitude'], row['elevation'], \
-                      row['latitude'], row['longitude'], row['elevation'])
+
+        row['X'] = row.get('X','NULL') or 'NULL'
+        row['Y'] = row.get('Y','NULL') or 'NULL'
+        qry = qstr % (row['primary_id'], row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'],\
+                      row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'])
 
         cursor.execute(qry)
 
