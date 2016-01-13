@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS tbl_metadata (
     tertiary_provider_id INT,
     tertiary_provider VARCHAR(256),
     wims_id VARCHAR(256),
-	X DECIMAL(15 , 11),
-    Y DECIMAL(15 , 11),
+	X DECIMAL(15 , 3),
+    Y DECIMAL(15 , 3),
 	source VARCHAR(20),
 	variables VARCHAR(10000)
     );
