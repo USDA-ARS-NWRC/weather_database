@@ -34,7 +34,7 @@ SELECT
 FROM
     tbl_level1
 GROUP BY station_id , round_date;
--- LIMIT 20;
+LIMIT 20;
 
 /* ensure no data error */
 DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done = 1;
