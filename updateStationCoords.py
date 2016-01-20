@@ -17,7 +17,7 @@ cursor = cnx.cursor()
 with open('stationCoords.csv', 'rU') as f:
     
     qstr = "INSERT INTO tbl_metadata (primary_id,station_name,latitude,longitude,elevation,X,Y) VALUES ('%s','%s',%s,%s,%s,%s,%s)" \
-        " ON DUPLICATE KEY UPDATE latitude='%s',longitude='%s',elevation='%s',X='%s',Y='%s'";
+        " ON DUPLICATE KEY UPDATE latitude=%s,longitude=%s,elevation=%s,X=%s,Y=%s";
 
     for row in csv.DictReader(f):
 
