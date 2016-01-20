@@ -164,8 +164,8 @@
 //                    $faval['user'] = $user;
 //                    $faval['date_fixed'] = date ( 'Y-m-d H:i:s' );
                     
-                    $values = array_map ( 'mapfun', array_values ( $faval ));
-                    $fvals[] = '(' . implode ( ',', $values ) . ')';
+//                    $values = array_map ( 'mapfun', array_values ( $faval ));
+//                    $fvals[] = '(' . implode ( ',', $values ) . ')';
                     
                 }
                 
@@ -216,14 +216,14 @@
     /*
      * Remove any duplicate entries
      */
-    echo "Averaging and deleting duplicates from tbl_level1... \n";
-
-    $result = $conn->query('CALL averageDelete');
-    if ($conn->errno) {
-        $conn->error . "\n";
-    } else {
-        echo "Duplicate time values removed from tbl_level1 \n";
-    }
+//    echo "Averaging and deleting duplicates from tbl_level1... \n";
+//
+//    $result = $conn->query('CALL averageDelete');
+//    if ($conn->errno) {
+//        $conn->error . "\n";
+//    } else {
+//        echo "Duplicate time values removed from tbl_level1 \n";
+//    }
 
     // close the connection
     $conn->close();

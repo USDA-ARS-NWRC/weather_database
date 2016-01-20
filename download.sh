@@ -18,5 +18,13 @@ printf '%50s\n' | tr ' ' -
 printf ' *** MESOWEST ***\n'
 printf '%50s\n' | tr ' ' -
 
-# download the Mesowest and call AverageDelete.sql for tbl_level1
+# download the Mesowest for tbl_level1
 php $BASEDIR/Mesowest/getData.php
+
+
+printf '%50s\n' | tr ' ' -
+printf ' *** Average and delete from tbl_level1 ***\n'
+printf '%50s\n' | tr ' ' -
+
+# call database/averageDelete.py to average and delete to the hour timestep
+python $BASEDIR/database/averageDelete.py
