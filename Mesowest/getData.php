@@ -156,10 +156,10 @@
                     
                     // fix the time, user, and date fixed
                     // get the date time and round
-                    $faval = $aval;
-                    $wtm = new wx_DateTime( $faval['date_time']);
-                    $faval['date_time'] = $wtm->round();
-                        
+//                    $faval = $aval;
+//                    $wtm = new wx_DateTime( $faval['date_time']);
+//                    $faval['date_time'] = $wtm->round();
+                    
                     // add the user and the time changed
 //                    $faval['user'] = $user;
 //                    $faval['date_fixed'] = date ( 'Y-m-d H:i:s' );
@@ -188,7 +188,7 @@
                  */
     // 			print_r($fcols);
     // 			print_r($fvals);
-                $toinsert = implode(",", $fvals);
+//                $toinsert = implode(",", $fvals);
                 
                 $qstr = 'INSERT IGNORE INTO tbl_level1 ' . $cols . ' VALUES ' . $toinsert;
                 $ret = $conn->query($qstr);
