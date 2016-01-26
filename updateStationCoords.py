@@ -17,15 +17,17 @@ cursor = cnx.cursor()
 with open('stationCoords.csv', 'rU') as f:
     
     qstr = "INSERT INTO tbl_metadata (primary_id,station_name,latitude,longitude,elevation,X,Y) VALUES ('%s','%s',%s,%s,%s,%s,%s)" \
-        " ON DUPLICATE KEY UPDATE latitude=%s,longitude=%s,elevation=%s,X=%s,Y=%s";
+        " ON DUPLICATE KEY UPDATE latitude=%s,longitude=%s,elevation=%s,X=%s,Y=%s"
+    
+    qstr = "UPDATE tbl_metadata SET station_name='%s',latitude=%s,longitude=%s,elevation=%s,X=%s,Y=%s WHERE primary_id='%s'"
 
     for row in csv.DictReader(f):
 
         row['X'] = row.get('X','NULL') or 'NULL'
         row['Y'] = row.get('Y','NULL') or 'NULL'
-        qry = qstr % (row['primary_id'], row['station_name'], row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'],\
-                      row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'])
-
+#        qry = qstr % (row['primary_id'], row['station_name'], row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'],\
+#                      row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'])
+        qry = qstr % (row['station_name'], row['latitude'], row['longitude'], row['elevation'], row['X'], row['Y'], row['primary_id'])
         cursor.execute(qry)
 
     f.close()

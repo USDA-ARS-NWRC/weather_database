@@ -5,7 +5,7 @@ Create the metadata table from mesowest_csv.tbl
 */
 
 CREATE TABLE IF NOT EXISTS tbl_metadata (
-	primary_id VARCHAR(100) PRIMARY KEY,
+	primary_id VARCHAR(100),
     secondary_id VARCHAR(10000),
     station_name VARCHAR(256),
     state VARCHAR(10),
@@ -26,5 +26,6 @@ CREATE TABLE IF NOT EXISTS tbl_metadata (
 	X DECIMAL(15 , 3),
     Y DECIMAL(15 , 3),
 	source VARCHAR(20),
-	variables VARCHAR(10000)
+	variables VARCHAR(10000),
+	PRIMARY KEY (primary_id, source)
     );

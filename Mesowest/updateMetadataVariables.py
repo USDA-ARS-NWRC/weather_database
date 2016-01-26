@@ -54,7 +54,8 @@ for d in data['STATION']:
     if not not v:
         vname = ', '.join(d['SENSOR_VARIABLES'].keys())
         
-        qry = "INSERT INTO tbl_metadata (primary_id, variables) VALUES ('%s','%s') ON DUPLICATE KEY UPDATE variables='%s'" % (sta, vname, vname);
+#        qry = "INSERT INTO tbl_metadata (primary_id, variables) VALUES ('%s','%s') ON DUPLICATE KEY UPDATE variables='%s'" % (sta, vname, vname);
+        qry = "UPDATE tbl_metadata SET variables='%s' WHERE primary_id='%s'" % (vname, sta)
             
         cursor.execute(qry)
       
