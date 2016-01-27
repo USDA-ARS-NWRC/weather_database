@@ -31,6 +31,10 @@ with open('stationCoords.csv', 'rU') as f:
         cursor.execute(qry)
 
     f.close()
+    
+# remove one of the overlaping but uneeded CDEC stations
+cursor.execute("DELETE FROM tbl_metadata WHERE primary_id='SCR' AND source='CDEC'")
+cursor.execute("DELETE FROM tbl_metadata WHERE primary_id='SVT' AND source='CDEC'")
 
 cnx.close()
 

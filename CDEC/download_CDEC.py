@@ -13,6 +13,8 @@ from ulmo import cdec
 from datetime import datetime
 import pytz, os
 import units
+import mysql.connector
+from mysql.connector import errorcode
 
 
 print 'Start --> %s' % datetime.now()
@@ -27,9 +29,9 @@ cursor = cnx.cursor()
 #------------------------------------------------------------------------------ 
 # variables to grab, see http://cdec.water.ca.gov/misc/senslist.html for full list
 
-sensor_id = np.array([2, 3, 4, 9, 10, 12, 18, 26]) - 1# pandas can't index it right
+sensor_id = np.array([2, 3, 4, 9, 10, 12, 18, 26, 103]) - 1# pandas can't index it right
 mesowest = np.array(['precip_accum', 'snow_water_equiv', 'air_temp', 'wind_speed', 'wind_direction',
-                     'relative_humidity', 'snow_depth', 'solar_radiation']) # cooresponding mesowest variables
+                     'relative_humidity', 'snow_depth', 'solar_radiation', 'solar_radiation']) # cooresponding mesowest variables
 v = cdec.historical.get_sensors(sensor_id)
 v['mesowest'] = pd.Series(mesowest, index=v.index)
 
@@ -44,7 +46,7 @@ station_id = []
 for sta in cursor:
     station_id.append(sta[0])
 
-#station_id = ['MDL']
+# station_id = ['TUM']
 
 # prepare other querys
 qryDate = "SELECT max(date_time) AS d FROM tbl_raw_data WHERE station_id='%s'"
@@ -55,13 +57,15 @@ qryDate = "SELECT max(date_time) AS d FROM tbl_raw_data WHERE station_id='%s'"
 
 # determine start and end
 endTime = datetime.utcnow()
+# endTime = datetime(2015,11,2,0,0,0)
 startTime_wy = datetime(wy-1, 9, 30) # start a day early to ensure that all values are grabed
 
+# pst_tz = pytz.timezone('America/Metlakatla')
 pst_tz = pytz.timezone('US/Pacific')
 utc_tz = pytz.timezone('UTC')
 
 for s in station_id:
-        
+    
     #------------------------------------------------------------------------------ 
     # determine the last date
     cursor.execute(qryDate % s)
@@ -70,25 +74,29 @@ for s in station_id:
     if d[0][0] is not None:
         startTime = d[0][0]
         startTime = startTime.replace(tzinfo=utc_tz).astimezone(pst_tz)
+#         startTime = datetime(wy-1, 9, 30)
     else:
         startTime = startTime_wy
-        
+    
     print 'Downloading %s --> %s ...' % (s, startTime)
         
     #------------------------------------------------------------------------------ 
     # grab the data from CDEC
     data = cdec.historical.get_data([s], resolutions='hourly', sensor_ids=sensor_id, start=startTime, end=endTime)
-
-    # variables returned from CDEC
-    variables = [x for x in data[s]]
     
     # remove any empty dataframes
-    for x in variables:
+    for x in data[s].keys():
         if data[s][x].empty:
             del data[s][x]
+            
+    # if both instantaneous solar and avg solar, remove instantenous
+    if ('SOLAR RADIATION' in data[s].keys()) and ('SOLAR RADIATION AVG' in data[s].keys()):
+        del data[s]['SOLAR RADIATION']
 
     if data[s]:
-        variables = [x for x in data[s]]
+        
+        # variables returned from CDEC
+        variables = data[s].keys()
     
         #------------------------------------------------------------------------------
         # align the CDEC variables to the Mesowest variables
@@ -127,13 +135,19 @@ for s in station_id:
                 t = date_time.replace(tzinfo=pst_tz).astimezone(utc_tz)
                 
                 # get all the values
-                values = record.values
-                values = [str(i) for i in values]   # convert to list of strings
+#                 record.air_temp = 100 + i
+                values = record.values.tolist()
+                for i,vi in enumerate(values):
+                    if vi == 'NULL':
+                        values[i] = None
                  
                 # insert into the database
                 val = []
                 for i,f in enumerate(meso):
-                    val.append("%s='%s'" % (f, values[i]))
+                    if not values[i]:
+                        val.append("%s=NULL" % f)
+                    else:
+                        val.append("%s='%s'" % (f, values[i]))
                  
                 values = [s, t.strftime("%Y-%m-%d %H:%M:%S")] + values
                             
@@ -143,10 +157,17 @@ for s in station_id:
                 add_data2 = "INSERT INTO tbl_level1 (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
                     (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
                 
+                
                 cursor.execute(add_data, values)
                 cursor.execute(add_data2, values)
                 
-        except:
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                print("Something is wrong with your user name or password")
+            elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                print("Database does not exist")
+            else:
+                print(err)
             print 'Error loading data into database for %s (%s): ' % (s, date_time)
 
     else:
