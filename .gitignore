@@ -8,3 +8,6 @@ database_connect.py
 db_connect.sh
 
 DownloadLog.txt
+
+# Ulmo directory that Andrew added to his directory
+ulmo/

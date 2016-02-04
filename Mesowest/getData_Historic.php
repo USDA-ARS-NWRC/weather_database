@@ -14,7 +14,7 @@
     /*
      * PARAMETERS
      */
-    $wy = 2016; // current water year only used to initialize db
+    $wy = 2013; // current water year only used to initialize db
                 
     // set query parameters, add additional as needed
     date_default_timezone_set ( 'UTC' );
@@ -22,7 +22,7 @@
     $end = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 31, $wy ) ); // end time default to WY start
 //    $start = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 30, $wy ) ); // end time default to WY start
 //    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 2, $wy ) ); // end time default to WY start
-    $client = 'BRB';
+    $client = 'TUOL';
 
     $p ['stid'] = '';
     $p ['start'] = $start;
@@ -60,7 +60,7 @@
     // echo "Seeing if there is recent data ...\n";
 
     // Get all the stations
-    $sqry = "SELECT station_id from tbl_stations WHERE client='$client'";
+    $sqry = "SELECT station_id from tbl_stations WHERE client='$client' AND source='Mesowest'";
     $stations = $conn->query ( $sqry );
     // print_r($stations->fetch);
 
