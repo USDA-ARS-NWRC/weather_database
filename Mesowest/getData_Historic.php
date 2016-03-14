@@ -14,14 +14,14 @@
     /*
      * PARAMETERS
      */
-    $wy = 2015; // current water year only used to initialize db
+    $wy = 2013; // current water year only used to initialize db
                 
     // set query parameters, add additional as needed
     date_default_timezone_set ( 'UTC' );
-//    $start = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 1, $wy-1 ) ); // start time default to WY start
-//    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 30, $wy ) ); // end time default to WY start
-    $start = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 30, $wy ) ); // end time default to WY start
-    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 2, $wy ) ); // end time default to WY start
+    $start = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 1, $wy-1 ) ); // start time default to WY start
+    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 31, $wy ) ); // end time default to WY start
+//    $start = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 30, $wy ) ); // end time default to WY start
+//    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 2, $wy ) ); // end time default to WY start
     $client = 'TUOL';
 
     $p ['stid'] = '';
@@ -38,7 +38,7 @@
     echo date ( 'Y-m-d H:i' ) . "\n";
     echo "Getting data for $start to $end for $client\n";
 
-    include ('database_connect.php');
+    include (dirname(dirname(__FILE__)) . '/database_connect.php');
     include ('wx_DateTime.php');
 
 
@@ -60,7 +60,7 @@
     // echo "Seeing if there is recent data ...\n";
 
     // Get all the stations
-    $sqry = "SELECT station_id from tbl_stations WHERE client='$client'";
+    $sqry = "SELECT station_id from tbl_stations WHERE client='$client' AND source='Mesowest'";
     $stations = $conn->query ( $sqry );
     // print_r($stations->fetch);
 
@@ -149,16 +149,16 @@
                     
                     // fix the time, user, and date fixed
                     // get the date time and round
-                    $faval = $aval;
-                    $wtm = new wx_DateTime( $faval['date_time']);
-                    $faval['date_time'] = $wtm->round();
+//                    $faval = $aval;
+//                    $wtm = new wx_DateTime( $faval['date_time']);
+//                    $faval['date_time'] = $wtm->round();
                     
                     // add the user and the time changed
                     //                    $faval['user'] = $user;
                     //                    $faval['date_fixed'] = date ( 'Y-m-d H:i:s' );
                     
-                    $values = array_map ( 'mapfun', array_values ( $faval ));
-                    $fvals[] = '(' . implode ( ',', $values ) . ')';
+//                    $values = array_map ( 'mapfun', array_values ( $faval ));
+//                    $fvals[] = '(' . implode ( ',', $values ) . ')';
                     
                 }
                 
@@ -181,7 +181,7 @@
                  */
                 // 			print_r($fcols);
                 // 			print_r($fvals);
-                $toinsert = implode(",", $fvals);
+//                $toinsert = implode(",", $fvals);
                 
                 $qstr = 'INSERT IGNORE INTO tbl_level1 ' . $cols . ' VALUES ' . $toinsert;
                 $ret = $conn->query($qstr);
@@ -206,18 +206,6 @@
         echo mysql_error ();
     }
     
-    /*
-     * Remove any duplicate entries
-     */
-    echo "Averaging and deleting duplicates from fixed... \n";
-
-    $result = $conn->query('CALL averageDelete');
-    if ($conn->errno) {
-        $conn->error . "\n";
-    } else {
-        echo "Duplicate time values removed from fixed \n";
-    }
-
     // close the connection
     $conn->close();
 	
