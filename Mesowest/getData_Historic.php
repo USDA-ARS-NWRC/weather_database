@@ -14,12 +14,12 @@
     /*
      * PARAMETERS
      */
-    $wy = 2013; // current water year only used to initialize db
+    $wy = 2014; // current water year only used to initialize db
                 
     // set query parameters, add additional as needed
     date_default_timezone_set ( 'UTC' );
     $start = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 1, $wy-1 ) ); // start time default to WY start
-    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 31, $wy ) ); // end time default to WY start
+    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 2, $wy ) ); // end time default to WY start
 //    $start = date ( 'YmdHi', mktime ( 0, 0, 0, 3, 30, $wy ) ); // end time default to WY start
 //    $end = date ( 'YmdHi', mktime ( 0, 0, 0, 10, 2, $wy ) ); // end time default to WY start
     $client = 'TUOL';
