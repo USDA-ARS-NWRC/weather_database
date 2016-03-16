@@ -1,5 +1,5 @@
 """
-Sometimes we need to duplicate all the values for a given day to another datet time.
+Sometimes we need to duplicate all the values for a given day to another date time.
 Well lets do it!
 
 20160315 Scott Havens
@@ -11,10 +11,11 @@ from datetime import datetime, timedelta
 import progressbar
 
 # Date time to get and duplicate into
-dateFrom = '2016-03-10 06:00:00'
-dateTo = '2016-03-10 07:00:00'
+dateFrom = '2016-03-13 01:00:00'
+dateTo = '2016-03-13 02:00:00'
 tbl_from = 'tbl_level2'
 db_name = 'weather_v2'
+client_name = 'TUOL'
 
 #------------------------------------------------------------------------------ 
 execfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'database_connect.py'))
@@ -23,7 +24,7 @@ cursor = cnx.cursor()
 
 #------------------------------------------------------------------------------ 
 # get all the stations
-qry_station = "SELECT station_id from tbl_stations WHERE client='BRB'"
+qry_station = "SELECT station_id from tbl_stations WHERE client='%s'" % client_name
 cursor.execute(qry_station)
 stations = cursor.fetchall()
 
