@@ -20,7 +20,7 @@ FILENAME=backup_$DATE.sql.gz
 echo $FILENAME
 
 # create the backup
-mysqldump -u $user -p$pass -h$host $db | gzip -9 > $FILENAME
+mysqldump -u $user -p$pass -h$host $db tbl_stations | gzip -9 > $FILENAME
 
 # move this file to SHARE3
 # somehow
