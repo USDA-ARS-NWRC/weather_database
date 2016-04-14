@@ -3,15 +3,13 @@
 #
 # MySQL login info
 
-#host=localhost
-#user=wxuser_v2
-#pass=x340hm4h980r
-
-host=10.200.28.203
-user=scott
-pass=avalanche
+host=localhost
+user=wxuser_v2
+pass=x340hm4h980r
 db=weather_v2
 
+snap_user=snowserver
+snap_pass=85bhTcEBSFeyvmqk84rmxa67
 # get the time
 DATE=`date +%Y_%m_%d`
 
@@ -23,6 +21,8 @@ echo $FILENAME
 mysqldump -u $user -p$pass -h$host $db | gzip -9 > $FILENAME
 
 # move this file to SHARE3
-# somehow
-
 #smb://arsidboi6na0001/SHARE3/Mac_Files/Snowserver/db_backup
+
+mount_smbfs //$snap_user:$snap_pass@10.200.28.211/SHARE3 ~/smb_mount/
+mv $FILENAME /Users/scott/smb_mount/Mac_Files/Snowserver/db_backup/$FILENAME
+umount /Users/scott/smb_mount

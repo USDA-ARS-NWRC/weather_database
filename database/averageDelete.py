@@ -27,7 +27,7 @@ qry_station = "SELECT station_id from tbl_stations"
 cursor.execute(qry_station)
 stations = cursor.fetchall()
 
-#pbar = progressbar.ProgressBar(max_value=len(stations))
+pbar = progressbar.ProgressBar(max_value=len(stations))
 for j,sta in enumerate(stations):
 
     #------------------------------------------------------------------------------ 
@@ -118,7 +118,7 @@ for j,sta in enumerate(stations):
                     cnx.rollback()
                     print 'Error averaging data from database for %s - %s (%s): ' % (sta[0], r.round_time, err)
     
-#    pbar.update(j)
+    pbar.update(j)
     
-#pbar.finish()
+pbar.finish()
 cnx.close()
