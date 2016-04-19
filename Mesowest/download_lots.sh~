@@ -1,0 +1,59 @@
+#!/bin/sh
+
+bbox='-116.4,43.05,-114.45,44.44'
+
+# WY 2012
+python download_Mesowest_historic.py --start=2011-10-01 --end 2011-11-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2011-11-01 --end 2011-12-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2011-12-01 --end 2012-01-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-01-01 --end 2012-02-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-02-01 --end 2012-03-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-03-01 --end 2012-04-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-04-01 --end 2012-05-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-05-01 --end 2012-06-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-06-01 --end 2012-07-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-07-01 --end 2012-08-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-08-01 --end 2012-09-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-09-01 --end 2012-10-01 --bbox=$bbox
+
+# WY 2013
+python download_Mesowest_historic.py --start=2012-10-01 --end 2012-11-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-11-01 --end 2012-12-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2012-12-01 --end 2013-01-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-01-01 --end 2013-02-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-02-01 --end 2013-03-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-03-01 --end 2013-04-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-04-01 --end 2013-05-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-05-01 --end 2013-06-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-06-01 --end 2013-07-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-07-01 --end 2013-08-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-08-01 --end 2013-09-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-09-01 --end 2013-10-01 --bbox=$bbox
+
+# WY 2014
+python download_Mesowest_historic.py --start=2013-10-01 --end 2013-11-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-11-01 --end 2013-12-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2013-12-01 --end 2014-01-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-01-01 --end 2014-02-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-02-01 --end 2014-03-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-03-01 --end 2014-04-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-04-01 --end 2014-05-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-05-01 --end 2014-06-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-06-01 --end 2014-07-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-07-01 --end 2014-08-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-08-01 --end 2014-09-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-09-01 --end 2014-10-01 --bbox=$bbox
+
+# WY 2015
+python download_Mesowest_historic.py --start=2014-10-01 --end 2014-11-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-11-01 --end 2014-12-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2014-12-01 --end 2015-01-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-01-01 --end 2015-02-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-02-01 --end 2015-03-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-03-01 --end 2015-04-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-04-01 --end 2015-05-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-05-01 --end 2015-06-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-06-01 --end 2015-07-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-07-01 --end 2015-08-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-08-01 --end 2015-09-01 --bbox=$bbox
+python download_Mesowest_historic.py --start=2015-09-01 --end 2015-10-01 --bbox=$bbox
