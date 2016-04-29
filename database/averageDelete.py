@@ -23,9 +23,14 @@ cursor = cnx.cursor()
 
 #------------------------------------------------------------------------------ 
 # get all the stations
-qry_station = "SELECT station_id from tbl_stations"
+#qry_station = "SELECT station_id from tbl_stations"
+qry_station = "SELECT DISTINCT(station_id) from tbl_level1 where av_del is NULL"
 cursor.execute(qry_station)
 stations = cursor.fetchall()
+
+# remove stations without a name
+stations = [s[0] for s in stations]
+stations = filter(None, stations)
 
 pbar = progressbar.ProgressBar(max_value=len(stations))
 for j,sta in enumerate(stations):
@@ -34,7 +39,7 @@ for j,sta in enumerate(stations):
     # determine the whole hours and how many values are present
     
     qry = "SELECT COUNT(*) AS cnt, station_id, date_time,FROM_UNIXTIME(FLOOR((UNIX_TIMESTAMP(date_time) + %i-1) / %i) * %i) AS round_date \
-            FROM tbl_level1 WHERE station_id='%s' GROUP BY station_id,round_date" % (round_val, round_val, round_val, sta[0])
+            FROM tbl_level1 WHERE station_id='%s' and av_del is NULL GROUP BY station_id,round_date" % (round_val, round_val, round_val, sta)
     cursor.execute(qry)
     d = cursor.fetchall()
     
@@ -43,7 +48,7 @@ for j,sta in enumerate(stations):
     
     # make sure that all the round_values are unique
     if len(data) != len(data.round_time.unique()):
-        raise Exception('Times are not unique for station %s' % sta[0])
+        raise Exception('Times are not unique for station %s' % sta)
     
     flag = False
     if len(data) == data.cnt.sum():
@@ -69,16 +74,23 @@ for j,sta in enumerate(stations):
                             if t >= timedelta(minutes=round_val/60/2):
                                 date_time += timedelta(minutes=round_val/60)
                             
-                            qry = "UPDATE tbl_level1 SET date_time='%s' where date_time='%s' and station_id='%s'" % (date_time, r.date_time, r.station_id)
+                            qry = "UPDATE tbl_level1 SET date_time='%s', av_del=1 where date_time='%s' and station_id='%s'" % (date_time, r.date_time, r.station_id)
                             
                         else:  
-                            qry = "UPDATE tbl_level1 SET date_time='%s' where date_time='%s' and station_id='%s'" % (r.round_time, r.date_time, r.station_id)
+                            qry = "UPDATE tbl_level1 SET date_time='%s', av_del=1 where date_time='%s' and station_id='%s'" % (r.round_time, r.date_time, r.station_id)
+                        cursor.execute(qry)
+                        cnx.commit()
+                            
+                    else:
+                        # change the av_del column to ignore next time
+                        qry = "UPDATE tbl_level1 SET av_del=1 where date_time='%s' and station_id='%s'" % (r.date_time, r.station_id)
+                        
                         cursor.execute(qry)
                         cnx.commit()
                         
                 except mysql.connector.Error as err:
                     cnx.rollback()
-                    print 'Error updating date_time %s - %s (%s): ' % (sta[0], r.round_time, err)
+                    print 'Error updating date_time %s - %s (%s): ' % (sta, r.round_time, err)
             
             else:
                 try:
@@ -89,18 +101,19 @@ for j,sta in enumerate(stations):
                     date_start = r.round_time - timedelta(seconds=round_val-1)
                     
                     # create a query to get all the values
-                    qry = "SELECT * FROM tbl_level1 WHERE station_id='%s' AND date_time BETWEEN '%s' AND '%s'" % (sta[0], date_start, r.round_time)
+                    qry = "SELECT * FROM tbl_level1 WHERE station_id='%s' AND date_time BETWEEN '%s' AND '%s'" % (sta, date_start, r.round_time)
                     dup = pd.read_sql(qry, cnx, index_col='date_time')
                     
                     # delete all those values from the table
-                    delete_qry = "DELETE FROM tbl_level1 WHERE station_id='%s' AND date_time BETWEEN '%s' AND '%s'" % (sta[0], date_start, r.round_time)
+                    delete_qry = "DELETE FROM tbl_level1 WHERE station_id='%s' AND date_time BETWEEN '%s' AND '%s'" % (sta, date_start, r.round_time)
                     cursor.execute(delete_qry)
                     
                     # get the average and reinsert into table
                     m = dup.mean()
-                    m['station_id'] = sta[0]
+                    m['station_id'] = sta
                     m['date_time'] = None
                     m['date_time'] = pd.Timestamp(r.round_time)
+                    m['av_del'] = 1
                     
                     # create a query to insert the average values
                     cols = m.keys().tolist()
@@ -116,7 +129,7 @@ for j,sta in enumerate(stations):
     
                 except mysql.connector.Error as err:
                     cnx.rollback()
-                    print 'Error averaging data from database for %s - %s (%s): ' % (sta[0], r.round_time, err)
+                    print 'Error averaging data from database for %s - %s (%s): ' % (sta, r.round_time, err)
     
     pbar.update(j)
     

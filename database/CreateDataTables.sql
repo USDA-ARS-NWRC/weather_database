@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS tbl_raw_data (
 
 -- tbl_level1 is the automatic data QC and organization
 CREATE TABLE IF NOT EXISTS tbl_level1 LIKE tbl_raw_data;
+ALTER IGNORE TABLE tbl_level1 ADD COLUMN av_del TINYINT(1) DEFAULT 0;
 
 -- tbl_level2 is the users accessing the db and changing the data
 CREATE TABLE IF NOT EXISTS tbl_level2 LIKE tbl_raw_data;

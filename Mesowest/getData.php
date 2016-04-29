@@ -125,6 +125,9 @@
                 // columns to insert
                 $cols = array_values($v);
                 $cols[] = 'station_id';
+		//$fcols = $cols;
+		//$fcols[] = 'av_del';
+
     // 			print_r($cols);
                 foreach ($cols as $key => $value)
                     $aval[$value] = '';
@@ -132,7 +135,7 @@
 //     			print_r($aval);
 //                $fcols = $cols;
                 $cols = '(' . implode (',', array_keys($aval) ) . ')';
-//                $fcols = '(' . implode (',', array_values($fcols) ) . ')';
+                //$fcols = '(' . implode (',', array_values($fcols) ) . ')';
                 
                 // go through each measurement
                 for ($i=0; $i<$cnt; $i++) {
@@ -154,18 +157,11 @@
                     $values = array_map ( 'mapfun', array_values ( $aval ));
                     $ivals[] = '(' . implode ( ',', $values ) . ')';
                     
-                    // fix the time, user, and date fixed
-                    // get the date time and round
-//                    $faval = $aval;
-//                    $wtm = new wx_DateTime( $faval['date_time']);
-//                    $faval['date_time'] = $wtm->round();
-                    
-                    // add the user and the time changed
-//                    $faval['user'] = $user;
-//                    $faval['date_fixed'] = date ( 'Y-m-d H:i:s' );
-                    
-//                    $values = array_map ( 'mapfun', array_values ( $faval ));
-//                    $fvals[] = '(' . implode ( ',', $values ) . ')';
+                    // add the av_del flag to tbl_level1
+                    //$faval = $aval;
+                    //$faval['av_del'] = 0;                    
+                    //$values = array_map ( 'mapfun', array_values ( $faval ));
+                    //$fvals[] = '(' . implode ( ',', $values ) . ')';
                     
                 }
                 
@@ -188,8 +184,7 @@
                  */
     // 			print_r($fcols);
     // 			print_r($fvals);
-//                $toinsert = implode(",", $fvals);
-                
+                //$toinsert = implode(",", $fvals);
                 $qstr = 'INSERT IGNORE INTO tbl_level1 ' . $cols . ' VALUES ' . $toinsert;
                 $ret = $conn->query($qstr);
                 if ($conn->errno) {

@@ -57,7 +57,8 @@ def downloadData(startTime, endTime, bbox):
         vars = s['SENSOR_VARIABLES'].keys()
         v = {}
         for i in s['SENSOR_VARIABLES']:
-            v[s['SENSOR_VARIABLES'][i].keys()[0]] = i
+            if s['SENSOR_VARIABLES'][i]:
+                v[s['SENSOR_VARIABLES'][i].keys()[0]] = i
             
         # columns to insert
         cols = v.keys()
