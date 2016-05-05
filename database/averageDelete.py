@@ -24,7 +24,7 @@ cursor = cnx.cursor()
 #------------------------------------------------------------------------------ 
 # get all the stations
 #qry_station = "SELECT station_id from tbl_stations"
-qry_station = "SELECT DISTINCT(station_id) from tbl_level1 where av_del is NULL"
+qry_station = "SELECT DISTINCT(station_id) from tbl_level1 where av_del=0"
 cursor.execute(qry_station)
 stations = cursor.fetchall()
 
