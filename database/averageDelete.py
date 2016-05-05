@@ -39,7 +39,7 @@ for j,sta in enumerate(stations):
     # determine the whole hours and how many values are present
     
     qry = "SELECT COUNT(*) AS cnt, station_id, date_time,FROM_UNIXTIME(FLOOR((UNIX_TIMESTAMP(date_time) + %i-1) / %i) * %i) AS round_date \
-            FROM tbl_level1 WHERE station_id='%s' and av_del is NULL GROUP BY station_id,round_date" % (round_val, round_val, round_val, sta)
+            FROM tbl_level1 WHERE station_id='%s' and av_del=0 GROUP BY station_id,round_date" % (round_val, round_val, round_val, sta)
     cursor.execute(qry)
     d = cursor.fetchall()
     
