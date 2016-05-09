@@ -83,7 +83,7 @@
 //     		echo $station_id . "\n";
             
             // determine the latest time in the database
-            $qry = "SELECT max(date_time) AS d FROM tbl_raw_data WHERE station_id='$station_id'";
+            $qry = "SELECT max(date_time) + INTERVAL 1 MINUTE AS d FROM tbl_raw_data WHERE station_id='$station_id'";
             $dt = $conn->query ( $qry );
             $t = $dt->fetch_assoc();
     // 		print_r($t);
