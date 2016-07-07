@@ -101,85 +101,95 @@ def downloadData(startTime, endTime, bbox):
     
         if data[s]:
             
-            # variables returned from CDEC
-            variables = data[s].keys()
-        
-            #------------------------------------------------------------------------------
-            # align the CDEC variables to the Mesowest variables
-            meso = [ v[v.Description == variables[x]]['mesowest'].values[0] for x in range(len(variables)) ]
-        
-            #------------------------------------------------------------------------------
-            # make the data frame useful and combine
-            r = pd.concat([data[s][x] for x in variables], axis=1, keys=meso)
-            r.columns = meso
-            
-            r = units.convertUnits(r)   # convert units from english to metric
-            r = r.replace(np.nan, 'NULL', regex=True)   # replace NaN with NULL for MySQL
-                
-            #------------------------------------------------------------------------------ 
-            # insert data into database
-            N = len(r)  # number of measurements
-            
-            d = r.index.tolist()
-            values = r.values
-        #     mst_tz = pytz.timezone('MST')
-            
-            
             try:
-            
-                print 'Adding %s data to database, %i records...' % (s, N)
-                columns = ['station_id', 'date_time'] + meso
+                flag = True
                 
-                for i in range(N):
+                # variables returned from CDEC
+                variables = data[s].keys()
+            
+                #------------------------------------------------------------------------------
+                # align the CDEC variables to the Mesowest variables
+                meso = [ v[v.Description == variables[x]]['mesowest'].values[0] for x in range(len(variables)) ]
+            
+                #------------------------------------------------------------------------------
+                # make the data frame useful and combine
+                r = pd.concat([data[s][x] for x in variables], axis=1, keys=meso)
+                r.columns = meso
+                
+                r = units.convertUnits(r)   # convert units from english to metric
+                r = r.replace(np.nan, 'NULL', regex=True)   # replace NaN with NULL for MySQL
                     
-                    # the current record
-                    record = r.iloc[i]
+                #------------------------------------------------------------------------------ 
+                # insert data into database
+                N = len(r)  # number of measurements
+                
+                d = r.index.tolist()
+                values = r.values
+            #     mst_tz = pytz.timezone('MST')
+            except Exception, e:
+                print('Error for station %s' % s)
+                print(e)
+                flag = False
+                
+                
+                
+                
+            if flag:
+                try:
+                
+                    print 'Adding %s data to database, %i records...' % (s, N)
+                    columns = ['station_id', 'date_time'] + meso
                     
-                    # get the date_time index
-                    # need to convert to UTC from PST, and maybe PSD later?
-                    date_time = r.index.tolist()[i]
-                    t = date_time.replace(tzinfo=pst_tz).astimezone(utc_tz)
-                    
-                    # get all the values
-    #                 record.air_temp = 100 + i
-                    values = record.values.tolist()
-                    for i,vi in enumerate(values):
-                        if vi == 'NULL':
-                            values[i] = None
-                     
-                    # insert into the database
-                    val = []
-                    for i,f in enumerate(meso):
-                        if not values[i]:
-                            val.append("%s=NULL" % f)
-                        else:
-                            val.append("%s='%s'" % (f, values[i]))
-                     
-                    values = [s, t.strftime("%Y-%m-%d %H:%M:%S")] + values
-                                
-                    add_data = "INSERT INTO tbl_raw_data (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
-                        (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
+                    for i in range(N):
                         
-                    add_data2 = "INSERT INTO tbl_level1 (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
-                        (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
-                    
-                    
-                    cursor.execute(add_data, values)
-                    cursor.execute(add_data2, values)
-                    
-            except mysql.connector.Error as err:
-                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                    print("Something is wrong with your user name or password")
-                elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                    print("Database does not exist")
-                else:
-                    print(err)
-                print 'Error loading data into database for %s (%s): ' % (s, date_time)
-    
+                        # the current record
+                        record = r.iloc[i]
+                        
+                        # get the date_time index
+                        # need to convert to UTC from PST, and maybe PSD later?
+                        date_time = r.index.tolist()[i]
+                        t = date_time.replace(tzinfo=pst_tz).astimezone(utc_tz)
+                        
+                        # get all the values
+        #                 record.air_temp = 100 + i
+                        values = record.values.tolist()
+                        for i,vi in enumerate(values):
+                            if vi == 'NULL':
+                                values[i] = None
+                         
+                        # insert into the database
+                        val = []
+                        for i,f in enumerate(meso):
+                            if not values[i]:
+                                val.append("%s=NULL" % f)
+                            else:
+                                val.append("%s='%s'" % (f, values[i]))
+                         
+                        values = [s, t.strftime("%Y-%m-%d %H:%M:%S")] + values
+                                    
+                        add_data = "INSERT INTO tbl_raw_data (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
+                            (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
+                            
+                        add_data2 = "INSERT INTO tbl_level1 (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
+                            (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
+                        
+                        
+                        cursor.execute(add_data, values)
+                        cursor.execute(add_data2, values)
+                        
+                except mysql.connector.Error as err:
+                    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                        print("Something is wrong with your user name or password")
+                    elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                        print("Database does not exist")
+                    else:
+                        print(err)
+                    print 'Error loading data into database for %s (%s): ' % (s, date_time)
+        
         else:
             print 'Station %s has no data' % s
     
     
-    cnx.close()
+#     cnx.close()
     
     print 'Done --> %s' % datetime.now()

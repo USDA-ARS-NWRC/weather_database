@@ -5,7 +5,7 @@ Download a whole bunch from Mesowest
 from download_CDEC_bbox import downloadData
 from datetime import datetime, timedelta
 
-start_date = datetime(1998,10,1)
+start_date = datetime(2000,12,28)
 end_date = datetime(2012,10,1)
 tstep = 7
 # bbox='-116.4,43.05,-114.45,44.44' # BRB
