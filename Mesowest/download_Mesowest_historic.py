@@ -54,7 +54,7 @@ def downloadData(startTime, endTime, bbox):
         station_id = str(s['STID'])
         
         # variables that were returned
-        vars = s['SENSOR_VARIABLES'].keys()
+        var = s['SENSOR_VARIABLES'].keys()
         v = {}
         for i in s['SENSOR_VARIABLES']:
             if s['SENSOR_VARIABLES'][i]:
@@ -70,7 +70,7 @@ def downloadData(startTime, endTime, bbox):
         
         # rename the columns and make date time the index    
         r.rename(columns = v, inplace=True)
-        r = r[vars]  # only take those that we wanted in case something made it through
+        r = r[var]  # only take those that we wanted in case something made it through
         r = r.set_index('date_time')
         
         r = r.replace(np.nan, 'NULL', regex=True)   # replace NaN with NULL for MySQL
@@ -87,41 +87,82 @@ def downloadData(startTime, endTime, bbox):
         
             print 'Adding %s data to database, %i records...' % (station_id, N)
                     
+                    
+            VALUES = []
+            ivars = var[:]
+            ivars.remove('date_time')
+            
             for i in range(N):
                 
                 # the current record
                 record = r.iloc[i]
                 date_time = record.name
-                
-                columns = ['station_id', 'date_time'] + list(r.columns.values)     
-                           
+            
                 # get all the values
                 values = record.values.tolist()
                 for i,vi in enumerate(values):
                     if vi == 'NULL':
-                        values[i] = None
+                        values[i] = 'NULL'
                     elif type(values[i]) is not str:
-                        values[i] = float(values[i])
-                 
-                # insert into the database
-                val = []
-                for i,f in enumerate(record.to_dict().keys()):
-                    if not values[i]:
-                        val.append("%s=NULL" % f)
-                    else:
-                        val.append("%s='%s'" % (f, values[i]))
-                 
-                values = [station_id, date_time.strftime("%Y-%m-%d %H:%M:%S")] + values
-                            
-                add_data = "INSERT INTO tbl_raw_data (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
-                    (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
-                    
-                add_data2 = "INSERT INTO tbl_level1 (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
-                    (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
+                        values[i] = str(values[i])
+            
+                vi = ','.join(values)
                 
+                # the VALUES part of the insert for each row
+                VALUES.append("('%s','%s',%s)" % (station_id, date_time.strftime("%Y-%m-%d %H:%M:%S"), vi))
+            
+            VALUES = ',\n'.join(VALUES)
+            
+            UPDATE = []
+            for i in ivars:
+                UPDATE.append("%s=VALUES(%s)" % (i, i))
+            UPDATE = ',\n'.join(UPDATE)
+            
+            
+            add_data = "INSERT INTO tbl_raw_data (station_id,date_time,%s) VALUES %s ON DUPLICATE KEY UPDATE %s" % \
+                (",".join(ivars), VALUES, UPDATE)
                 
-                cursor.execute(add_data, values)
-                cursor.execute(add_data2, values)
+            add_data2 = "INSERT INTO tbl_level1 (station_id,date_time,%s) VALUES %s ON DUPLICATE KEY UPDATE %s" % \
+                (",".join(ivars), VALUES, UPDATE)
+            
+            cursor.execute(add_data)
+            cursor.execute(add_data2)
+            
+#             for i in range(N):
+#                 
+#                 # the current record
+#                 record = r.iloc[i]
+#                 date_time = record.name
+#                 
+#                 columns = ['station_id', 'date_time'] + list(r.columns.values)     
+#                            
+#                 # get all the values
+#                 values = record.values.tolist()
+#                 for i,vi in enumerate(values):
+#                     if vi == 'NULL':
+#                         values[i] = None
+#                     elif type(values[i]) is not str:
+#                         values[i] = float(values[i])
+#                  
+#                 # insert into the database
+#                 val = []
+#                 for i,f in enumerate(record.to_dict().keys()):
+#                     if not values[i]:
+#                         val.append("%s=NULL" % f)
+#                     else:
+#                         val.append("%s='%s'" % (f, values[i]))
+#                  
+#                 values = [station_id, date_time.strftime("%Y-%m-%d %H:%M:%S")] + values
+#                             
+#                 add_data = "INSERT INTO tbl_raw_data (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
+#                     (",".join(columns), ','.join([str(i) for i in values]), ','.join(val))
+#                     
+#                 add_data2 = "INSERT INTO tbl_level1 (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s" % \
+#                     (",".join(columns), ','.join(['%s' for i in values]), ','.join(val))
+#                 
+#                 
+#                 cursor.execute(add_data, values)
+#                 cursor.execute(add_data2, values)
                 
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
