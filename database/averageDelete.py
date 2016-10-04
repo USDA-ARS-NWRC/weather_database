@@ -168,8 +168,6 @@ def avg_delete(stations):
     Average and delete from tbl_level1
     """
 
-    print('%i stations to process...' % len(stations))
-
     pbar = progressbar.ProgressBar(max_value=len(stations))
     for j,sta in enumerate(stations):
     
