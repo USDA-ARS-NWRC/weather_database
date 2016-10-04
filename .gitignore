@@ -6,6 +6,7 @@
 database_connect.php
 database_connect.py
 db_connect.sh
+db_config.json
 
 DownloadLog.txt
 
