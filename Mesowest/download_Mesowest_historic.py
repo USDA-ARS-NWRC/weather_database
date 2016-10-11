@@ -91,8 +91,10 @@ def getStationData(s):
     
     # rename the columns and make date time the index    
     r.rename(columns = v, inplace=True)
-    r = r[var]  # only take those that we wanted in case something made it through
     r = r.set_index('date_time')
+    vkeep = r.columns.isin(var)
+    r = r[r.columns[vkeep]]  # only take those that we wanted in case something made it through
+    
     
     r = r.replace(np.nan, 'NULL', regex=True)   # replace NaN with NULL for MySQL
         
