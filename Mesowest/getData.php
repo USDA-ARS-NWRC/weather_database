@@ -13,7 +13,7 @@
      * PARAMETERS
      */
     
-    $wy = 2016; // current water year only used to initialize db
+    $wy = 2017; // current water year only used to initialize db
                 
     // set query parameters, add additional as needed
     date_default_timezone_set ( 'UTC' );
