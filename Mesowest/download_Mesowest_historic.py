@@ -15,6 +15,7 @@ from MesoPy import Meso
 import pandas as pd
 import argparse
 import multiprocessing as mp
+import pytz
 
 import json
 
@@ -22,9 +23,18 @@ nthreads = 3
 
 # connect to db, returns connection cnx
 cnx = None
-with open('../db_config.json', 'r') as f:
-    config = json.load(f)
-    f.close()
+
+    
+    
+p = {}
+p['start'] = None      # start time
+p['end'] = None          # end time
+p['obstimezone'] = 'utc'    # observation time zone
+p['units'] = 'metric'       # units
+p['stid'] = None
+p['bbox'] = None
+p['token'] = 'e505002015c74fa6850b2fc13f70d2da'     # API token
+p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv'
      
         
 def db_init():
@@ -44,14 +54,14 @@ def MesowestData(startTime, endTime, bbox):
     
     #------------------------------------------------------------------------------ 
     # set the parameters for the Mesowest query and build
-    p = {}
+#     p = {}
     p['start'] = startTime.strftime('%Y%m%d%H%M')      # start time
     p['end'] = endTime.strftime('%Y%m%d%H%M')          # end time
-    p['obstimezone'] = 'utc'    # observation time zone
-    p['units'] = 'metric'       # units
+#     p['obstimezone'] = 'utc'    # observation time zone
+#     p['units'] = 'metric'       # units
     p['bbox'] = bbox
-    p['token'] = 'e505002015c74fa6850b2fc13f70d2da'     # API token
-    p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv' 
+#     p['token'] = 'e505002015c74fa6850b2fc13f70d2da'     # API token
+#     p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv' 
     
     m = Meso(token=p['token'])
     
@@ -59,6 +69,34 @@ def MesowestData(startTime, endTime, bbox):
     
     data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
                                 bbox=p['bbox'], units=p['units'], vars=p['vars'])
+    
+    return data
+
+def currentMesowestData(startTime, endTime, stid):
+    """
+    Call Mesowest for the data in bbox between startTime and endTime
+    """
+    
+    #------------------------------------------------------------------------------ 
+    # set the parameters for the Mesowest query and build
+#     p = {}
+    p['start'] = startTime.strftime('%Y%m%d%H%M')      # start time
+    p['end'] = endTime.strftime('%Y%m%d%H%M')          # end time
+#     p['obstimezone'] = 'utc'    # observation time zone
+#     p['units'] = 'metric'       # units
+    p['stid'] = stid
+#     p['token'] = 'e505002015c74fa6850b2fc13f70d2da'     # API token
+#     p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv' 
+    
+    m = Meso(token=p['token'])
+    
+#     print 'Downloading data ...' 
+    try:
+        data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
+                                    stid=p['stid'], units=p['units'], vars=p['vars'])
+    except Exception as e:
+        print '%s -- %s' % (stid, e)
+        data = None
     
     return data
 
@@ -187,24 +225,101 @@ def downloadData(startTime, endTime, bbox):
 #         getStationData(s)
         
     
-
+def downloadCurrentData(endTime):
+    """
+    Download the current data from Mesowest
+    """
     
+    # get database connection
+    db_init()
+    cursor = cnx.cursor()
+    
+    # determine the stations to download, this will only download from clients with '*WY'
+    dd, wy = water_day(endTime)
+    sqry = "SELECT station_id from tbl_stations WHERE client LIKE '%%%i' AND source='Mesowest'" % wy
+    cursor.execute(sqry)
+    stations = cursor.fetchall()
+    
+    # go through each and get the data
+    for stid in stations:
+        
+        stid = stid[0]
+        
+        # determine the last value for the station
+        qry = "SELECT max(date_time) + INTERVAL 1 MINUTE AS d FROM tbl_raw_data WHERE station_id='%s'" % stid
+        cursor.execute(qry)
+        startTime = cursor.fetchone()
+        
+        if startTime[0] is not None:
+            startTime = pd.to_datetime(startTime[0], utc=True)
+        else:
+            dd, wy = water_day(endTime)
+            startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=True)
+        
+        
+        data = currentMesowestData(startTime, endTime, stid)
+        
+        if data is not None:
+            getStationData(data['STATION'][0])
+    
+    
+    
+def water_day(indate):
+    """
+    Determine the decimal day in the water year
+    
+    Args:
+        indate: datetime object
+        
+    Returns:
+        dd: decimal day from start of water year
+    
+    20160105 Scott Havens
+    """
+    tp = indate.timetuple()
+    
+    # create a test start of the water year    
+    test_date = datetime(tp.tm_year, 10, 1, 0, 0, 0)
+    test_date = test_date.replace(tzinfo=pytz.timezone(indate.tzname()))
+    
+    # check to see if it makes sense
+    if indate < test_date:
+        wy = tp.tm_year
+    else:
+        wy = tp.tm_year + 1
+        
+    # actual water year start
+    wy_start = datetime(wy-1, 10, 1, 0, 0, 0)
+    wy_start = wy_start.replace(tzinfo=pytz.timezone(indate.tzname()))
+    
+    # determine the decimal difference
+    d = indate - wy_start
+    dd = d.days + d.seconds/86400.0
+    
+    return dd, wy  
     
 
 def arg_parse():
     """"""
+
     parser = argparse.ArgumentParser(
         description='Download Mesowest data',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        '--start', required=True, dest='start',
+        '--current', required=False, dest='current', action='store_true',
+        help='Download the current data')
+    parser.add_argument(
+        '--start', required=False, dest='start',
         help='Start date')
     parser.add_argument(
-        '--end', required=True, dest='end',
+        '--end', required=False, dest='end',
         help='End date')
     parser.add_argument(
-        '--bbox', required=True, dest='bbox',
+        '--bbox', required=False, dest='bbox',
         help='Bounding box string "lonmin,latmin,lonmax,latmax"')
+    parser.add_argument('config', metavar='N', type=str, nargs=1,
+                    help='Database configuration JSON')
+    
     args = parser.parse_args()
 
     return args
@@ -215,16 +330,28 @@ if __name__ == '__main__':
     python download_Mesowest_historic.py --start=2013-10-01 --end=2013-10-05 --bbox='-116.4,43.05,-114.45,44.44'
     """
     args = arg_parse()
+    
+    with open(args.config[0], 'r') as f:
+        config = json.load(f)
+        f.close()
 
     print 'Start --> %s' % datetime.now()
        
-    # determine start and end
-    startTime = pd.to_datetime(args.start) # start a day early to ensure that all values are grabed
-    endTime = pd.to_datetime(args.end)
-    
-    print 'Downloading between %s and %s' % (startTime, endTime)
+    # if there is a bbox, then its a histroic download
+    if args.bbox is not None:
+        # determine start and end
+        startTime = pd.to_datetime(args.start) # start a day early to ensure that all values are grabed
+        endTime = pd.to_datetime(args.end)
         
-    downloadData(startTime, endTime, args.bbox)
+        print 'Downloading between %s and %s' % (startTime, endTime)
+            
+        downloadData(startTime, endTime, args.bbox)
+    
+    elif args.current:
+        # download the current data
+        endTime = pd.to_datetime(datetime.utcnow(), utc=True)
+        downloadCurrentData(endTime)
+        
     
     cnx.close()
     

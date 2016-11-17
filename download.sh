@@ -19,7 +19,7 @@ printf ' *** MESOWEST ***\n'
 printf '%50s\n' | tr ' ' -
 
 # download the Mesowest for tbl_level1
-php $BASEDIR/Mesowest/getData.php
+python $BASEDIR/Mesowest/download_Mesowest_historic.py --current db_config.json
 
 
 printf '%50s\n' | tr ' ' -
