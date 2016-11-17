@@ -23,9 +23,7 @@ nthreads = 3
 
 # connect to db, returns connection cnx
 cnx = None
-with open('../db_config.json', 'r') as f:
-    config = json.load(f)
-    f.close()
+
     
     
 p = {}
@@ -319,6 +317,8 @@ def arg_parse():
     parser.add_argument(
         '--bbox', required=False, dest='bbox',
         help='Bounding box string "lonmin,latmin,lonmax,latmax"')
+    parser.add_argument('config', metavar='N', type=str, nargs=1,
+                    help='Database configuration JSON')
     
     args = parser.parse_args()
 
@@ -330,6 +330,10 @@ if __name__ == '__main__':
     python download_Mesowest_historic.py --start=2013-10-01 --end=2013-10-05 --bbox='-116.4,43.05,-114.45,44.44'
     """
     args = arg_parse()
+    
+    with open(args.config[0], 'r') as f:
+        config = json.load(f)
+        f.close()
 
     print 'Start --> %s' % datetime.now()
        
