@@ -16,11 +16,43 @@ import units
 import mysql.connector
 from mysql.connector import errorcode
 
+def water_day(indate):
+    """
+    Determine the decimal day in the water year
+    
+    Args:
+        indate: datetime object
+        
+    Returns:
+        dd: decimal day from start of water year
+    
+    20160105 Scott Havens
+    """
+    tp = indate.timetuple()
+    
+    # create a test start of the water year    
+    test_date = datetime(tp.tm_year, 10, 1, 0, 0, 0)
+    test_date = test_date.replace(tzinfo=pytz.timezone(indate.tzname()))
+    
+    # check to see if it makes sense
+    if indate < test_date:
+        wy = tp.tm_year
+    else:
+        wy = tp.tm_year + 1
+        
+    # actual water year start
+    wy_start = datetime(wy-1, 10, 1, 0, 0, 0)
+    wy_start = wy_start.replace(tzinfo=pytz.timezone(indate.tzname()))
+    
+    # determine the decimal difference
+    d = indate - wy_start
+    dd = d.days + d.seconds/86400.0
+    
+    return dd, wy 
+
 
 print 'Start --> %s' % datetime.now()
 
-# set some parameters
-wy = 2016   # current water year
 
 # connect to db, returns connection cnx
 execfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'database_connect.py'))
@@ -37,9 +69,23 @@ v['mesowest'] = pd.Series(mesowest, index=v.index)
 
 sensor_id = sensor_id + 1
 
+
+#------------------------------------------------------------------------------ 
+# determine start and end
+endTime = pd.to_datetime(datetime.utcnow(), utc=True) #datetime.utcnow()
+dd, wy = water_day(endTime)
+# endTime = datetime(2015,11,2,0,0,0)
+startTime_wy = datetime(wy-1, 9, 30) # start a day early to ensure that all values are grabed
+
+# pst_tz = pytz.timezone('America/Metlakatla')
+pst_tz = pytz.timezone('US/Pacific')
+utc_tz = pytz.timezone('UTC')
+
 #------------------------------------------------------------------------------ 
 # determine what stations to use
-qry = "SELECT station_id FROM tbl_stations WHERE source='CDEC'"
+
+qry = "SELECT station_id from tbl_stations WHERE client LIKE '%%%i' AND source='CDEC'" % wy
+# qry = "SELECT station_id FROM tbl_stations WHERE source='CDEC'"
 cursor.execute(qry)
 
 station_id = []
@@ -53,17 +99,6 @@ qryDate = "SELECT max(date_time) AS d FROM tbl_raw_data WHERE station_id='%s'"
 
 #------------------------------------------------------------------------------ 
 # go through each station and grab the data
-
-
-# determine start and end
-endTime = datetime.utcnow()
-# endTime = datetime(2015,11,2,0,0,0)
-startTime_wy = datetime(wy-1, 9, 30) # start a day early to ensure that all values are grabed
-
-# pst_tz = pytz.timezone('America/Metlakatla')
-pst_tz = pytz.timezone('US/Pacific')
-utc_tz = pytz.timezone('UTC')
-
 for s in station_id:
     
     #------------------------------------------------------------------------------ 
