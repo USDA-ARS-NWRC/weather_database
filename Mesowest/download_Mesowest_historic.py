@@ -287,6 +287,9 @@ def water_day(indate):
         wy = tp.tm_year
     else:
         wy = tp.tm_year + 1
+
+    print "Water year %i" % wy
+
         
     # actual water year start
     wy_start = datetime(wy-1, 10, 1, 0, 0, 0)

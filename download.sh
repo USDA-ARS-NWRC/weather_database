@@ -1,10 +1,12 @@
-#!/bin/bash         
+#!/bin/sh
 # 20151228 Scott Havens
 #
 # Download the data for all the sources
 
 BASEDIR=$(dirname $0)
 echo $BASEDIR
+
+. ../virturalenv/wxdb/bin/activate
 
 printf '%50s\n' | tr ' ' -
 printf ' *** CDEC ***\n'
@@ -28,3 +30,5 @@ printf '%50s\n' | tr ' ' -
 
 # call database/averageDelete.py to average and delete to the hour timestep
 python $BASEDIR/database/averageDelete.py
+
+deactivate
