@@ -117,7 +117,11 @@ for s in station_id:
         
     #------------------------------------------------------------------------------ 
     # grab the data from CDEC
-    data = cdec.historical.get_data([s], resolutions='hourly', sensor_ids=sensor_id, start=startTime, end=endTime)
+    try:
+    	data = cdec.historical.get_data([s], resolutions='hourly', sensor_ids=sensor_id, start=startTime, end=endTime)
+    except Exception as e:
+	print 'Error downloading %s' % s
+	data[s] = None
     
     # remove any empty dataframes
     for x in data[s].keys():

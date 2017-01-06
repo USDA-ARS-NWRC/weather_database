@@ -3,10 +3,11 @@
 #
 # Download the data for all the sources
 
+cd /home/public/WxDataDownload
 BASEDIR=$(dirname $0)
 echo $BASEDIR
 
-. ../virturalenv/wxdb/bin/activate
+. $BASEDIR/../virturalenv/wxdb/bin/activate
 
 printf '%50s\n' | tr ' ' -
 printf ' *** CDEC ***\n'
