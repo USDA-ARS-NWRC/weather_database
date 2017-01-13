@@ -1,7 +1,10 @@
 '''
-20160415 Scott Havens
+20170110 Pat Kormos, modified from Scott Havens original
+v2 allows to download historic data without a bounding box
+to replace bad data 
 
-Download from Mesowest for a bounding box
+Download from Mesowest with start and end times, or current.
+line 192, specify specific Client so i don't mess up andrew's stuff (BRB_wywy) 
 
 '''
 
@@ -47,31 +50,6 @@ def db_init():
     
 #     execfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'database_connect.py'))
 
-def MesowestData(startTime, endTime, bbox):
-    """
-    Call Mesowest for the data in bbox between startTime and endTime
-    """
-    
-    #------------------------------------------------------------------------------ 
-    # set the parameters for the Mesowest query and build
-#     p = {}
-    p['start'] = startTime.strftime('%Y%m%d%H%M')      # start time
-    p['end'] = endTime.strftime('%Y%m%d%H%M')          # end time
-#     p['obstimezone'] = 'utc'    # observation time zone
-#     p['units'] = 'metric'       # units
-    p['bbox'] = bbox
-#     p['token'] = 'e505002015c74fa6850b2fc13f70d2da'     # API token
-#     p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv' 
-    
-    m = Meso(token=p['token'])
-    
-    print 'Downloading data ...' 
-    
-    data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
-                                bbox=p['bbox'], units=p['units'], vars=p['vars'])
-    
-    return data
-
 def currentMesowestData(startTime, endTime, stid):
     """
     Call Mesowest for the data in bbox between startTime and endTime
@@ -79,18 +57,12 @@ def currentMesowestData(startTime, endTime, stid):
     
     #------------------------------------------------------------------------------ 
     # set the parameters for the Mesowest query and build
-#     p = {}
     p['start'] = startTime.strftime('%Y%m%d%H%M')      # start time
     p['end'] = endTime.strftime('%Y%m%d%H%M')          # end time
-#     p['obstimezone'] = 'utc'    # observation time zone
-#     p['units'] = 'metric'       # units
     p['stid'] = stid
-#     p['token'] = 'e505002015c74fa6850b2fc13f70d2da'     # API token
-#     p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv' 
     
     m = Meso(token=p['token'])
     
-#     print 'Downloading data ...' 
     try:
         data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
                                     stid=p['stid'], units=p['units'], vars=p['vars'])
@@ -106,7 +78,6 @@ def getStationData(s):
     get the station data into the database using the connection
     """
     
-#     cnx1 = cnx.get_connection()
     cursor = cnx.cursor()
 
     # determine station id
@@ -141,15 +112,9 @@ def getStationData(s):
     # insert data into database
     N = len(r)  # number of measurements
     
-#     d = r.index.tolist()
-#     values = r.values
-    
-    
     try:
-    
         print 'Adding %s data to database, %i records...' % (station_id, N)
-                
-                
+
         VALUES = []
         ivars = var[:]
         ivars.remove('date_time')
@@ -207,25 +172,31 @@ def getStationData(s):
 #     cnx1.close()
     
 
-def downloadData(startTime, endTime, bbox):
+def downloadData(startTime, endTime):
+    """
+    Download data between startTime and endTime from Mesowest
+    """
+    db_init()
+    cursor = cnx.cursor()
+
+    wy = water_day(endTime)
+    #     sqry = "SELECT station_id from tbl_stations WHERE client LIKE '%%%i' AND source='Mesowest'" % wy
+    sqry = "SELECT station_id from tbl_stations WHERE client='BRB_%i' AND source='Mesowest'" % wy
+    cursor.execute(sqry)
+    stations = cursor.fetchall()
     
-    data = MesowestData(startTime, endTime, bbox)
-                                
-    print 'Total stations = %i' % len(data['STATION'])
-    
-    #------------------------------------------------------------------------------ 
-    # go through each station and grab the data
-    
-    pool = mp.Pool(processes=nthreads, initializer=db_init)
-    pool.map(getStationData, data['STATION'])
-    pool.close()
-    pool.join()
-    
-#     db_init()
-#     for index,s in enumerate(data['STATION']):
-#         getStationData(s)
+    # go through each and get the data
+    for stid in stations:
         
-    
+        stid = stid[0]
+        # startTime = pd.to_datetime(startTime[0], utc=True)
+        # endTime = pd.to_datetime(endTime[0], utc=True)
+        
+        data = currentMesowestData(startTime, endTime, stid)
+
+        if data is not None:
+            getStationData(data['STATION'][0])
+
 def downloadCurrentData(endTime):
     """
     Download the current data from Mesowest
@@ -236,7 +207,7 @@ def downloadCurrentData(endTime):
     cursor = cnx.cursor()
     
     # determine the stations to download, this will only download from clients with '*WY'
-    dd, wy = water_day(endTime)
+    wy = water_day(endTime)
     sqry = "SELECT station_id from tbl_stations WHERE client LIKE '%%%i' AND source='Mesowest'" % wy
     cursor.execute(sqry)
     stations = cursor.fetchall()
@@ -254,16 +225,13 @@ def downloadCurrentData(endTime):
         if startTime[0] is not None:
             startTime = pd.to_datetime(startTime[0], utc=True)
         else:
-            dd, wy = water_day(endTime)
+            wy = water_day(endTime)
             startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=True)
-        
         
         data = currentMesowestData(startTime, endTime, stid)
         
         if data is not None:
             getStationData(data['STATION'][0])
-    
-    
     
 def water_day(indate):
     """
@@ -278,10 +246,12 @@ def water_day(indate):
     20160105 Scott Havens
     """
     tp = indate.timetuple()
+    mnt = pytz.timezone('US/Mountain')
     
     # create a test start of the water year    
     test_date = datetime(tp.tm_year, 10, 1, 0, 0, 0)
-    test_date = test_date.replace(tzinfo=pytz.timezone(indate.tzname()))
+    test_date = mnt.localize(test_date)
+    test_date = pd.to_datetime(test_date,utc=True)
     
     # check to see if it makes sense
     if indate < test_date:
@@ -292,15 +262,17 @@ def water_day(indate):
     print "Water year %i" % wy
 
         
-    # actual water year start
-    wy_start = datetime(wy-1, 10, 1, 0, 0, 0)
-    wy_start = wy_start.replace(tzinfo=pytz.timezone(indate.tzname()))
-    
+    #     # actual water year start
+    #     wy_start = datetime(wy-1, 10, 1, 0, 0, 0)
+    #     wy_start = mnt.localize(wy_start)
+    #     wy_start = pd.to_datetime(wy_start,utc=True)
+    #     return wy  
+    #     
     # determine the decimal difference
-    d = indate - wy_start
-    dd = d.days + d.seconds/86400.0
-    
-    return dd, wy  
+    #     d = indate - wy_start
+    #     dd = d.days + d.seconds/86400.0
+    #     
+    return wy  
     
 
 def arg_parse():
@@ -341,19 +313,28 @@ if __name__ == '__main__':
 
     print 'Start --> %s' % datetime.now()
        
-    # if there is a bbox, then its a histroic download
-    if args.bbox is not None:
+    # if there is a start time, then its a histroic download
+    if args.start is not None:
         # determine start and end
-        startTime = pd.to_datetime(args.start) # start a day early to ensure that all values are grabed
-        endTime = pd.to_datetime(args.end)
-        
+        # startTime = pd.to_datetime(args.start) # start a day early to ensure that all values are grabed
+        # endTime = pd.to_datetime(args.end)
+        mnt = pytz.timezone('US/Mountain')
+        startTime = pd.Timestamp(args.start)
+        startTime = mnt.localize(startTime)
+        endTime = pd.Timestamp(args.end)
+        endTime = mnt.localize(endTime)
+
         print 'Downloading between %s and %s' % (startTime, endTime)
             
-        downloadData(startTime, endTime, args.bbox)
+        downloadData(startTime, endTime)
     
     elif args.current:
         # download the current data
-        endTime = pd.to_datetime(datetime.utcnow(), utc=True)
+        # endTime = pd.to_datetime(datetime.utcnow(), utc=True)
+        mnt = pytz.timezone('US/Mountain')
+        endTime = pd.Timestamp(args.end)
+        endTime = mnt.localize(endTime)
+        
         downloadCurrentData(endTime)
         
     
