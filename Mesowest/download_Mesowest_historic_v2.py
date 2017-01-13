@@ -116,8 +116,13 @@ def getStationData(s):
         print 'Adding %s data to database, %i records...' % (station_id, N)
 
         VALUES = []
-        ivars = var[:]
-        ivars.remove('date_time')
+        #         ivars = var[:]
+        #         ivars.remove('date_time')
+
+        #         ivars = v.values()
+        #         ivars.remove('date_time')
+
+        ivars = list(r)     
         
         for i in range(N):
             
@@ -150,11 +155,15 @@ def getStationData(s):
         tbl1_UPDATE = ',\n'.join(tbl1_UPDATE)
         
         
-        add_data = "INSERT INTO tbl_raw_data (station_id,date_time,%s) VALUES %s ON DUPLICATE KEY UPDATE %s" % \
-            (",".join(ivars), VALUES, UPDATE)
+        #         add_data = "INSERT INTO tbl_raw_data (station_id,date_time,%s) VALUES %s ON DUPLICATE KEY UPDATE %s" % \
+        #             (",".join(ivars), VALUES, UPDATE)
+        #         add_data2 = "INSERT INTO tbl_level1 (station_id,date_time,%s) VALUES %s ON DUPLICATE KEY UPDATE %s" % \
+        #             (",".join(ivars), VALUES, tbl1_UPDATE)
+        add_data = "REPLACE INTO tbl_raw_data (station_id,date_time,%s) VALUES %s" % \
+            (",".join(ivars), VALUES)
             
-        add_data2 = "INSERT INTO tbl_level1 (station_id,date_time,%s) VALUES %s ON DUPLICATE KEY UPDATE %s" % \
-            (",".join(ivars), VALUES, tbl1_UPDATE)
+        add_data2 = "REPLACE INTO tbl_level1 (station_id,date_time,%s) VALUES %s" % \
+            (",".join(ivars), VALUES)
         
         cursor.execute(add_data)
         cursor.execute(add_data2)
@@ -169,8 +178,6 @@ def getStationData(s):
         print 'Error loading data into database for %s (%s): ' % (station_id, date_time)
         
     cursor.close()
-#     cnx1.close()
-    
 
 def downloadData(startTime, endTime):
     """
@@ -180,12 +187,13 @@ def downloadData(startTime, endTime):
     cursor = cnx.cursor()
 
     wy = water_day(endTime)
-    #     sqry = "SELECT station_id from tbl_stations WHERE client LIKE '%%%i' AND source='Mesowest'" % wy
-    sqry = "SELECT station_id from tbl_stations WHERE client='BRB_%i' AND source='Mesowest'" % wy
+    sqry = "SELECT station_id from tbl_stations WHERE client LIKE '%%%i' AND source='Mesowest'" % wy
+    #     sqry = "SELECT station_id from tbl_stations WHERE client='BRB_%i' AND source='Mesowest'" % wy
     cursor.execute(sqry)
     stations = cursor.fetchall()
     
     # go through each and get the data
+    
     for stid in stations:
         
         stid = stid[0]
