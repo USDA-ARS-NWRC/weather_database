@@ -151,9 +151,11 @@ def getStationData(s):
                 
                 
         VALUES = []
-        ivars = var[:]
+        #         ivars = var[:]
+        #         ivars.remove('date_time')
+        ivars = v.values()
         ivars.remove('date_time')
-        
+
         for i in range(N):
             
             # the current record
