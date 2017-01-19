@@ -1,6 +1,8 @@
 .pydevproject
 .project
 .DS_Store
+._.DS_Store
+._d*
 
 # database connectors
 database_connect.php

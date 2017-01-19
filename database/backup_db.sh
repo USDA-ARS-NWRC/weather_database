@@ -4,9 +4,9 @@
 # MySQL login info
 
 host=localhost
-user=wxuser_v2
+user=wx_user
 pass=x340hm4h980r
-db=weather_v2
+db=weather_db
 
 snap_user=snowserver
 snap_pass=85bhTcEBSFeyvmqk84rmxa67
@@ -23,14 +23,14 @@ echo $FILENAME
 
 # create the backup
 echo "Creating backup..."
-/usr/local/mysql/bin/mysqldump -u $user -p$pass -h$host $db | gzip -9 > $FILENAME
+/usr/bin/mysqldump --lock-tables=false -u $user -p$pass -h$host $db | gzip -9 > $FILENAME
 
 # move this file to SHARE3
 #smb://arsidboi6na0001/SHARE3/Mac_Files/Snowserver/db_backup
 
 echo "Moving file to snap server..."
-/sbin/mount_smbfs //$snap_user:$snap_pass@10.200.28.211/SHARE3 ~/smb_mount/
-mv $FILENAME /Users/scott/smb_mount/Mac_Files/Snowserver/db_backup/$FILENAME
-diskutil umount /Users/scott/smb_mount
+mount -t cifs -o username=$snap_user,password=$snap_pass //10.200.28.211/SHARE3 /mnt/smb_mount/
+mv $FILENAME /mnt/smb_mount/Mac_Files/Snowserver/db_backup/$FILENAME
+umount /mnt/smb_mount
 
 echo "Done."

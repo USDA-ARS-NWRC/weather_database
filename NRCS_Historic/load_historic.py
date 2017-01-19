@@ -75,8 +75,6 @@ units = {
 date_offset = pd.DateOffset(hours=8)
 
 
-
-
 def load_historic(fileName):
     """
     Load in the historic file. Dates are in PST!
