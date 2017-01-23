@@ -3,6 +3,7 @@
 .DS_Store
 ._.DS_Store
 ._d*
+*.pyc
 
 # database connectors
 database_connect.php
