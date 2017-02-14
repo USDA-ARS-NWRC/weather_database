@@ -52,7 +52,7 @@ def get_station_data(sta, round_val):
     determine the whole hours and how many values are present
     """
 
-    qry = "SELECT COUNT(*) AS cnt, station_id, date_time,FROM_UNIXTIME(FLOOR((UNIX_TIMESTAMP(date_time) + %i-1) / %i) * %i) AS round_date \
+    qry = "SELECT COUNT(*) AS cnt, station_id, date_time,FROM_UNIXTIME(FLOOR((UNIX_TIMESTAMP(date_time) + {%i-1}) / %i) * %i) AS round_date \
                 FROM tbl_level1 WHERE station_id='%s' and av_del=0 GROUP BY station_id,round_date" % (round_val, round_val, round_val, sta)
 
     cursor.execute(qry)
@@ -92,6 +92,23 @@ def delete_values(sta, date_start, date_end, table):
     delete_qry = "DELETE FROM %s WHERE station_id='%s' AND date_time BETWEEN '%s' AND '%s'" % (table, sta, date_start, date_end)
     return cursor.execute(delete_qry)
 
+def reinsert(sta, data, date_time, table='tbl_level1'):
+    """
+    Reinsert into the table
+    """
+    data['station_id'] = sta
+    data['date_time'] = None
+    data['date_time'] = pd.Timestamp(date_time)
+    data['av_del'] = 1
+
+    # create a query to insert the average values
+    cols = data.keys().tolist()
+    val = []
+    for c in cols:
+        val.append(str(data[c]))
+
+    insert_qry = "INSERT INTO %s (%s) VALUES ('%s')" % (table, ",".join(cols), "','".join(val))
+    cursor.execute(insert_qry)
 
 def average_reinsert(sta, data, date_time, table='tbl_level1'):
     """
@@ -99,20 +116,8 @@ def average_reinsert(sta, data, date_time, table='tbl_level1'):
     """
 
     m = data.mean()
-    m['station_id'] = sta
-    m['date_time'] = None
-    m['date_time'] = pd.Timestamp(date_time)
-    m['av_del'] = 1
-
-    # create a query to insert the average values
-    cols = m.keys().tolist()
-    val = []
-    for c in cols:
-        val.append(str(m[c]))
-
-    insert_qry = "INSERT INTO %s (%s) VALUES ('%s')" % (table, ",".join(cols), "','".join(val))
-    cursor.execute(insert_qry)
-
+    #reinsert the new data
+    reinsert(sta, m, date_time,table)
 
 def single_timestep(sta, date_time, round_time, flag, round_val):
     """
