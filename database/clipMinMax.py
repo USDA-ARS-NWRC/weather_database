@@ -48,23 +48,65 @@ def get_entry_date(tbl,sta,timing='last'):
     #attempt to read the station data
     try:
         if timing == 'last':
-            cursor.execute("SELECT MAX(date_time) FROM %s where station_id=%s;",(tbl,sta))
+            qry = "SELECT MAX(date_time) FROM %s where station_id='%s';" % (tbl,sta)
 
         elif timing == 'first':
-            qry = "SELECT MIN(date_time) FROM {0} where station_id={1}"
+            qry = "SELECT MIN(date_time) FROM %s where station_id='%s';" % (tbl,sta)
 
         else:
             raise ValueError("Method get_entry_date expects either first or last for the timing argument.")
-    #likely a missing station in table 1.5
-    except:
-        insert_qry = "INSERT INTO {0} (station_id) VALUES ({1})".format(tbl,sta)
-        cursor.execute(insert_qry)
 
-    cursor.execute(qry.format(tbl,sta))
+    #likely a missing station in table 1.5
+    except mysql.connector.Error as err:
+        print "exception caught"
+        print err
+        insert_qry = "INSERT INTO %s (station_id) VALUES (%s);" % (tbl,sta)
+        cursor.execute(insert_qry)
+        cursor.commit()
+
+    cursor.execute(qry)
     date_time = cursor.fetchall()
+    date_time = date_time[0][0]
+
     if date_time == None:
         #Set it to early
-        pd.Timestamp(datetime(1900,01,01))
+        date_time = pd.Timestamp(datetime(1900,01,01))
+
+
+    return date_time.isoformat(' ')
+
+
+def column_compare(base_tbl,compare_tbl, column):
+    """
+    Compares at two tables and checks to see if they have the same entries for a given
+    column, returns list of missing entries.
+    It is expected that Basis is more complete than basis.
+    """
+
+    basis_qry = 'SELECT DISTINCT {0} FROM {1}'.format(column, base_tbl)
+    cursor.execute(basis_qry)
+    basis = cursor.fetchall()
+
+    compare_qry = 'SELECT DISTINCT {0} FROM {1}'.format(column, compare_tbl)
+    cursor.execute(compare_qry)
+    compare = cursor.fetchall()
+    result =  list(set(basis) - set(compare))
+
+    return result
+
+def ensure_field_continuity(base_tbl,compare_tbl, column):
+    """
+    Looks at column in base and adds any missing fields to the column in compare using the
+    min date available
+    """
+    missing_data = column_compare(base_tbl,compare_tbl,column)
+
+    for j, sta in enumerate(missing_data):
+        sta = sta[0]
+        startdate = get_entry_date(base_tbl,sta,"first")
+        insert_qry = "INSERT INTO %s (%s, date_time) VALUES ('%s','%s');" % (compare_tbl,column,sta,startdate)
+        cursor.execute(insert_qry)
+        cnx.commit()
 
 def clip_min_max(stations, clip_dict):
     """
@@ -73,42 +115,44 @@ def clip_min_max(stations, clip_dict):
 
     print("%i stations to process.." % len(stations))
 
-    pbar = progressbar.ProgressBar(max_value=len(stations))
+    #pbar = progressbar.ProgressBar(max_value=len(stations))
+    ensure_field_continuity("tbl_level1", "tbl_level1_5", "station_id")
+    # for j,sta in enumerate(stations):
+    #
+    #     try:
+    #         #Grab the last entry dates from both tables
+    #         print "Getting dates "
+    #
+    #         tbl1_enddate = get_entry_date("tbl_level1",sta,"last")
+    #         tbl1_5_enddate = get_entry_date("tbl_level1_5",sta,"last")
+    #         print tbl1_enddate
+    #         print tbl1_5_enddate
+    #         if tbl1_enddate > tbl1_5_enddate:
+    #             cnx.start_transaction()
+    #
+    #             #Grab the missing data
+    #             print("grabbing values...")
+    #
+    #             data = get_values(sta,tbl1_5_enddate,tbl1_enddate,"tbl_level1")
+    #
+    #             #Cycle through the columns the user wants to clip
+    #             print "Clipping data..."
+    #             for col,limits in clip_dict.items():
+    #                 threshold_column(data,col,limits[0],limits[1])
+    #             print("reinserting the data...")
+    #             reinsert(sta,data,tbl1_enddate, 'tbl_level1_5')
+    #             cnx.commit()
+    #         else:
+    #             print "Date time mismatch"
+    #
+    #     except mysql.connector.Error as err:
+    #         cnx.rollback()
+    #         print(err)
 
-    for j,sta in enumerate(stations):
 
-        try:
-            #Grab the last entry dates from both tables
-            tbl1_enddate = get_entry_date("tbl_level1",sta,"last")
-            tbl1_5_enddate = get_entry_date("tbl_level1_5",sta,"last")
-            print tbl1_enddate
-            print tbl1_5_enddate
-            if tbl1_enddate > tbl1_5_enddate:
-                cnx.start_transaction()
+        #pbar.update(j)
 
-                #Grab the missing data
-                print("grabbing values...")
-
-                data = get_values(sta,tbl1_5_enddate,tbl1_enddate,"tbl_level1")
-
-                #Cycle through the columns the user wants to clip
-                print "Clipping data"
-                for col,limits in clip_dict.items():
-                    threshold_column(data,col,limits[0],limits[1])
-                print("reinserting the data...")
-                reinsert(sta,data,tbl1_5_enddate,tbl1_enddate, 'tbl_level1_5')
-                cnx.commit()
-            else:
-                print "Date time mismatch"
-
-        except mysql.connector.Error as err:
-            cnx.rollback()
-            print(err)
-
-
-        pbar.update(j)
-
-    pbar.finish()
+    #pbar.finish()
 
 if __name__ == "__main__":
     #Assign values low to hi
@@ -119,6 +163,7 @@ if __name__ == "__main__":
     }
     # get the stations
     print("Acquiring stations...")
+    missing_stations = column_compare('tbl_level1','tbl_level1_5','station_id')
     stations = get_stations("tbl_level1","av_del=1")
 
     # clip the data the data
