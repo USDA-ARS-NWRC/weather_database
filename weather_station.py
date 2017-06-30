@@ -91,11 +91,27 @@ def verify_name(name,options):
                 if exact_match/len(sta) >= 0.70:
                     matches.append(s)
 
-        if len(matches) >0:
-            out.info("Did you mean station:")
+        #If no matches were found looking at options where order matters, try
+        #without looking at order
+        if len(matches) == 0:
+            for s in options:
+                l_s = len(s)
+                char_match = 0
+                sta = s.lower()
+
+                for c in sta:
+                    if c in lname:
+                        char_match+=1.0
+
+                if l_s > 0:
+                    if char_match/l_s >= 0.80:
+                        matches.append(s)
+
+        if len(matches) > 0:
+            out.info("Did you mean:")
             for s in matches:
                 out.info('\t{0}'.format(s))
-
+        out.info("\n")
         raise ValueError("Station name {0} was not found in database.".format(name))
 
     return correct_name
@@ -113,6 +129,10 @@ class DBStation():
         #Use tbl_meta_data to retrieve generic info on station
         self.x = 0
         self.y = 0
+
+        qry = "SELECT table_name FROM information_schema.tables";
+        tables = self.send(qry)
+        self.available_tables = [t[0] for t in tables]
 
 
     def send(self,qry):
@@ -154,7 +174,17 @@ class DBStation():
             table = "tbl_level2"
         else:
             table = table_level
-        
+
+        #Check table existence and recommend if not.
+        table = verify_name(table,self.available_tables)
+
+        #check field_name existence and recommend if not.
+        qry = "SELECT column_name FROM information_schema.columns WHERE table_name='{0}'".format(table)
+        available_fields = self.send(qry)
+        available_fields = [f[0] for f in available_fields]
+        field_name = verify_name(field_name,available_fields)
+
+        #Select the request variable and date confined by table and date range
         qry = "SELECT date_time,{0} FROM {1} WHERE (station_id='{2}' AND date_time BETWEEN '{3}' AND '{4}') ".format(field_name, table, self.name, start, end)
         data = pd.read_sql(qry, self.cnx, index_col='date_time')
 
