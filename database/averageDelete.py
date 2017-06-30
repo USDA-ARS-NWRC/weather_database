@@ -92,23 +92,30 @@ def delete_values(sta, date_start, date_end, table):
     delete_qry = "DELETE FROM %s WHERE station_id='%s' AND date_time BETWEEN '%s' AND '%s'" % (table, sta, date_start, date_end)
     return cursor.execute(delete_qry)
 
-def reinsert(sta, data, date_time, table='tbl_level1'):
+def reinsert(sta, data, date_time, table='tbl_level1', indicator = 'av_del'):
     """
-    Reinsert into the table
+    Reinsert into the table. Using an indicator to show that something has been done
+    i.e. av_del = 1 #average and deleted
+    ii.e clipped = 1 #data was thresholded
     """
     data['station_id'] = sta
+    print sta
     data['date_time'] = None
     data['date_time'] = pd.Timestamp(date_time)
-    data['av_del'] = 1
+    data[indicator] = 1
+
 
     # create a query to insert the average values
     cols = data.keys().tolist()
     val = []
     for c in cols:
         val.append(str(data[c]))
+    print val
 
     insert_qry = "INSERT INTO %s (%s) VALUES ('%s')" % (table, ",".join(cols), "','".join(val))
     cursor.execute(insert_qry)
+    print "completed qry"
+
 
 def average_reinsert(sta, data, date_time, table='tbl_level1'):
     """

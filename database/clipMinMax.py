@@ -29,14 +29,15 @@ def threshold_column(data, column_name, min_val, max_val):
     """
     col_data = data[column_name]
 
-    for i in range(len(col_data)):
-        if col_data[i] > max_val:
-            col_data[i] = max_val
-        elif col_data[i] < min_val:
-            col_data[i] = min_val
+    for index,value in data[column_name].iterrows():
+
+        if value > max_val:
+            data[column_name].loc[index] = max_val
+        elif value  < min_val:
+            data[i] = min_val
 
     #Assign the data back
-    data[col_name] = col_data
+    data[column_name] = col_data
 
 def get_entry_date(tbl,sta,timing='last'):
     """
@@ -115,51 +116,80 @@ def clip_min_max(stations, clip_dict):
 
     print("%i stations to process.." % len(stations))
 
-    #pbar = progressbar.ProgressBar(max_value=len(stations))
+    pbar = progressbar.ProgressBar(max_value=len(stations))
     ensure_field_continuity("tbl_level1", "tbl_level1_5", "station_id")
-    # for j,sta in enumerate(stations):
-    #
-    #     try:
-    #         #Grab the last entry dates from both tables
-    #         print "Getting dates "
-    #
-    #         tbl1_enddate = get_entry_date("tbl_level1",sta,"last")
-    #         tbl1_5_enddate = get_entry_date("tbl_level1_5",sta,"last")
-    #         print tbl1_enddate
-    #         print tbl1_5_enddate
-    #         if tbl1_enddate > tbl1_5_enddate:
-    #             cnx.start_transaction()
-    #
-    #             #Grab the missing data
-    #             print("grabbing values...")
-    #
-    #             data = get_values(sta,tbl1_5_enddate,tbl1_enddate,"tbl_level1")
-    #
-    #             #Cycle through the columns the user wants to clip
-    #             print "Clipping data..."
-    #             for col,limits in clip_dict.items():
-    #                 threshold_column(data,col,limits[0],limits[1])
-    #             print("reinserting the data...")
-    #             reinsert(sta,data,tbl1_enddate, 'tbl_level1_5')
-    #             cnx.commit()
-    #         else:
-    #             print "Date time mismatch"
-    #
-    #     except mysql.connector.Error as err:
-    #         cnx.rollback()
-    #         print(err)
+    #FIX ME PRIOR TO FINISHING
+    for j,sta in enumerate(stations[0:1]):
+        try:
+            #Grab the last entry dates from both tables
+            tbl1_enddate = get_entry_date("tbl_level1",sta,"last")
+            tbl1_5_enddate = get_entry_date("tbl_level1_5",sta,"last")
+
+            if tbl1_enddate >= tbl1_5_enddate:
+
+                data, flag = get_station_data(sta, round_val)
+
+                for i,r in data.iterrows():
+                    if r.cnt == 1:
+                        try:
+                            cnx.start_transaction() # start a transaction
+
+                            # create query for single time step
+                            qry = single_timestep(sta, r.date_time, r.round_time, flag, round_val)
+
+                            cursor.execute(qry)
+                            cnx.commit()
+
+                        except mysql.connector.Error as err:
+                            cnx.rollback()
+
+                            if err.errno == errorcode.ER_DUP_ENTRY:
+                                # means that there was a duplicate key error, so go back to
+                                # the raw data and retry
+
+                                check_raw(sta, date_start, r.round_time)
+
+                            else:
+                                print 'Error updating date_time %s - %s (%s): ' % (sta, r.round_time, err)
 
 
-        #pbar.update(j)
+                    else:
+                        try:
+                            #Grab the missing data
+                            dup = get_values(sta,tbl1_5_enddate,tbl1_enddate,"tbl_level1")
 
-    #pbar.finish()
+                            #Remove the averaged and deleted indicator
+                            dup.drop('av_del',axis = 1,inplace = True)
+
+                            #Cycle through the columns the user wants to clip
+                            for col,limits in clip_dict.items():
+                                dup[col] = dup[col].clip(limits[0],limits[1])
+
+                            reinsert(sta,dup,tbl1_enddate, 'tbl_level1_5', indicator='clipped')
+                            cnx.commit()
+
+                        except mysql.connector.Error as err:
+                            cnx.rollback()
+                            print 'Error averaging data from database for %s - %s (%s): ' % (sta, r.round_time, err)
+
+            else:
+                print "Date time mismatch"
+
+        except mysql.connector.Error as err:
+            print(err)
+            cnx.rollback()
+
+
+        pbar.update(j)
+
+    pbar.finish()
 
 if __name__ == "__main__":
     #Assign values low to hi
     clipping_dict ={
     "wind_speed":(0.0,40.0),
     "air_temp":(-30.0,50.0),
-    "solar_rad":(0.0,1500.0)
+    "solar_radiation":(0.0,1500.0)
     }
     # get the stations
     print("Acquiring stations...")
