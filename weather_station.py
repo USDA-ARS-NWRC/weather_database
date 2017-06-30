@@ -7,10 +7,16 @@ import sys
 import logging as out
 import ConfigParser
 import mysql.connector
-
+from datetime import datetime
+from matplotlib import pyplot as plt
+import pandas as pd
 out.basicConfig(level=out.DEBUG)
 
 def get_connection(config = None):
+    """
+    Retrieve the connection to the mysql database
+    """
+
     #Pass in the config file via the args of method
     if config != None:
         config_file = config
@@ -42,6 +48,57 @@ def get_connection(config = None):
 
     return cnx
 
+def verify_name(name,options):
+    """
+    Checks to see if the value provided is in the list of options. if not looks
+    for possible suggestions.
+    args:
+        name - string value of option being searched for
+        options - list of string values that value is being looked for.
+
+    returns:
+        correct_name - if the name was different in terms of case, but matched
+            on a lower case basis, the original name in the options is returned
+    """
+    exists = False
+    matches = []
+    #Search all the option
+    lname = name.lower()
+
+    for s in options:
+        #Assign the correct name
+        if s.lower() == lname:
+            correct_name = s
+            exists = True
+
+    if not exists:
+        out.info("Name {0} does not appear to be an option.".format(name))
+        for s in options:
+            exact_match = 0
+            sta = s.lower()
+            #cycle through the shortest name to avoid over index
+            if len(sta) > len(lname):
+                comparator = len(lname)
+
+            else:
+                comparator = len(sta)
+            #look for matches where order matters
+            for i in range(comparator):
+                if sta[i] == lname[i]:
+                    exact_match+=1.0
+
+            if len(sta) > 0:
+                if exact_match/len(sta) >= 0.70:
+                    matches.append(s)
+
+        if len(matches) >0:
+            out.info("Did you mean station:")
+            for s in matches:
+                out.info('\t{0}'.format(s))
+
+        raise ValueError("Station name {0} was not found in database.".format(name))
+
+    return correct_name
 
 
 class DBStation():
@@ -50,73 +107,64 @@ class DBStation():
     already inputted into the ARS DB.
     """
     def __init__(self,cnx,name):
+        self.cnx = cnx
         self.cursor = cnx.cursor()
-        self.check_station_existence(name)
+        self.set_station(name)
         #Use tbl_meta_data to retrieve generic info on station
         self.x = 0
         self.y = 0
 
-    def check_station_existence(self, name):
-        """
-        Determine if the user's inputted station name exists, if not recommend
-        an alternative and exit program.
-        """
+
+    def send(self,qry):
         cursor = self.cursor
+        try:
+            cursor.execute(qry)
+            result = cursor.fetchall()
+        except Exception as e:
+            raise Exception(e)
+
+        return result
+
+
+    def set_station(self, name):
+        """
+        sets the attributes of a station
+        args:
+            name - string value of the primary id of a weather station
+
+        returns:
+            None
+
+        """
         qry = "SELECT primary_id from tbl_metadata"
-        cursor.execute(qry)
-        stations = cursor.fetchall()
-        exists = False
-        matches = []
-        #Search all the stations
-        for s in stations:
-            lname = name.lower()
+        stations = self.send(qry)
 
-            #Assign the correct name
-            if s[0].lower() == lname:
-                self.name = s[0]
-                exists = True
+        correct_stations = [s[0] for s in stations]
 
-        if not exists:
-            out.info("Station name {0} does not exist in database.".format(name))
-            for s in stations:
-                char_match = 0
-                exact_match = 0
-                sta = s[0].lower()
-                #cycle through the shortest name to avoid over index
-                if len(sta) > len(lname):
-                    comparator = len(lname)
-
-                else:
-                    comparator = len(sta)
-                #look for matches where order matters
-                for i in range(comparator):
-                    if sta[i] == lname[i]:
-                        exact_match+=1.0
-
-                if len(sta) > 0:
-                    if exact_match/len(sta) >= 0.70:
-                        matches.append(s[0])
-            if len(matches) >0:
-                out.info("Did you mean station:")
-                for s in matches:
-                    out.info('\t{0}'.format(s))
-
-                #
-                #     else:
-                #         for i,l in emumerate(comparator:
-                #             if l in lname:
-                #                 char_match +=1.0
-                #
-                # if len(s[0]) > 0:
-                #     if char_match/len(s[0]) > 0.80:
-                #         out.info("Station name = {0}, match = {1}".format(s,char_match/len(s[0])))
+        #Set station name to the recognized station name
+        self.name = verify_name(name,correct_stations)
 
 
-            raise ValueError("Station name {0} was not found in database.".format(name))
+    def get_variable(self,field_name,start,end, table_level = 2):
+        if table_level == 1:
+            table = "tbl_level1"
+        elif table_level == 1.5:
+            table = "tbl_level1_5"
+        elif table_level == 2:
+            table = "tbl_level2"
+        else:
+            table = table_level
+        
+        qry = "SELECT date_time,{0} FROM {1} WHERE (station_id='{2}' AND date_time BETWEEN '{3}' AND '{4}') ".format(field_name, table, self.name, start, end)
+        data = pd.read_sql(qry, self.cnx, index_col='date_time')
 
-    def get_variable(name,start,end):
-        pass
+        return data
+
 
 if __name__ == '__main__':
     cnx = get_connection('./user_config.ini')
-    sta = DBStation(cnx,'VNN21')
+    sta = DBStation(cnx,'PRAI1')
+
+    data = sta.get_variable('air_temp','2000-12-01--15:00','2005-01-01--16:00')
+    plt.plot(data)
+    plt.show()
