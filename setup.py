@@ -11,14 +11,6 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    # TODO: put package requirements here
-]
-
-setup_requirements = [
-    # TODO(scotthavens): put setup requirements (distutils extensions, etc.) here
-]
-
 test_requirements = [
     # TODO: put package test requirements here
 ]
@@ -26,14 +18,13 @@ test_requirements = [
 setup(
     name='wxdb',
     version='0.1.0',
-    description="Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    description="Weather database for meterological station measurements obtained from various sources",
     long_description=readme + '\n\n' + history,
     author="Scott Havens",
     author_email='scott.havens@ars.usda.gov',
-    url='https://github.com/scotthavens/wxdb',
+    url='https://gitlab.com/ars-snow/weather_database',
     packages=find_packages(include=['wxdb']),
     include_package_data=True,
-    install_requires=requirements,
     license="MIT license",
     zip_safe=False,
     keywords='wxdb',
@@ -51,6 +42,5 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
-    tests_require=test_requirements,
-    setup_requires=setup_requirements,
+    tests_require=test_requirements
 )

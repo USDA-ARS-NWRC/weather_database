@@ -2,6 +2,8 @@
 Weather Database
 ================
 
+To install in developer mode `pip install -e .`
+
 
 .. image:: https://img.shields.io/pypi/v/wxdb.svg
         :target: https://pypi.python.org/pypi/wxdb
