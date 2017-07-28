@@ -22,19 +22,20 @@ DROP TABLE IF EXISTS `weather_db`.`tbl_metadata` ;
 CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_metadata` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `primary_id` VARCHAR(10) NOT NULL,
-  `station_name` VARCHAR(45) NULL,
-  `latitude` DECIMAL(15,11) NOT NULL,
-  `longitude` DECIMAL(15,11) NOT NULL,
-  `elevation` DECIMAL(10,3) NOT NULL,
+  `station_name` VARCHAR(256) NULL,
+  `latitude` DECIMAL(15,11) NULL,
+  `longitude` DECIMAL(15,11) NULL,
+  `elevation` DECIMAL(10,3) NULL,
   `state` VARCHAR(5) NULL,
-  `timezone` VARCHAR(45) NOT NULL,
+  `timezone` VARCHAR(45) NULL,
   `source` VARCHAR(45) NOT NULL,
   `primary_provider` VARCHAR(256) NULL,
   `network` VARCHAR(45) NULL,
   `reported_lat` DECIMAL(15,11) NULL,
   `reported_long` DECIMAL(15,11) NULL,
   PRIMARY KEY (`id`),
-  INDEX `idx_primary_id` (`primary_id` ASC))
+  INDEX `idx_primary_id` (`primary_id` ASC),
+  UNIQUE INDEX `primary_id_UNIQUE` (`primary_id` ASC))
 ENGINE = InnoDB
 PACK_KEYS = Default
 ROW_FORMAT = Default;

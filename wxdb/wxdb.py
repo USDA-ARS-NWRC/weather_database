@@ -98,7 +98,7 @@ class Weather():
         
         for s in self.config['metadata']['sources']:
             if s == 'mesowest':
-                m = Mesowest(self.db).metadata()
+                m = Mesowest(self.db, self.config['mesowest_metadata']).metadata()
         
     def run(self):
         """
