@@ -17,24 +17,45 @@ class Database():
     Database class to create a connection and interact with a MySQL database.
     
     Args:
-        user: database username
-        password: use password
+        config: The [mysql] section of the cofiguration file. Should have at a
+            minimum:
+            user: user name
+            password: user passowrd
+            host: the host to connect to
+            database: which database to use
+            metadata: metadata data to insert into
+            data: data table to insert into
         
     """
     
-    def __init__(self, user, password, host, db):
+    fields = ['user', 'password', 'host', 'database']
+    
+    def __init__(self, config):
         """
         Initialize the db instance by connecting to the database
         """
         
         self._logger = logging.getLogger(__name__)
-        self.db = db
+        
+        # check for the config
+        k = config.keys()      
+        for f in self.fields:
+            if f not in k:
+                self._logger.error('[mysql] section requires {}'.format(f))
+        
+        self.metadata_table = None
+        if 'metadata' in k:
+            self.metadata_table = config[k]
+        
+        self.data_table = None
+        if 'data' in k:
+            self.data_table = config[k]
         
         try:
-            cnx = mysql.connector.connect(user=user,
-                                          password=password,
-                                          host=host,
-                                          database=db)
+            cnx = mysql.connector.connect(user=config['user'],
+                                          password=config['password'],
+                                          host=config['host'],
+                                          database=config['db'])
 
         except mysql.connector.Error as err:
             if err.errno == 1045:  # errorcode.ER_ACCESS_DENIED_ERROR:
@@ -47,7 +68,7 @@ class Database():
 
         self.cnx = cnx
                 
-        self._logger.info('Connected to MySQL database -- {}'.format(db))
+        self._logger.info('Connected to MySQL database -- {}'.format(config['db']))
         
         
     def __enter__(self):
@@ -62,12 +83,21 @@ class Database():
         
         
         
-    def insert_data(self, table, df, description=''):
+    def insert_data(self, df, description='', metadata=False, data=False):
         """
         Insert data into the database for the given table and dataframe
         """
         
+        if (not metadata) & (not data):
+            self._logger.error('Must specify either metadata or data')
+        if metadata & data:
+            self._logger.error('Metadata and data cannot be set to True at the same time')
+        
         self._logger.info('Adding {} to the database'.format(description))
+        
+        if metadata:
+            table = self.metadata_table
+        
         
         try:
             # replace Null with None

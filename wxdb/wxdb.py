@@ -106,11 +106,7 @@ class Weather():
         """   
         
         # connect to the database
-        self.db = Database(self.config['mysql']['user'],
-                      self.config['mysql']['password'],
-                      self.config['mysql']['host'],
-                      self.config['mysql']['database'])
-        
+        self.db = Database(self.config['mysql'])
         
         if self.load_metadata:
             self.get_metadata()

@@ -6,6 +6,7 @@ import logging
 from MesoPy import Meso
 import pandas as pd
 import chunk
+from docutils.nodes import description
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -17,11 +18,15 @@ class Mesowest():
     """
     Mesowest class to interact with the Mesowest API. The objective is to
     use MesoPy to get the metadata and timeseries station data given the stations
-    in the database
+    in the database.
+    
+    Args:
+        db: :class:`~wxcb.database.Database` instance to use for inserting data
+        config: the `[mesoset_*]` section of the config file. These are parameters
+            for the Mesowest API and will get passed directly to Mesowest.
     """
     
     token = 'e505002015c74fa6850b2fc13f70d2da'
-    states = ['CA', 'ID']
     
     conversion = {
         'LATITUDE': 'latitude',
@@ -39,7 +44,7 @@ class Mesowest():
         'SHORTNAME': 'network'
         }
     
-    table_name = 'tbl_metadata'
+    metadata_table = 'tbl_metadata'
     
     def __init__(self, db, config):
         self._logger = logging.getLogger(__name__)
@@ -51,7 +56,11 @@ class Mesowest():
         
     def metadata(self):
         """
-        Retrieve the metadata from Mesowest
+        Retrieve the metadata from Mesowest. Two calls are made to the Mesowest API.
+        The first call is to get the networks in order to determine the `network` and
+        `primary_provider`. The second call retrieves the metadata given the `config`
+        parameters. The two dataframes are combined and inserted into the database
+        given the :class:`~wxcb.database.Database` instance.
         """
         
         self._logger.info('Obtaining metadata form Mesowest')
@@ -90,7 +99,7 @@ class Mesowest():
         DF = DF.where((pd.notnull(DF)), None)
         
         # insert the dataframe into the database
-        self.db.insert_data(self.table_name, DF, 'Mesowest metadata')
+        self.db.insert_data(DF, description='Mesowest metadata', metadata=True)
         
         
         
