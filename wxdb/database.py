@@ -35,6 +35,7 @@ class Database():
         Initialize the db instance by connecting to the database
         """
         
+        self.config = config
         self._logger = logging.getLogger(__name__)
         
         # check for the config
@@ -43,32 +44,36 @@ class Database():
             if f not in k:
                 self._logger.error('[mysql] section requires {}'.format(f))
         
+        # determine if the port parameter was passed
+        port = config['port'] if 'port' in k else 3306
+        
         self.metadata_table = None
         if 'metadata' in k:
-            self.metadata_table = config[k]
+            self.metadata_table = config['metadata']
         
         self.data_table = None
         if 'data' in k:
-            self.data_table = config[k]
+            self.data_table = config['data']
         
         try:
             cnx = mysql.connector.connect(user=config['user'],
                                           password=config['password'],
                                           host=config['host'],
-                                          database=config['db'])
+                                          database=config['database'],
+                                          port=port)
 
         except mysql.connector.Error as err:
-            if err.errno == 1045:  # errorcode.ER_ACCESS_DENIED_ERROR:
-                self._logger.error('''Something is wrong with your
-                                user name or password''')
-            elif err.errno == 1049:  # errorcode.ER_BAD_DB_ERROR:
-                self._logger.error("Database does not exist")
-            else:
-                self._logger.error(err)
+#             if err.errno == 1045:  # errorcode.ER_ACCESS_DENIED_ERROR:
+#                 self._logger.error('''Something is wrong with your user name or password''')
+#             elif err.errno == 1049:  # errorcode.ER_BAD_DB_ERROR:
+#                 self._logger.error("Database does not exist")
+#             self._logger.error(err)
+            raise err
+            
 
         self.cnx = cnx
                 
-        self._logger.info('Connected to MySQL database -- {}'.format(config['db']))
+        self._logger.info('Connected to MySQL database -- {}'.format(config['database']))
         
         
     def __enter__(self):
@@ -79,7 +84,7 @@ class Database():
         Ensure that the database connection is closed
         """
         self.cnx.close()
-        self._logger.info('Disconnected from MySQL database -- {}'.format(self.db))
+        self._logger.info('Disconnected from MySQL database -- {}'.format(self.config['database']))
         
         
         
