@@ -99,6 +99,15 @@ class Weather():
         for s in self.config['metadata']['sources']:
             if s == 'mesowest':
                 m = Mesowest(self.db, self.config['mesowest_metadata']).metadata()
+                
+    def get_data(self):
+        """
+        Get the data from the sources
+        """
+        
+        for s in self.config['data']['sources']:
+            if s == 'mesowest':
+                m = Mesowest(self.db, self.config['mesowest_data']).data()
         
     def run(self):
         """
@@ -116,12 +125,8 @@ class Weather():
             
         self.db.cnx.close()
             
-            
+        self._logger.info('Done')    
     
-            
-        
-        
-        
 class MyParser(ConfigParser):
     def as_dict(self):
         d = dict(self._sections)

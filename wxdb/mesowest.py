@@ -5,8 +5,6 @@ Interact with the Mesowest API to get metadata and timeseries data
 import logging
 from MesoPy import Meso
 import pandas as pd
-import chunk
-from docutils.nodes import description
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -103,7 +101,17 @@ class Mesowest():
         
         
         
+    def data(self):
+        """
+        Retrieve the data from Mesowest. 
+        """
         
+        # deteremine the client/s for processing
+        client = self.config['mesowest_data']['client'].split(',')
+        self._logger.info('Client for Mesowest data collection: {}'.format(client))
+        
+        # determine the station id's from tbl_stations that belong to the clint and source
+        qry = """SELECT s.*, m.source FROM tbl_stations s inner join tbl_metadata m on s.metadata_id=m.id"""
         
         
     
