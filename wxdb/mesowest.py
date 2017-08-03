@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime
 import pytz
 
-from wxdb import utils
+import utils
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"

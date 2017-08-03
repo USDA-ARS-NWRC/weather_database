@@ -13,6 +13,7 @@ except ImportError:
     
 from database import Database
 from mesowest import Mesowest
+from cdec import CDEC
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -119,6 +120,8 @@ class Weather():
         for s in self.config['metadata']['sources']:
             if s == 'mesowest':
                 Mesowest(self.db, self.config['mesowest_metadata']).metadata()
+            elif s == 'cdec':
+                CDEC(self.db).metadata()
                 
     def get_data(self):
         """
