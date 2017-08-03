@@ -1,26 +1,21 @@
 """
-Interact with the Mesowest API to get metadata and timeseries data
+Interact with California Data Exchange Center (CDEC) to get metadata and timeseries data
 """
 
 import logging
-from MesoPy import Meso
 import pandas as pd
 from datetime import datetime
 import pytz
 
-from wxdb import utils
-
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
 __email__ = "scott.havens@ars.usda.gov"
-__date__ = "2017-07-27"
+__date__ = "2017-08-03"
 
 
-class Mesowest():
+class CDEC():
     """
-    Mesowest class to interact with the Mesowest API. The objective is to
-    use MesoPy to get the metadata and timeseries station data given the stations
-    in the database.
+    CDEC class to interact with the CDEC website.
     
     Args:
         db: :class:`~wxcb.database.Database` instance to use for inserting data
@@ -54,19 +49,7 @@ class Mesowest():
         self.db = db
         self.config = config
         
-        p = {}
-        p['start'] = None      # start time
-        p['end'] = None          # end time
-        p['obstimezone'] = 'utc'    # observation time zone
-        p['units'] = 'metric'       # units
-        p['stid'] = None
-        p['bbox'] = None
-        p['token'] = self.token     # API token
-        p['vars'] = 'air_temp,dew_point_temperature,relative_humidity,wind_speed,wind_direction,wind_gust,solar_radiation,snow_smoothed,precip_accum,snow_depth,snow_accum,precip_storm,snow_interval,snow_water_equiv'
-         
-        self.params = p
-        
-        self._logger.debug('Initialized Mesowest')
+        self._logger.debug('Initialized CDEC')
         
     def metadata(self):
         """
@@ -77,40 +60,31 @@ class Mesowest():
         given the :class:`~wxcb.database.Database` instance.
         """
         
-        self._logger.info('Obtaining metadata form Mesowest')
-        m = Meso(token=self.token)
-        
-        # get the networks associated with the metadata
-        networks = m.networks()
-        net = pd.DataFrame(networks['MNET'])
-        net['MNET_ID'] = net['ID']
+        self._logger.info('Obtaining metadata form CDEC')
                 
-        # get metadata from Mesowest
-        self._logger.debug('Obtaining metadata for {}'.format(self.config))
-        meta = m.metadata(**self.config)
-        
-        # add the networks to the meta dataframe
-        mdf = pd.DataFrame(meta['STATION'])
-        mdf = pd.merge(mdf, net, on='MNET_ID')
-        
-        # pull out the data from Mesowest into the database format
-        DF = pd.DataFrame()
-        for c in self.conversion:
-            DF[self.conversion[c]] = mdf[c]
-        
-        # fill in the network conversion
-        for n in self.network_conversion:
-            DF[self.network_conversion[n]] = mdf[n]
-        
-        # these are the reported lat/long's for the station that may get changed
-        # down the road due to location errors
-        DF['reported_lat'] = DF['latitude']
-        DF['reported_long'] = DF['longitude']
-        
-        # add the source to the DF
-        DF['source'] = 'mesowest'
-        
-        DF = DF.where((pd.notnull(DF)), None)
+                
+#         # add the networks to the meta dataframe
+#         mdf = pd.DataFrame(meta['STATION'])
+#         mdf = pd.merge(mdf, net, on='MNET_ID')
+#         
+#         # pull out the data from Mesowest into the database format
+#         DF = pd.DataFrame()
+#         for c in self.conversion:
+#             DF[self.conversion[c]] = mdf[c]
+#         
+#         # fill in the network conversion
+#         for n in self.network_conversion:
+#             DF[self.network_conversion[n]] = mdf[n]
+#         
+#         # these are the reported lat/long's for the station that may get changed
+#         # down the road due to location errors
+#         DF['reported_lat'] = DF['latitude']
+#         DF['reported_long'] = DF['longitude']
+#         
+#         # add the source to the DF
+#         DF['source'] = 'mesowest'
+#         
+#         DF = DF.where((pd.notnull(DF)), None)
         
         # insert the dataframe into the database
         self.db.insert_data(DF, description='Mesowest metadata', metadata=True)
@@ -166,7 +140,7 @@ class Mesowest():
                         startTime = pd.to_datetime(startTime, utc=True)
                     else:             
                         # start of the water year, do a local time then convert to UTC       
-                        wy = utils.water_day(endTime, self.config['timezone'])
+                        wy = self.water_day(endTime)
                         startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=False)
                         startTime = mnt.localize(startTime)
                         startTime = startTime.tz_convert('UTC')
@@ -243,4 +217,6 @@ class Mesowest():
             
         return r
 
+  
+    
 
