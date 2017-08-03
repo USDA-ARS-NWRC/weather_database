@@ -75,7 +75,7 @@ class Weather():
         
         # check to see if metadata or data are in the config file
         self.load_metadata = False
-        self.load_current = False
+        self.load_data = False
         
         # process the metadata section
         if 'metadata' in self.config.keys():
@@ -84,23 +84,31 @@ class Weather():
             self.load_metadata = True
             self.config['metadata']['sources'] = self.config['metadata']['sources'].split(',')
             
-        # process the current section
-        if 'current' in self.config.keys():
-            self._logger.info('Current section found, will load current data from sources {}'
-                              .format(self.config['current']['sources']))
-            self.load_current = True
-            self.config['current']['sources'] = self.config['current']['sources'].split(',')
+        # process the data section
+        if 'data' in self.config.keys():
+            self._logger.info('data section found, will load data from sources {}'
+                              .format(self.config['data']['sources']))
+            self.load_data = True
+            self.config['data']['sources'] = self.config['data']['sources'].split(',')
             
-            if 'client' in self.config['current'].keys():
-                self.config['current']['client'] = self.config['current']['client'].split(',')
+            k = self.config['data'].keys()
+            if 'client' in k:
+                self.config['data']['client'] = self.config['data']['client'].split(',')
             else:
-                raise Exception('client must be specified in the [current] config section')
+                raise Exception('client must be specified in the [data] config section')
             
-            if 'timezone' not in self.config['current'].keys():
-                self.config['current']['timezone'] = 'US/Mountain'
+            if 'timezone' not in k:
+                self.config['data']['timezone'] = 'US/Mountain'
+                
+            if 'start_time' not in k:
+                self.config['data']['start_time'] = None
             
-        if (not self.load_metadata) & (not self.load_current):
-            raise Exception('[metadata] or [current] are not specified in the config file')
+            if 'end_time' not in k:
+                self.config['data']['end_time'] = None
+            
+            
+        if (not self.load_metadata) & (not self.load_data):
+            raise Exception('[metadata] or [data] are not specified in the config file')
             
      
     def get_metadata(self):
@@ -110,16 +118,16 @@ class Weather():
         
         for s in self.config['metadata']['sources']:
             if s == 'mesowest':
-                m = Mesowest(self.db, self.config['mesowest_metadata']).metadata()
+                Mesowest(self.db, self.config['mesowest_metadata']).metadata()
                 
-    def get_current(self):
+    def get_data(self):
         """
         Get the current data from the sources
         """
         
-        for s in self.config['current']['sources']:
+        for s in self.config['data']['sources']:
             if s == 'mesowest':
-                m = Mesowest(self.db, self.config['current']).current_data()
+                Mesowest(self.db, self.config['data']).data()
         
     def run(self):
         """
@@ -134,8 +142,8 @@ class Weather():
         if self.load_metadata:
             self.get_metadata()
             
-        if self.load_current:
-            self.get_current()
+        if self.load_data:
+            self.get_data()
             
         self.db.cnx.close()
             

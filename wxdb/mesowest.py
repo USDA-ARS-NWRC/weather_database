@@ -115,7 +115,7 @@ class Mesowest():
         
         
         
-    def current_data(self):
+    def data(self):
         """
         Retrieve the data from Mesowest. 
         """
@@ -130,8 +130,18 @@ class Mesowest():
         
         # get the current local time
         mnt = pytz.timezone(self.config['timezone'])
-        endTime = pd.Timestamp('now')
+        if self.config['end_time'] is None:
+            endTime = pd.Timestamp('now')
+        else:
+            endTime = pd.to_datetime(self.config['end_time'])
         endTime = mnt.localize(endTime)
+        endTime = endTime.tz_convert('UTC')
+        
+        # if a start time is specified localize it and convert to UTC
+        if self.config['start_time'] is not None:
+            startTime = pd.to_datetime(self.config['start_time'])
+            startTime = mnt.localize(startTime)
+            startTime = startTime.tz_convert('UTC')
         
         # go through each client and get the stations
         for cl in client:
@@ -143,22 +153,23 @@ class Mesowest():
             # go through each and get the data
             for stid in stations:
                 stid = stid[0]
-                                
-                # determine the last value for the station
-                qry = "SELECT max(date_time) + INTERVAL 1 MINUTE AS d FROM tbl_level0 WHERE station_id='%s'" % stid
-                cursor.execute(qry)
-                startTime = cursor.fetchone()
+                        
+                if self.config['start_time'] is None:        
+                    # determine the last value for the station
+                    qry = "SELECT max(date_time) + INTERVAL 1 MINUTE AS d FROM tbl_level0 WHERE station_id='%s'" % stid
+                    cursor.execute(qry)
+                    startTime = cursor.fetchone()[0]                 
                 
-                if startTime[0] is not None:
-                    startTime = pd.to_datetime(startTime[0], utc=True)
-                else:             
-                    # start of the water year, do a local time then convert to UTC       
-                    wy = self.water_day(endTime)
-                    startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=False)
-                    startTime = mnt.localize(startTime)
-                    startTime = startTime.tz_convert('UTC')
+                    if startTime is not None:
+                        startTime = pd.to_datetime(startTime, utc=True)
+                    else:             
+                        # start of the water year, do a local time then convert to UTC       
+                        wy = self.water_day(endTime)
+                        startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=False)
+                        startTime = mnt.localize(startTime)
+                        startTime = startTime.tz_convert('UTC')
                    
-                self._logger.debug('Retrieving current data for station {} for {} to {}'.format(
+                self._logger.debug('Retrieving data for station {} between {} and {}'.format(
                     stid, startTime.strftime('%Y-%m-%d %H:%M'), endTime.strftime('%Y-%m-%d %H:%M'))) 
                 data = self.currentMesowestData(startTime, endTime, stid)
 #                  

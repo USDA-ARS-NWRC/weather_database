@@ -106,7 +106,9 @@ class Database():
             table = self.data_tables
         
         for tbl in table:
-            self._logger.info('Adding {} to the database table {}'.format(description, tbl))
+            self._logger.info('Adding/updating {} ({} values) to the database table {}'.format(
+                description, len(df), tbl))
+            
             try:
                 # replace Null with None
                 df = df.where((pd.notnull(df)), None)
@@ -120,8 +122,6 @@ class Database():
                 
                 data = [tuple(rw) for rw in df.values]
                 cur = self.cnx.cursor()
-                
-                self._logger.debug('Adding or updating {} values to database'.format(len(data)))
                 
                 for d in chunks(data, self.chunk_size):
                     cur.executemany(insert_sql, d)
