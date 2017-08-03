@@ -4,6 +4,7 @@ import os
 import argparse
 import logging
 import coloredlogs
+from datetime import datetime
 
 try:
     from configparser import ConfigParser
@@ -74,21 +75,32 @@ class Weather():
         
         # check to see if metadata or data are in the config file
         self.load_metadata = False
-        self.load_data = False
+        self.load_current = False
+        
+        # process the metadata section
         if 'metadata' in self.config.keys():
             self._logger.info('Metadata section found, will load metadata from sources {}'
                               .format(self.config['metadata']['sources']))
             self.load_metadata = True
             self.config['metadata']['sources'] = self.config['metadata']['sources'].split(',')
             
-        if 'data' in self.config.keys():
-            self._logger.info('Data section found, will load data from sources {}'
-                              .format(self.config['data']['sources']))
-            self.load_data = True
-            self.config['data']['sources'] = self.config['data']['sources'].split(',')
+        # process the current section
+        if 'current' in self.config.keys():
+            self._logger.info('Current section found, will load current data from sources {}'
+                              .format(self.config['current']['sources']))
+            self.load_current = True
+            self.config['current']['sources'] = self.config['current']['sources'].split(',')
             
-        if (not self.load_metadata) & (not self.load_data):
-            self._logger.error('[metadata] or [data] are not specified in the config file')
+            if 'client' in self.config['current'].keys():
+                self.config['current']['client'] = self.config['current']['client'].split(',')
+            else:
+                raise Exception('client must be specified in the [current] config section')
+            
+            if 'timezone' not in self.config['current'].keys():
+                self.config['current']['timezone'] = 'US/Mountain'
+            
+        if (not self.load_metadata) & (not self.load_current):
+            raise Exception('[metadata] or [current] are not specified in the config file')
             
      
     def get_metadata(self):
@@ -100,19 +112,21 @@ class Weather():
             if s == 'mesowest':
                 m = Mesowest(self.db, self.config['mesowest_metadata']).metadata()
                 
-    def get_data(self):
+    def get_current(self):
         """
-        Get the data from the sources
+        Get the current data from the sources
         """
         
-        for s in self.config['data']['sources']:
+        for s in self.config['current']['sources']:
             if s == 'mesowest':
-                m = Mesowest(self.db, self.config['mesowest_data']).data()
+                m = Mesowest(self.db, self.config['current']).current_data()
         
     def run(self):
         """
         Run the collection for metadata and data
         """   
+        
+        startTime = datetime.now()
         
         # connect to the database
         self.db = Database(self.config['mysql'])
@@ -120,11 +134,12 @@ class Weather():
         if self.load_metadata:
             self.get_metadata()
             
-        if self.load_data:
-            self.get_data()
+        if self.load_current:
+            self.get_current()
             
         self.db.cnx.close()
             
+        self._logger.info('Elapsed time: {}'.format(datetime.now() - startTime))
         self._logger.info('Done')    
     
 class MyParser(ConfigParser):
@@ -146,8 +161,11 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
     
-    w = Weather(args.config_file)
-    w.run()
+    try:
+        w = Weather(args.config_file)
+        w.run()
+    except Exception as e:
+        print(e)
 
         
         

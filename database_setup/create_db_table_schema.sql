@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_stations` (
   `metadata_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_station_metadata_id_idx` (`metadata_id` ASC),
+  INDEX `client_INDEX` (`client` ASC),
   CONSTRAINT `fk_station_metadata_id`
     FOREIGN KEY (`metadata_id`)
     REFERENCES `weather_db`.`tbl_metadata` (`id`)
@@ -264,6 +265,26 @@ CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_level_auto` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+USE `weather_db` ;
+
+-- -----------------------------------------------------
+-- Placeholder table for view `weather_db`.`tbl_stations_view`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_stations_view` (`id` INT, `client` INT, `metadata_id` INT, `primary_id` INT, `source` INT);
+
+-- -----------------------------------------------------
+-- View `weather_db`.`tbl_stations_view`
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS `weather_db`.`tbl_stations_view` ;
+DROP TABLE IF EXISTS `weather_db`.`tbl_stations_view`;
+USE `weather_db`;
+CREATE  OR REPLACE VIEW `tbl_stations_view` AS
+    SELECT 
+        s.*, m.primary_id, m.source
+    FROM
+        tbl_stations s
+            INNER JOIN
+        tbl_metadata m ON s.metadata_id = m.id;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

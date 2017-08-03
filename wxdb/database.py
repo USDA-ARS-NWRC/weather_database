@@ -29,6 +29,7 @@ class Database():
     """
     
     fields = ['user', 'password', 'host', 'database']
+    chunk_size = 100000
     
     def __init__(self, config):
         """
@@ -49,11 +50,11 @@ class Database():
         
         self.metadata_table = None
         if 'metadata' in k:
-            self.metadata_table = config['metadata']
+            self.metadata_tables = config['metadata'].split(',')
         
         self.data_table = None
         if 'data' in k:
-            self.data_table = config['data']
+            self.data_tables = config['data'].split(',')
         
         try:
             cnx = mysql.connector.connect(user=config['user'],
@@ -98,38 +99,46 @@ class Database():
         if metadata & data:
             self._logger.error('Metadata and data cannot be set to True at the same time')
         
-        self._logger.info('Adding {} to the database'.format(description))
-        
         if metadata:
-            table = self.metadata_table
+            table = self.metadata_tables
         
+        if data:
+            table = self.data_tables
         
-        try:
-            # replace Null with None
-            df = df.where((pd.notnull(df)), None)
-        
-            # create a bulk insert for the data        
-            wildcards = ','.join(['%s'] * len(df.columns))
-            colnames = ','.join(df.columns)
-            update = ','.join(['{}=VALUES({})'.format(c,c) for c in df.columns])
-            insert_sql = 'INSERT INTO {0} ({1}) VALUES ({2}) ON DUPLICATE KEY UPDATE {3}'.format(
-                table, colnames, wildcards, update)
+        for tbl in table:
+            self._logger.info('Adding {} to the database table {}'.format(description, tbl))
+            try:
+                # replace Null with None
+                df = df.where((pd.notnull(df)), None)
             
-            data = [tuple(rw) for rw in df.values]
-            
-            cur = self.cnx.cursor()
-            cur.executemany(insert_sql, data)
-            self.cnx.commit()
-            
-        except mysql.connector.Error as err:
-            self.cnx.rollback()
-            self._logger.debug('Error loading {} into database'.format(description))
-            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                self._logger.error("Something is wrong with your user name or password")
-            elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                self._logger.error("Database does not exist")
-            else:
-                self._logger.error(err)
+                # create a bulk insert for the data        
+                wildcards = ','.join(['%s'] * len(df.columns))
+                colnames = ','.join(df.columns)
+                update = ','.join(['{}=VALUES({})'.format(c,c) for c in df.columns])
+                insert_sql = 'INSERT INTO {0} ({1}) VALUES ({2}) ON DUPLICATE KEY UPDATE {3}'.format(
+                    tbl, colnames, wildcards, update)
                 
-            
+                data = [tuple(rw) for rw in df.values]
+                cur = self.cnx.cursor()
+                
+                self._logger.debug('Adding or updating {} values to database'.format(len(data)))
+                
+                for d in chunks(data, self.chunk_size):
+                    cur.executemany(insert_sql, d)
+                    self.cnx.commit()
+                
+            except mysql.connector.Error as err:
+                self.cnx.rollback()
+                self._logger.debug('Error loading {} into database'.format(description))
+                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                    self._logger.error("Something is wrong with your user name or password")
+                elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                    self._logger.error("Database does not exist")
+                else:
+                    self._logger.error(err)
+                
+def chunks(l, n):
+    """Yield successive n-sized chunks from l."""
+    for i in range(0, len(l), n):
+        yield l[i:i + n]       
             
