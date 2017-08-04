@@ -62,6 +62,7 @@ class Database():
                                           host=config['host'],
                                           database=config['database'],
                                           port=port)
+            cnx.set_converter_class(NumpyMySQLConverter)
 
         except mysql.connector.Error as err:
 #             if err.errno == 1045:  # errorcode.ER_ACCESS_DENIED_ERROR:
@@ -136,6 +137,21 @@ class Database():
                     self._logger.error("Database does not exist")
                 else:
                     self._logger.error(err)
+ 
+class NumpyMySQLConverter(mysql.connector.conversion.MySQLConverter):
+    """ A mysql.connector Converter that handles Numpy types """
+
+    def _float32_to_mysql(self, value):
+        return float(value)
+
+    def _float64_to_mysql(self, value):
+        return float(value)
+
+    def _int32_to_mysql(self, value):
+        return int(value)
+
+    def _int64_to_mysql(self, value):
+        return int(value)
                 
 def chunks(l, n):
     """Yield successive n-sized chunks from l."""

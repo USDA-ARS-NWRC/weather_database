@@ -6,6 +6,7 @@ import logging
 import pandas as pd
 from datetime import datetime
 import pytz
+import grequests
 import requests
 import json
 
@@ -15,6 +16,7 @@ __email__ = "scott.havens@ars.usda.gov"
 __date__ = "2017-08-03"
 
 logging.getLogger("requests").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 class CDEC():
     """
@@ -25,19 +27,19 @@ class CDEC():
         config: the `[mesoset_*]` section of the config file. These are parameters
             for the Mesowest API and will get passed directly to Mesowest.
     """
-    
-    token = 'e505002015c74fa6850b2fc13f70d2da'
-    
+        
     conversion = {
         'LATITUDE': 'latitude',
         'STATION_ID': 'primary_id',
         'LONGITUDE': 'longitude',
         'STATION_NAME': 'station_name',
         'ELEVATION': 'elevation',
-        'OWNER': 'primary_provider'
+        'AGENCY_NAME': 'primary_provider'
         }
         
     metadata_table = 'tbl_metadata'
+    
+    station_info_url = 'http://cdec.water.ca.gov/cdecstation2/CDecServlet/getStationInfo'
     
     def __init__(self, db):
         self._logger = logging.getLogger(__name__)
@@ -47,16 +49,65 @@ class CDEC():
         self._logger.debug('Initialized CDEC')
         
         
-    def station_info(self, stid):
+    def single_station_info(self, stid):
         """
         Query the station info, returns the sensor information as well
+        
+        Args:
+            stid: a single station ID's to fetch
+        
+        Returns:
+            Dataframe for station that will have all the sensors names, and 
+            timescale 
         """
         r = requests.get('http://cdec.water.ca.gov/cdecstation2/CDecServlet/getStationInfo',
                          params={'stationID': stid})
         data = json.loads(r.text)
         
         return pd.DataFrame(data['STATION'])
+    
+
+    def multi_station_info(self, stids, fields=False):
+        """
+        Query the station info for a list of stations. Because of the many
+        small requests, use async grequests to request all at once.
         
+        Args:
+            stids: list of station ID's to fetch
+            fields: True to return all data or False to return the first record
+            
+        Returns:
+            DataFrame of the station info
+        """
+        
+        # build the requests
+        r = []
+        for s in stids:
+            r.append(grequests.get(self.station_info_url, params={'stationID': s}))
+            
+        # Because the CDEC site sucks, we have to really thottle the number of 
+        # concurrent requests...
+        res = grequests.map(r, size=5)
+        
+        # go through the responses and parse
+        df = []
+        for rs in res:
+            if rs:
+                if rs.status_code == 200:
+                    try:
+                        data = json.loads(rs.text)
+                        d = pd.DataFrame(data['STATION'])
+                        if fields:
+                            df.append(d)
+                        else:
+                            df.append(d.iloc[0])
+                        self._logger.debug('Got metadata for {}'.format(d['STATION_ID'][0]))
+                    except Exception as e:
+                        pass
+#                         self._logger.debug('Metadata problem for {} - {}'.format(d['STATION_ID'][0], e))
+                        
+        
+        return pd.concat(df, axis=1).T.reset_index()
         
     def metadata(self):
         """
@@ -75,22 +126,18 @@ class CDEC():
         
         r = requests.get('http://cdec.water.ca.gov/cdecstation2/CDecServlet/getAllStations')
         data = json.loads(r.text)
-        
         df = pd.DataFrame(data['STATION'])
         
-        # thread this part, it will take a while
-        for index, row in df.iterrows():
-            data = self.station_info(row['STATION_ID'])
-            
-            df.loc[index, 'LATITUDE'] = data.loc[0, 'LATITUDE']
-            df.loc[index, 'LONGITUDE'] = data.loc[0, 'LONGITUDE']
-            df.loc[index, 'ELEVATION'] = data.loc[0, 'ELEVATION']
-            df.loc[index, 'OWNER'] = data.loc[0, 'AGENCY_NAME']
-                  
+        # request the data for all stations
+        info = self.multi_station_info(df['STATION_ID'])
+        
+        # merge the dataframes, not needed since info has everything
+#         d = pd.merge(df['STATION_ID'].to_frame(), info, on='STATION_ID')
+                          
         # pull out the data from CDEC into the database format
         DF = pd.DataFrame()
         for c in self.conversion:
-            DF[self.conversion[c]] = df[c]
+            DF[self.conversion[c]] = info[c]
 
         # these are the reported lat/long's for the station that may get changed
         # down the road due to location errors
