@@ -87,7 +87,7 @@ class CDEC():
             
         # Because the CDEC site sucks, we have to really thottle the number of 
         # concurrent requests...
-        res = grequests.map(r, size=5)
+        res = grequests.map(r, size=1)
         
         # go through the responses and parse
         df = []
@@ -102,7 +102,7 @@ class CDEC():
                         else:
                             df.append(d.iloc[0])
                         self._logger.debug('Got metadata for {}'.format(d['STATION_ID'][0]))
-                    except Exception as e:
+                    except Exception:
                         pass
 #                         self._logger.debug('Metadata problem for {} - {}'.format(d['STATION_ID'][0], e))
                         
