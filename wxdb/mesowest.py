@@ -122,6 +122,8 @@ class Mesowest():
         Retrieve the data from Mesowest. 
         """
         
+        self.db.db_connect()
+        
         # deteremine the client/s for processing
         client = self.config['client']
         self._logger.info('Client for Mesowest data collection: {}'.format(client))
@@ -131,13 +133,14 @@ class Mesowest():
         cursor = self.db.cnx.cursor()
         
         # get the current local time
+        endTime = utils.get_end_time(self.config['timezone'], self.config['end_time'])
         mnt = pytz.timezone(self.config['timezone'])
-        if self.config['end_time'] is None:
-            endTime = pd.Timestamp('now')
-        else:
-            endTime = pd.to_datetime(self.config['end_time'])
-        endTime = mnt.localize(endTime)
-        endTime = endTime.tz_convert('UTC')
+#         if self.config['end_time'] is None:
+#             endTime = pd.Timestamp('now')
+#         else:
+#             endTime = pd.to_datetime(self.config['end_time'])
+#         endTime = mnt.localize(endTime)
+#         endTime = endTime.tz_convert('UTC')
         
         # if a start time is specified localize it and convert to UTC
         if self.config['start_time'] is not None:
@@ -181,7 +184,7 @@ class Mesowest():
         
         
         cursor.close()
-        
+        self.db.db_close()
         
     def currentMesowestData(self, startTime, endTime, stid):
         """

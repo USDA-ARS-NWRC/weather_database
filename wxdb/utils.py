@@ -38,3 +38,24 @@ def water_day(indate, timezone):
         wy = tp.tm_year + 1
 
     return wy
+
+def get_end_time(timezone, end_time=None):
+    """
+    Get the current time for the given timezone, returned in UTC
+    
+    Args:
+        timezone: time zone that pytz can parse
+        
+    Returns:
+        pandas datetime object with timezone
+    """
+    
+    mnt = pytz.timezone(timezone)
+    if end_time is None:
+        endTime = pd.Timestamp('now')
+    else:
+        endTime = pd.to_datetime(end_time)
+    endTime = mnt.localize(endTime)
+    return endTime.tz_convert('UTC')
+    
+    

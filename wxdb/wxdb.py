@@ -126,11 +126,16 @@ class Weather():
     def get_data(self):
         """
         Get the current data from the sources
+        
+        TODO probably don't need the sources but can use the tbl_stations_view to
+        get everything needed
         """
         
         for s in self.config['data']['sources']:
             if s == 'mesowest':
                 Mesowest(self.db, self.config['data']).data()
+            elif s == 'cdec':
+                CDEC(self.db, self.config['data']).data()
         
     def run(self):
         """
