@@ -9,6 +9,7 @@ import pytz
 import grequests
 import requests
 import json
+import re
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -17,6 +18,9 @@ __date__ = "2017-08-03"
 
 logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
+
+def escape_column(s):
+    return re.sub(r'[^\x00-\x7F]+',' ', s)
 
 class CDEC():
     """
@@ -47,7 +51,6 @@ class CDEC():
         self.db = db
         
         self._logger.debug('Initialized CDEC')
-        
         
     def single_station_info(self, stid):
         """
@@ -151,10 +154,15 @@ class CDEC():
          
         DF = DF.where((pd.notnull(DF)), None)
         
+        # Since there are still problems with the returned metadata, we need to clean
+        # up for any potential UTF-8 characters that made it through
+        DF['station_name'] = DF['station_name'].apply(escape_column)
+        
         # insert the dataframe into the database
         self.db.insert_data(DF, description='CDEC metadata', metadata=True)
         
         
+
         
 #     def data(self):
 #         """
