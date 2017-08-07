@@ -9,5 +9,6 @@ Sphinx==1.4.8
 coloredlogs==7.1
 MesoPy==2.0.2
 https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.1.5.tar.gz
-
-
+numpy==1.13.1
+pandas==0.20.3
+grequests=0.3.0
