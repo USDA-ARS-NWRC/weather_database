@@ -6,6 +6,7 @@ import mysql.connector
 from mysql.connector import errorcode
 import logging
 import pandas as pd
+from distutils.log import info
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -72,14 +73,14 @@ class Database():
             raise err
             
         self.cnx = cnx
-        self._logger.info('Connected to MySQL database -- {}'.format(self.config['database']))
+        self._logger.debug('Connected to MySQL database -- {}'.format(self.config['database']))
         
     def db_close(self):
         """
         Ensure that the database connection is closed
         """
         self.cnx.close()
-        self._logger.info('Disconnected from MySQL database -- {}'.format(self.config['database']))
+        self._logger.debug('Disconnected from MySQL database -- {}'.format(self.config['database']))
         
         
         

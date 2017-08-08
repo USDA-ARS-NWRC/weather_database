@@ -251,7 +251,7 @@ class CDEC():
         
         # go through each client and get the stations
         for cl in client:
-            self._logger.info('Retrieving current data for client {}'.format(cl))
+            self._logger.info('Building URLs for client {}'.format(cl))
             
             cursor.execute(qry.format(cl))
             stations = cursor.fetchall()
@@ -294,22 +294,22 @@ class CDEC():
                         
                         req.append(grequests.get(self.data_csv_url, params=p))
                         
-            # close the db connection since the data retrieval might take a while 
-            self.db.db_close()
-                
-            # send the requests to CDEC
-            self._logger.info('Sending {} requests to CDEC'.format(len(req)))
-            res = grequests.map(req, size=100)
+        # close the db connection since the data retrieval might take a while 
+        self.db.db_close()
             
-            # parse the responses
-            data = self.cdec2df(res, stations) 
+        # send the requests to CDEC
+        self._logger.info('Sending {} requests to CDEC'.format(len(req)))
+        res = grequests.map(req, size=100)
+        
+        # parse the responses
+        data = self.cdec2df(res, stations) 
 
-            # insert into the database
-            self.db.db_connect()
-            for stid in stations:
-                if data[stid] is not None:
-                    self.db.insert_data(data[stid], description='CDEC data for {}'.format(stid), data=True)
-            self.db.db_close()
+        # insert into the database
+        self.db.db_connect()
+        for stid in stations:
+            if data[stid] is not None:
+                self.db.insert_data(data[stid], description='CDEC data for {}'.format(stid), data=True)
+        self.db.db_close()
 
         
     def cdec2df(self, res, stations):

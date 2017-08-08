@@ -7,8 +7,16 @@ from MesoPy import Meso
 import pandas as pd
 from datetime import datetime
 import pytz
-
+import grequests
+import json
 import utils
+
+import sys
+if sys.version_info[0] < 3: 
+    from urlparse import urlparse, parse_qs
+else:
+    # Python 3
+    from urllib.parse import urlparse, parse_qs
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -47,6 +55,8 @@ class Mesowest():
         }
     
     metadata_table = 'tbl_metadata'
+    
+    mesowest_timeseries_url = 'http://api.mesowest.net/v2/stations/timeseries'
     
     def __init__(self, db, config):
         self._logger = logging.getLogger(__name__)
@@ -119,7 +129,42 @@ class Mesowest():
         
     def data(self):
         """
-        Retrieve the data from Mesowest. 
+        Retrieve the data from Mesowest. Build a list of the URL's that 
+        need to be fetched and use grequests to fetch the data. Then the
+        data retrieval will be significantly sped up.
+        """
+        
+        req = self.build_timeseries_url()
+        
+        # send the requests to CDEC
+        self._logger.info('Sending {} requests to Mesowest API'.format(len(req)))
+        res = grequests.map(req)
+          
+        count = 0      
+        for rs in res:
+            if rs:
+                if rs.status_code == 200:
+                    try:
+                        data = json.loads(rs.text)
+                        df = self.meso2df(data)
+                        self.db.insert_data(df, description='Mesowest data for {}'.
+                                            format(df.iloc[0].station_id),
+                                            data=True)
+                        count += 1
+                    except Exception:
+                        q = self.parse_url(rs.url)
+                        self._logger.warn('{} - {}'.format(q['stid'][0],data['SUMMARY']['RESPONSE_MESSAGE']))
+                        
+        self._logger.info('Retrieved {} good responses form Mesowest'.format(count))
+        
+        
+    def build_timeseries_url(self):
+        """
+        Build the url's to call Mesowest API and adds the url
+        to the grequests.
+        
+        Returns:
+            list of grequest.get objects
         """
         
         self.db.db_connect()
@@ -135,12 +180,6 @@ class Mesowest():
         # get the current local time
         endTime = utils.get_end_time(self.config['timezone'], self.config['end_time'])
         mnt = pytz.timezone(self.config['timezone'])
-#         if self.config['end_time'] is None:
-#             endTime = pd.Timestamp('now')
-#         else:
-#             endTime = pd.to_datetime(self.config['end_time'])
-#         endTime = mnt.localize(endTime)
-#         endTime = endTime.tz_convert('UTC')
         
         # if a start time is specified localize it and convert to UTC
         if self.config['start_time'] is not None:
@@ -149,6 +188,7 @@ class Mesowest():
             startTime = startTime.tz_convert('UTC')
         
         # go through each client and get the stations
+        req = []
         for cl in client:
             self._logger.info('Retrieving current data for client {}'.format(cl))
             
@@ -173,39 +213,40 @@ class Mesowest():
                         startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=False)
                         startTime = mnt.localize(startTime)
                         startTime = startTime.tz_convert('UTC')
-                   
-                self._logger.debug('Retrieving data for station {} between {} and {}'.format(
-                    stid, startTime.strftime('%Y-%m-%d %H:%M'), endTime.strftime('%Y-%m-%d %H:%M'))) 
-                data = self.currentMesowestData(startTime, endTime, stid)
-#                  
-                if data is not None:
-                    df = self.meso2df(data)
-                    self.db.insert_data(df, description='Mesowest current data', data=True)
-        
+                    
+                # build the URL's to retrieve the data
+                self._logger.debug('Building url for station {} between {} and {}'.format(
+                    stid, startTime.strftime('%Y-%m-%d %H:%M'), endTime.strftime('%Y-%m-%d %H:%M')))
+                p = self.timeseries_params(startTime, endTime, stid)
+                
+                req.append(grequests.get(self.mesowest_timeseries_url, params=p))
+                
         cursor.close()
         self.db.db_close()
         
-    def currentMesowestData(self, startTime, endTime, stid):
+        return req
+        
+    def timeseries_params(self, startTime, endTime, stid):
         """
         Call Mesowest for the data in bbox between startTime and endTime
         """
         
         # set the parameters for the Mesowest query and build
-        p = self.params
+        p = self.params.copy()
         p['start'] = startTime.strftime('%Y%m%d%H%M')      # start time
         p['end'] = endTime.strftime('%Y%m%d%H%M')          # end time
         p['stid'] = stid
         
-        m = Meso(token=p['token'])
+#         m = Meso(token=p['token'])
+#         
+#         try:
+#             data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
+#                                         stid=p['stid'], units=p['units'], vars=p['vars'])
+#         except Exception as e:
+#             self._logger.warn('{} -- {}'.format(stid, e))
+#             data = None
         
-        try:
-            data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
-                                        stid=p['stid'], units=p['units'], vars=p['vars'])
-        except Exception as e:
-            self._logger.warn('{} -- {}'.format(stid, e))
-            data = None
-        
-        return data
+        return p
     
     def meso2df(self, data):
         """
@@ -245,4 +286,18 @@ class Mesowest():
             
         return r
 
+    def parse_url(self, url):
+        """
+        Parse the url that was passed to Mesowest. Pull out the station id
+        
+        Args:
+            url: url string with parameters
+            
+        Returns:
+            query parameter dictionary 
+        """
+        
+        o = urlparse(url)
+        return parse_qs(o.query)
+        
 
