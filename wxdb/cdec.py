@@ -12,6 +12,16 @@ import json
 import re
 import utils
 
+import sys
+if sys.version_info[0] < 3: 
+    from StringIO import StringIO
+    from urlparse import urlparse, parse_qs
+else:
+    # Python 3
+    from urllib.parse import urlparse, parse_qs
+    from io import StringIO
+    
+    
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
 __email__ = "scott.havens@ars.usda.gov"
@@ -46,6 +56,10 @@ class CDEC():
     
     station_info_url = 'http://cdec.water.ca.gov/cdecstation2/CDecServlet/getStationInfo'
     
+    data_csv_url = 'http://cdec.water.ca.gov/cgi-progs/queryCSV'
+    
+    timezone = 'Etc/GMT-8' # timezone that the data is retrieved in
+    
     # sensor mapping 'LONG NAME' : {sensor number, database column}
     sensor_metadata = {
         'PRECIPITATION, ACCUMULATED': {'num': 2, 'col': 'precip_accum'},
@@ -56,10 +70,10 @@ class CDEC():
         'RELATIVE HUMIDITY': {'num': 12, 'col': 'relative_humidity'},
         'SNOW DEPTH': {'num': 18, 'col': 'snow_depth'},
         'SOLAR RADIATION ': {'num': 26, 'col': 'solar_radiation'},
-        'SOLAR RADIATION AVG ': {'num': 103, 'col': 'solar_radiation'})
+        'SOLAR RADIATION AVG ': {'num': 103, 'col': 'solar_radiation'}
         }
     
-    def __init__(self, db, config=None):
+    def __init__(self, db, config):
         self._logger = logging.getLogger(__name__)
         
         self.db = db
@@ -165,7 +179,7 @@ class CDEC():
         # add the source to the DF
         DF['source'] = 'cdec'
         DF['state'] = 'CA'
-        DF['timezone'] = 'Etc/GMT-8' # need to check with Andrew
+        DF['timezone'] = self.timezone # need to check with Andrew
          
         DF = DF.where((pd.notnull(DF)), None)
         
@@ -178,7 +192,9 @@ class CDEC():
         
     def data(self, duration='H'):
         """
-        Retrieve the hourly data from CDEC
+        Retrieve the hourly data from CDEC. Build a list of the URL's that 
+        need to be fetched and use grequests to fetch the data. Then the
+        data retrieval will be significantly sped up.
         """
         
         self.db.db_connect()
@@ -192,14 +208,17 @@ class CDEC():
         cursor = self.db.cnx.cursor()
          
         # get the current local time
-        endTime = utils.get_end_time(self.config['timezone'], self.config['end_time'])
+        endTime = utils.get_end_time(self.config['timezone'], self.config['end_time'], self.timezone)
+        
+        # create timezone objects
         mnt = pytz.timezone(self.config['timezone'])
+        pst = pytz.timezone(self.timezone)
         
         # if a start time is specified localize it and convert to UTC
         if self.config['start_time'] is not None:
             startTime = pd.to_datetime(self.config['start_time'])
             startTime = mnt.localize(startTime)
-            startTime = startTime.tz_convert('UTC')
+            startTime = startTime.tz_convert(self.timezone)
         
         # go through each client and get the stations
         for cl in client:
@@ -207,10 +226,11 @@ class CDEC():
             
             cursor.execute(qry.format(cl))
             stations = cursor.fetchall()
+            stations = [s[0] for s in stations]
             
             # go through each and get the data
+            req = []
             for stid in stations:
-                stid = stid[0]
                         
                 if self.config['start_time'] is None:        
                     # determine the last value for the station
@@ -221,29 +241,123 @@ class CDEC():
                     if startTime is not None:
                         startTime = pd.to_datetime(startTime, utc=True)
                     else:             
-                        # start of the water year, do a local time then convert to UTC       
-                        wy = utils.water_day(endTime, self.config['timezone'])
+                        # start of the water year, do a PST time       
+                        wy = utils.water_day(endTime, self.timezone)
                         startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=False)
-                        startTime = mnt.localize(startTime)
-                        startTime = startTime.tz_convert('UTC')
+                        startTime = pst.localize(startTime)
                  
                 # determine what sensors to retreive and filter to duration
                 sens = self.single_station_info(stid)
                 sens = sens[sens.DUR_CODE == duration]
                  
-                   
-                self._logger.debug('Retrieving data for station {} between {} and {}'.format(
-                    stid, startTime.strftime('%Y-%m-%d %H:%M'), endTime.strftime('%Y-%m-%d %H:%M'))) 
-                data = self.currentMesowestData(startTime, endTime, stid)
-#                  
-                if data is not None:
-                    df = self.meso2df(data)
-                    self.db.insert_data(df, description='Mesowest current data', data=True)
+                self._logger.debug('Building url for station {} between {} and {}'.format(
+                    stid, startTime.strftime('%Y-%m-%d'), endTime.strftime('%Y-%m-%d'))) 
+                
+                # build the url's for each sensor
+                for s in self.sensor_metadata.keys():
+                    if sens.SENS_LONG_NAME.str.contains(s).any():
+                        p = {}
+                        p['station_id'] = stid
+                        p['sensor_num'] = self.sensor_metadata[s]['num'] 
+                        p['dur_code'] = duration
+                        p['start_date'] = startTime.strftime('%Y-%m-%d')
+                        p['end_date'] = endTime.strftime('%Y-%m-%d')
+                        
+                        req.append(grequests.get(self.data_csv_url, params=p))
+                        
+            # close the db connection since the data retrieval might take a while 
+            self.db.db_close()
+                
+            # send the requests to CDEC
+            res = grequests.map(req, size=100)
+            
+            # parse the responses
+            data = self.cdec2df(res, stations) 
+
+            # insert into the database
+            self.db.db_connect()
+            for stid in stations:
+                if data[stid] is not None:
+                    self.db.insert_data(data[stid], description='CDEC data for {}'.format(stid), data=True)
+            self.db.db_close()
+
         
+    def cdec2df(self, res, stations):
+        """
+        Parse a list of responses from CDEC into dataframes
         
-        cursor.close()
-        self.db.db_close()
+        Args:
+            res: list of grequest responses
+            
+        Returns:
+            dict of dataframes, one for each site
+        """
         
+        self._logger.info('Retrieved {} responses form CDEC'.format(len(res)))
+        
+        data = {}
+        for stid in stations:
+            data[stid] = []
+        
+        for rs in res:
+            if rs:
+                if rs.status_code == 200:
+                    try:
+                        
+                        # determine the station and sensor from the url
+                        stid, sens_name = self.parse_url(rs.url)
+                        
+                        # read in the response
+                        df = pd.read_csv(StringIO(rs.text), skiprows=2, header=None, parse_dates=[[0,1]], index_col=None, na_values='m')
+                        df.columns = ['date_time', sens_name]
+                        df.set_index('date_time', inplace=True)
+                        
+                        if sens_name is not None:
+                            data[stid].append(df)
+
+                        self._logger.debug('Got data for {} - {}'.format(stid, sens_name))
+                    except Exception:
+                        pass
+                    
+        # merge the data frames together and get ready for the database
+        for stid in stations:
+            if len(data[stid]) > 0:
+                data[stid] = pd.concat(data[stid], axis=1)
+                
+                data[stid].dropna(axis=0, how='all', inplace=True)
+                
+                data[stid]['station_id'] = stid
+                data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
+            else:
+                data[stid] = None
+            
+        return data
+        
+    
+    def parse_url(self, url):
+        """
+        Parse the url that was passed to CDEC. Pull out the station
+        id and the sensor name
+        
+        Args:
+            url: url string with parameters
+            
+        Returns:
+            station id and sensor name from sensor_metadata, None if not found
+        """
+        
+        o = urlparse(url)
+        query = parse_qs(o.query)
+        stid = query['station_id'][0]
+        sens_num = int(query['sensor_num'][0])
+        
+        sens_name = None
+        for v in self.sensor_metadata.values():
+            if sens_num == v['num']:
+                sens_name = v['col']
+                break
+            
+        return stid, sens_name
         
 #     def data(self):
 #         """

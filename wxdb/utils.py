@@ -39,7 +39,7 @@ def water_day(indate, timezone):
 
     return wy
 
-def get_end_time(timezone, end_time=None):
+def get_end_time(timezone, end_time=None, to_timezone='UTC'):
     """
     Get the current time for the given timezone, returned in UTC
     
@@ -56,6 +56,6 @@ def get_end_time(timezone, end_time=None):
     else:
         endTime = pd.to_datetime(end_time)
     endTime = mnt.localize(endTime)
-    return endTime.tz_convert('UTC')
+    return endTime.tz_convert(to_timezone)
     
     
