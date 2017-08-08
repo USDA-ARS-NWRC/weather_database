@@ -182,7 +182,6 @@ class Mesowest():
                     df = self.meso2df(data)
                     self.db.insert_data(df, description='Mesowest current data', data=True)
         
-        
         cursor.close()
         self.db.db_close()
         

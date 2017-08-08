@@ -29,7 +29,7 @@ class Database():
     """
     
     fields = ['user', 'password', 'host', 'database']
-    chunk_size = 100000
+    chunk_size = 75000
     
     def __init__(self, config):
         """

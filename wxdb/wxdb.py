@@ -5,6 +5,7 @@ import argparse
 import logging
 import coloredlogs
 from datetime import datetime
+import traceback
 
 try:
     from configparser import ConfigParser
@@ -181,7 +182,8 @@ if __name__ == '__main__':
         w = Weather(args.config_file)
         w.run()
     except Exception as e:
-        print(e)
+        raise Exception(e)
+        traceback.print_exc()
 
         
         
