@@ -62,15 +62,42 @@ class CDEC():
     
     # sensor mapping 'LONG NAME' : {sensor number, database column}
     sensor_metadata = {
-        'PRECIPITATION, ACCUMULATED': {'num': 2, 'col': 'precip_accum'},
-        'SNOW, WATER CONTENT': {'num': 3, 'col': 'snow_water_equiv'},
-        'TEMPERATURE, AIR': {'num': 4, 'col': 'air_temp'},
-        'WIND, SPEED': {'num': 9, 'col': 'wind_speed'},
-        'WIND, DIRECTION': {'num': 10, 'col': 'wind_direction'},
-        'RELATIVE HUMIDITY': {'num': 12, 'col': 'relative_humidity'},
-        'SNOW DEPTH': {'num': 18, 'col': 'snow_depth'},
-        'SOLAR RADIATION ': {'num': 26, 'col': 'solar_radiation'},
-        'SOLAR RADIATION AVG ': {'num': 103, 'col': 'solar_radiation'}
+        'PRECIPITATION, ACCUMULATED': {
+            'num': 2, 
+            'col': 'precip_accum',
+            'units': 'inches'},
+        'SNOW, WATER CONTENT': {
+            'num': 3,
+            'col': 'snow_water_equiv',
+            'units': 'inches'},
+        'TEMPERATURE, AIR':{
+            'num': 4,
+            'col': 'air_temp',
+            'units': 'deg_f'},
+        'WIND, SPEED': {
+            'num': 9,
+            'col': 'wind_speed',
+            'units': 'mph'},
+        'WIND, DIRECTION': {
+            'num': 10,
+            'col': 'wind_direction',
+            'units': 'degree'},
+        'RELATIVE HUMIDITY': {
+            'num': 12,
+            'col': 'relative_humidity',
+            'units': 'pct'},
+        'SNOW DEPTH': {
+            'num': 18,
+            'col': 'snow_depth',
+            'units': 'inches'},
+        'SOLAR RADIATION ': {
+            'num': 26,
+            'col': 'solar_radiation',
+            'units': 'w/m**2'},
+        'SOLAR RADIATION AVG ': {
+            'num': 103,
+            'col': 'solar_radiation',
+            'units': 'w/m**2'}
         }
     
     def __init__(self, db, config):
@@ -78,6 +105,8 @@ class CDEC():
         
         self.db = db
         self.config = config
+        
+        self.units = {val['col']: val['units'] for key,val in self.sensor_metadata.items()}
         
         self._logger.debug('Initialized CDEC')
         
@@ -269,6 +298,7 @@ class CDEC():
             self.db.db_close()
                 
             # send the requests to CDEC
+            self._logger.info('Sending {} requests to CDEC'.format(len(req)))
             res = grequests.map(req, size=100)
             
             # parse the responses
@@ -293,12 +323,11 @@ class CDEC():
             dict of dataframes, one for each site
         """
         
-        self._logger.info('Retrieved {} responses form CDEC'.format(len(res)))
-        
         data = {}
         for stid in stations:
             data[stid] = []
         
+        count = 0
         for rs in res:
             if rs:
                 if rs.status_code == 200:
@@ -316,15 +345,20 @@ class CDEC():
                             data[stid].append(df)
 
                         self._logger.debug('Got data for {} - {}'.format(stid, sens_name))
+                        count += 1
                     except Exception:
                         pass
+                    
+        self._logger.info('Retrieved {} good responses form CDEC'.format(count))
                     
         # merge the data frames together and get ready for the database
         for stid in stations:
             if len(data[stid]) > 0:
                 data[stid] = pd.concat(data[stid], axis=1)
-                
                 data[stid].dropna(axis=0, how='all', inplace=True)
+                
+                # convert the units
+                data[stid] = utils.convert_units(data[stid], self.units)
                 
                 data[stid]['station_id'] = stid
                 data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')

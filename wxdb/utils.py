@@ -57,5 +57,47 @@ def get_end_time(timezone, end_time=None, to_timezone='UTC'):
         endTime = pd.to_datetime(end_time)
     endTime = mnt.localize(endTime)
     return endTime.tz_convert(to_timezone)
+
+
+def convert_units(r, units):
+    """
+    Convert the units of a dataframe from english
+    to metric. The dictionary provides the column name
+    with the current unit
+    
+    Args:
+        r: dataframe to convert
+        units: dict for {col_name: unit}
+        
+    Returns:
+        dataframe r converted
+    """
+    
+    # columns of data frame
+    col = r.columns;
+    
+    # functions to apply
+    f2c = lambda x: (x - 32) * 5 / 9
+    in2mm = lambda x: x * 25.4
+    mph2ms = lambda x: x * 0.44704
+    
+    for c in col:
+        
+        if c in units.keys():
+            
+            if units[c] == 'deg_f':
+                func = f2c
+            elif units[c] == 'inches':
+                func = in2mm
+            elif units[c] == 'mph':
+                func = mph2ms
+            else:
+                func = None
+        
+        if func is not None:
+            r[c] = r[c].map(func)
+
+    return r
+
     
     
