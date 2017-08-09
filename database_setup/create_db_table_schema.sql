@@ -213,7 +213,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `weather_db`.`tbl_level2_audit` ;
 
 CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_level2_audit` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `action` VARCHAR(15) NOT NULL,
   `user` VARCHAR(45) NOT NULL,
   `timestamp` DATETIME NOT NULL,

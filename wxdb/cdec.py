@@ -100,7 +100,7 @@ class CDEC():
             'units': 'w/m**2'}
         }
     
-    def __init__(self, db, config):
+    def __init__(self, db, config=None):
         self._logger = logging.getLogger(__name__)
         
         self.db = db
