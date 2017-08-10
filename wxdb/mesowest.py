@@ -147,7 +147,7 @@ class Mesowest():
                 if rs.status_code == 200:
                     try:
                         data = json.loads(rs.text)
-                        df, qc_df = self.meso2df(data)
+                        df = self.meso2df(data)
                         self.db.insert_data(df, description='Mesowest data for {}'.
                                             format(df.iloc[0].station_id),
                                             data=True)
@@ -279,13 +279,8 @@ class Mesowest():
         
         # add the station_id
         r['station_id'] = station_id
-        
-        # quality control
-        df_qc = None
-        if self.quality_control:
-            df_qc = quality_control.QC(self.quality_control, r)
             
-        return r, df_qc
+        return r
 
     def parse_url(self, url):
         """

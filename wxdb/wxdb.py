@@ -16,6 +16,7 @@ from database import Database
 from mesowest import Mesowest
 from cdec import CDEC
 from quality_control import QC
+from average_delete import AvgDel
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -163,10 +164,10 @@ class Weather():
             
         if self.load_data:
             self.get_data()
-            self.average_delete()
+            AvgDel(self.db)
             
-        if self.perform_qc:
-            QC(self.config['quality_control']).run()
+#         if self.perform_qc:
+#             QC(self.config['quality_control']).run()
                     
         self._logger.info('Elapsed time: {}'.format(datetime.now() - startTime))
         self._logger.info('Done')    
@@ -194,7 +195,6 @@ if __name__ == '__main__':
         w = Weather(args.config_file)
         w.run()
     except Exception as e:
-        raise Exception(e)
         traceback.print_exc()
 
         
