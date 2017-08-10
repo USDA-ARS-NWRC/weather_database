@@ -58,11 +58,12 @@ class Mesowest():
     
     mesowest_timeseries_url = 'http://api.mesowest.net/v2/stations/timeseries'
     
-    def __init__(self, db, config):
+    def __init__(self, db, config, quality_control=False):
         self._logger = logging.getLogger(__name__)
         
         self.db = db
         self.config = config
+        self.quality_control = quality_control
         
         p = {}
         p['start'] = None      # start time
@@ -146,7 +147,7 @@ class Mesowest():
                 if rs.status_code == 200:
                     try:
                         data = json.loads(rs.text)
-                        df = self.meso2df(data)
+                        df, qc_df = self.meso2df(data)
                         self.db.insert_data(df, description='Mesowest data for {}'.
                                             format(df.iloc[0].station_id),
                                             data=True)
@@ -237,15 +238,6 @@ class Mesowest():
         p['end'] = endTime.strftime('%Y%m%d%H%M')          # end time
         p['stid'] = stid
         
-#         m = Meso(token=p['token'])
-#         
-#         try:
-#             data = m.timeseries(start=p['start'], end=p['end'], obstimezone=p['obstimezone'],
-#                                         stid=p['stid'], units=p['units'], vars=p['vars'])
-#         except Exception as e:
-#             self._logger.warn('{} -- {}'.format(stid, e))
-#             data = None
-        
         return p
     
     def meso2df(self, data):
@@ -255,6 +247,10 @@ class Mesowest():
         
         Args:
             data: dict returned from Mesowest
+            
+        Returns:
+            Tuple, DataFrame for the returned values from Mesowest and
+            a quality controled DataFrame with bad values removed
         """
         s = data['STATION'][0]
         
@@ -283,8 +279,13 @@ class Mesowest():
         
         # add the station_id
         r['station_id'] = station_id
+        
+        # quality control
+        df_qc = None
+        if self.quality_control:
+            df_qc = quality_control.QC(self.quality_control, r)
             
-        return r
+        return r, df_qc
 
     def parse_url(self, url):
         """

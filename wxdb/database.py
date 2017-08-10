@@ -6,7 +6,6 @@ import mysql.connector
 from mysql.connector import errorcode
 import logging
 import pandas as pd
-from distutils.log import info
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"

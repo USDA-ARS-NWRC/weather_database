@@ -15,6 +15,7 @@ except ImportError:
 from database import Database
 from mesowest import Mesowest
 from cdec import CDEC
+from quality_control import QC
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -111,6 +112,15 @@ class Weather():
             
         if (not self.load_metadata) & (not self.load_data):
             raise Exception('[metadata] or [data] are not specified in the config file')
+        
+        # quality control data
+        if 'quality_control' in self.config.keys():
+            # parse the options
+            self.perform_qc = True
+            pass
+        else:
+            self.perform_qc = False
+            self.config['quality_control'] = False
             
      
     def get_metadata(self):
@@ -134,9 +144,9 @@ class Weather():
         
         for s in self.config['data']['sources']:
             if s == 'mesowest':
-                Mesowest(self.db, self.config['data']).data()
+                Mesowest(self.db, self.config['data'], self.config['quality_control']).data()
             elif s == 'cdec':
-                CDEC(self.db, self.config['data']).data()
+                CDEC(self.db, self.config['data'], self.config['quality_control']).data()
         
     def run(self):
         """
@@ -153,9 +163,11 @@ class Weather():
             
         if self.load_data:
             self.get_data()
+            self.average_delete()
             
-        self.db.cnx.close()
-            
+        if self.perform_qc:
+            QC(self.config['quality_control']).run()
+                    
         self._logger.info('Elapsed time: {}'.format(datetime.now() - startTime))
         self._logger.info('Done')    
     

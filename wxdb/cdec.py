@@ -100,11 +100,12 @@ class CDEC():
             'units': 'w/m**2'}
         }
     
-    def __init__(self, db, config=None):
+    def __init__(self, db, config=None, quality_control=False):
         self._logger = logging.getLogger(__name__)
         
         self.db = db
         self.config = config
+        self.quality_control = quality_control
         
         self.units = {val['col']: val['units'] for key,val in self.sensor_metadata.items()}
         
