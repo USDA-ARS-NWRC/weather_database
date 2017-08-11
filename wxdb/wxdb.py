@@ -23,6 +23,9 @@ __maintainer__ = "Scott Havens"
 __email__ = "scott.havens@ars.usda.gov"
 __date__ = "2017-07-27"
 
+def strip_string(s):
+    return [x.strip() for x in s.split(',')]
+
 class Weather():
     """
     wxdb interacts with the weather database to ingest
@@ -86,18 +89,19 @@ class Weather():
             self._logger.info('Metadata section found, will load metadata from sources {}'
                               .format(self.config['metadata']['sources']))
             self.load_metadata = True
-            self.config['metadata']['sources'] = self.config['metadata']['sources'].split(',')
+            self.config['metadata']['sources'] = strip_string(self.config['metadata']['sources'])
             
         # process the data section
         if 'data' in self.config.keys():
+            
+            self.config['data']['sources'] =  strip_string(self.config['data']['sources'])
             self._logger.info('data section found, will load data from sources {}'
                               .format(self.config['data']['sources']))
             self.load_data = True
-            self.config['data']['sources'] = self.config['data']['sources'].split(',')
             
             k = self.config['data'].keys()
             if 'client' in k:
-                self.config['data']['client'] = self.config['data']['client'].split(',')
+                self.config['data']['client'] = strip_string(self.config['data']['client'])
             else:
                 raise Exception('client must be specified in the [data] config section')
             
