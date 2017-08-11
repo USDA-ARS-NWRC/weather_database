@@ -125,7 +125,7 @@ class Mesowest():
         DF = DF.where((pd.notnull(DF)), None)
         
         # insert the dataframe into the database
-        self.db.insert_data(DF, description='Mesowest metadata', metadata=True)
+        self.db.insert_data(DF, 'metadata', description='Mesowest metadata')
         
         
         

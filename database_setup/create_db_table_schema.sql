@@ -158,7 +158,6 @@ CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_level1` (
   `snow_water_equiv` DECIMAL(10,3) NULL,
   `vapor_pressure` DECIMAL(10,3) NULL,
   `cloud_factor` DECIMAL(10,3) NULL,
-  `avg_del` TINYINT(1) NULL DEFAULT 0,
   `qc_flag` VARCHAR(100) NULL,
   PRIMARY KEY (`id`),
   INDEX `idx_station_id` (`station_id` ASC),

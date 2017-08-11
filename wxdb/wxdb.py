@@ -86,10 +86,10 @@ class Weather():
         
         # process the metadata section
         if 'metadata' in self.config.keys():
+            self.config['metadata']['sources'] = strip_string(self.config['metadata']['sources'])
             self._logger.info('Metadata section found, will load metadata from sources {}'
                               .format(self.config['metadata']['sources']))
             self.load_metadata = True
-            self.config['metadata']['sources'] = strip_string(self.config['metadata']['sources'])
             
         # process the data section
         if 'data' in self.config.keys():

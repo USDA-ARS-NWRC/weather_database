@@ -218,7 +218,7 @@ class CDEC():
         DF['station_name'] = DF['station_name'].apply(escape_column)
         
         # insert the dataframe into the database
-        self.db.insert_data(DF, description='CDEC metadata', metadata=True)
+        self.db.insert_data(DF, 'metadata', description='CDEC metadata')
         
     def data(self, duration='H'):
         """
