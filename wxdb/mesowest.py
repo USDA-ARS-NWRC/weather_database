@@ -10,6 +10,7 @@ import pytz
 import grequests
 import json
 import utils
+import average_delete
 
 import sys
 if sys.version_info[0] < 3: 
@@ -147,10 +148,15 @@ class Mesowest():
                 if rs.status_code == 200:
                     try:
                         data = json.loads(rs.text)
-                        df = self.meso2df(data)
-                        self.db.insert_data(df, description='Mesowest data for {}'.
-                                            format(df.iloc[0].station_id),
-                                            data=True)
+                        df, av = self.meso2df(data)
+                        self.db.insert_data(df, 
+                                            loc='data',
+                                            description='Mesowest data for {}'.
+                                            format(df.iloc[0].station_id))
+                        self.db.insert_data(av, 
+                                            loc='avg_del',
+                                            description='Mesowest data for {} averaged'.
+                                            format(df.iloc[0].station_id))
                         count += 1
                     except Exception:
                         q = self.parse_url(rs.url)
@@ -265,11 +271,15 @@ class Mesowest():
                 v[list(s['SENSOR_VARIABLES'][i].keys())[0]] = i
                      
         # convert to dataframe
-        r = pd.DataFrame(s['OBSERVATIONS'], columns=s['OBSERVATIONS'].keys())  # preserve column order
+        r = pd.DataFrame(s['OBSERVATIONS'],columns=s['OBSERVATIONS'].keys())  # preserve column order
+        
+        # truncate the dataframe to ensure that there isn't a leak over to the next hour
+        r['date_time'] = pd.to_datetime(r['date_time']) 
+        r.set_index('date_time', inplace=True)
+        r = r.truncate(r.first_valid_index().ceil('H'), r.last_valid_index().floor('H'))
         
         # convert to date_time from the returned format to MySQL format
-        r['date_time'] = pd.to_datetime(r['date_time']) 
-        r['date_time'] = r['date_time'].dt.strftime('%Y-%m-%d %H:%M')
+        r['date_time'] = r.index.strftime('%Y-%m-%d %H:%M')
         
         # rename the columns and make date time the index    
         r.rename(columns = v, inplace=True)
@@ -279,8 +289,11 @@ class Mesowest():
         
         # add the station_id
         r['station_id'] = station_id
-            
-        return r
+        
+        # perform average on the dataframe
+        df = utils.average_df(r, station_id)
+        
+        return r, df
 
     def parse_url(self, url):
         """

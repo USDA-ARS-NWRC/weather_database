@@ -99,5 +99,26 @@ def convert_units(r, units):
 
     return r
 
+def average_df(r, stid):
+    """
+    Average the dataframe. Performs a copy of the original dataframe then
+    resample 'H' will take the mean of the values that fall within the hour.
+    
+    Args:
+        r: DataFrame with 'date_time' as index
+        stid: station id, will be entered as a columns
+        
+    Returns:
+        DataFrame that is resampled with a 'date_time' and 'station_id' columns
+        added back in
+    """
+    
+    df = r.copy()
+    df = df.resample('H').mean()
+    df.dropna(axis=0, how='all', inplace=True)
+    df['date_time'] = df.index.strftime('%Y-%m-%d %H:%M')
+    df['station_id'] = stid
+    
+    return df
     
     

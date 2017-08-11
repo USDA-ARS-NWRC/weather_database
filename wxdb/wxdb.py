@@ -164,7 +164,6 @@ class Weather():
             
         if self.load_data:
             self.get_data()
-            AvgDel(self.db)
             
 #         if self.perform_qc:
 #             QC(self.config['quality_control']).run()

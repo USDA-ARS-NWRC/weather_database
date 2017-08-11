@@ -55,6 +55,10 @@ class Database():
         self.data_table = None
         if 'data' in k:
             self.data_tables = config['data'].split(',')
+            
+        self.avg_del_tables = None
+        if 'avg_del' in k:
+            self.avg_del_tables = config['avg_del'].split(',')
         
     def db_connect(self):
         """
@@ -83,22 +87,20 @@ class Database():
         
         
         
-    def insert_data(self, df, description='', metadata=False, data=False):
+    def insert_data(self, df, loc, description=''):
         """
         Insert data into the database for the given table and dataframe
         """
         
-        if (not metadata) & (not data):
-            self._logger.error('Must specify either metadata or data')
-        if metadata & data:
-            self._logger.error('Metadata and data cannot be set to True at the same time')
-        
-        if metadata:
+        if loc == 'metadata':
             table = self.metadata_tables
-        
-        if data:
+        elif loc == 'data':
             table = self.data_tables
-        
+        elif loc == 'avg_del':
+            table = self.avg_del_tables
+        else:
+            raise ValueError('valid values for loc are "metadata", "data", "avg_del"')
+                
         self.db_connect()
         
         for tbl in table:

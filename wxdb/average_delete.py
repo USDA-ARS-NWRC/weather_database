@@ -10,6 +10,16 @@ __maintainer__ = "Scott Havens"
 __email__ = "scott.havens@ars.usda.gov"
 __date__ = "2017-08-10"
 
+
+class AD():
+    # number of seconds for rounding
+    round_val = 3600
+    
+    def __init__(self, df):
+        self.df = df
+        
+        
+
 class AvgDel():
     """
     The raw data from stations can be difficult to work with when

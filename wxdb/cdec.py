@@ -303,14 +303,14 @@ class CDEC():
         res = grequests.map(req, size=100)
         
         # parse the responses
-        data = self.cdec2df(res, stations) 
+        data, av = self.cdec2df(res, stations) 
 
         # insert into the database
-        self.db.db_connect()
         for stid in stations:
             if data[stid] is not None:
-                self.db.insert_data(data[stid], description='CDEC data for {}'.format(stid), data=True)
-        self.db.db_close()
+                self.db.insert_data(data[stid], 'data', description='CDEC data for {}'.format(stid))
+            if av[stid] is not None:
+                self.db.insert_data(av[stid], 'avg_del', description='CDEC data for {} averaged'.format(stid))
 
         
     def cdec2df(self, res, stations):
@@ -353,6 +353,7 @@ class CDEC():
         self._logger.info('Retrieved {} good responses form CDEC'.format(count))
                     
         # merge the data frames together and get ready for the database
+        av = {}
         for stid in stations:
             if len(data[stid]) > 0:
                 data[stid] = pd.concat(data[stid], axis=1)
@@ -361,12 +362,20 @@ class CDEC():
                 # convert the units
                 data[stid] = utils.convert_units(data[stid], self.units)
                 
+                # truncate and add fields
+                data[stid] = data[stid].truncate(data[stid].first_valid_index().ceil('H'),
+                                                 data[stid].last_valid_index().floor('H'))
                 data[stid]['station_id'] = stid
                 data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
+                
+                # average the dataframe
+                av[stid] = utils.average_df(data[stid], stid)
+        
             else:
                 data[stid] = None
+                av[stid] = None
             
-        return data
+        return data, av
         
     
     def parse_url(self, url):
