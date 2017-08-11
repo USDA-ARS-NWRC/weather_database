@@ -105,7 +105,7 @@ class CDEC():
         
         self.db = db
         self.config = config
-        self.quality_control = quality_control
+        self.qc = quality_control
         
         self.units = {val['col']: val['units'] for key,val in self.sensor_metadata.items()}
         
@@ -310,6 +310,9 @@ class CDEC():
             if data[stid] is not None:
                 self.db.insert_data(data[stid], 'data', description='CDEC data for {}'.format(stid))
             if av[stid] is not None:
+                # quality control
+                if self.qc:
+                    av[stid] = self.qc.run(av[stid])
                 self.db.insert_data(av[stid], 'avg_del', description='CDEC data for {} averaged'.format(stid))
 
         

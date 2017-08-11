@@ -16,7 +16,6 @@ from database import Database
 from mesowest import Mesowest
 from cdec import CDEC
 from quality_control import QC
-from average_delete import AvgDel
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -147,11 +146,13 @@ class Weather():
         get everything needed
         """
         
+        qc = QC(self.config['quality_control'])
+        
         for s in self.config['data']['sources']:
             if s == 'mesowest':
-                Mesowest(self.db, self.config['data'], self.config['quality_control']).data()
+                Mesowest(self.db, self.config['data'], qc).data()
             elif s == 'cdec':
-                CDEC(self.db, self.config['data'], self.config['quality_control']).data()
+                CDEC(self.db, self.config['data'], qc).data()
         
     def run(self):
         """

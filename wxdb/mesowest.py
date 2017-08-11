@@ -10,7 +10,6 @@ import pytz
 import grequests
 import json
 import utils
-import average_delete
 
 import sys
 if sys.version_info[0] < 3: 
@@ -64,7 +63,7 @@ class Mesowest():
         
         self.db = db
         self.config = config
-        self.quality_control = quality_control
+        self.qc = quality_control
         
         p = {}
         p['start'] = None      # start time
@@ -158,9 +157,12 @@ class Mesowest():
                                             description='Mesowest data for {} averaged'.
                                             format(df.iloc[0].station_id))
                         count += 1
-                    except Exception:
+                    except IndexError:
+                        # the data doest have anything in it
                         q = self.parse_url(rs.url)
                         self._logger.warn('{} - {}'.format(q['stid'][0],data['SUMMARY']['RESPONSE_MESSAGE']))
+                        
+                    
                         
         self._logger.info('Retrieved {} good responses form Mesowest'.format(count))
         
@@ -292,6 +294,10 @@ class Mesowest():
         
         # perform average on the dataframe
         df = utils.average_df(r, station_id)
+        
+        # quality control
+        if self.qc:
+            df = self.qc.run(df)
         
         return r, df
 

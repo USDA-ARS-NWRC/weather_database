@@ -1,5 +1,6 @@
 import logging
-import coloredlogs
+import pandas as pd
+import numpy as np
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -31,7 +32,7 @@ class QC():
         have changed by some value. (not implemented yet)
     
     `c` - consistency check failed
-        The row contains data that is not consistent with closby stations (not
+        The row contains data that is not consistent with closeby stations (not
         implemented yet)
         
     Args:
@@ -39,7 +40,7 @@ class QC():
         data: DataFrame with columns mataching the ranges keys
         
     Returns:
-        DataFrame with the data flagged
+        DataFrame with the data flagged in 'qc_flag' column
     
     """
     
@@ -73,11 +74,70 @@ class QC():
     table_from = 'tbl_level1'
     table_to = 'tbl_level_auto'
     
-    def __init__(self, config, data):
+    def __init__(self, config, db=None):
         self._logger = logging.getLogger(__name__)
         
+        # flag options, remove, cap, fill
+        if 'flag' in config:
+            if not any(config['flag'] in s for s in ['remove', 'cap', 'fill']):
+                raise Exception("quality control flag must be 'remove', 'cap', or 'fill')")
+        else:
+            config['flag'] = 'remove'
+        
         self.config = config
-        data
+        
+        # database placeholder, if 'write_to' given then write
+        # the dataframe to the desired table, if not just return
+        # the dataframe
+        self.db = db
+        
+    def run(self, data):
+        """
+        Perform the quality control measures
+        """
+        stid = data.station_id[0]
+        cols = data.columns
+        r = pd.DataFrame(index=data.index)
+        m = pd.DataFrame(index=data.index)
+        for key, val in self.ranges.items():
+            if key in cols:
+                # check for missing data
+                # the station_id and date_time column *should* always have something in them
+                m_idx = data[key].isnull()
+        
+                # check the range
+                r_idx = ~data[key].between(val['min'], val['max'])
+                
+                # value that is NaN is out of range so fix the flag
+                r_idx[m_idx] = False
+                
+                # deal with the data
+                if self.config['flag'] == 'remove':
+                    data.loc[r_idx, key] = np.nan
+                
+                m[key] = m_idx
+                r[key] = r_idx
+                
+        r_idx = r.any(axis=1)
+        m_idx = m.any(axis=1)
+        
+        flg = (r_idx | m_idx).sum()
+        if flg > 0:
+            self._logger.warn('Flagged {} rows for {}'.format(flg, stid))
+                
+        # add the flag column
+        data['qc_flag'] = None
+        
+        # add the flags
+        data.loc[m_idx, 'qc_flag'] = 'm'
+        data.loc[r_idx, 'qc_flag'] = data.loc[r_idx, 'qc_flag'] + 'r'
+        
+        if self.db:
+            # write out to the database
+            pass
+        
+        # return the flagged dataframe
+        return data
         
         
         
