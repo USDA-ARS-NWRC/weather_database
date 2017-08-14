@@ -33,6 +33,9 @@ CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_metadata` (
   `network` VARCHAR(45) NULL,
   `reported_lat` DECIMAL(15,11) NULL,
   `reported_long` DECIMAL(15,11) NULL,
+  `utm_x` DECIMAL(10,3) NULL,
+  `utm_y` DECIMAL(10,3) NULL,
+  `utm_zone` VARCHAR(15) NULL,
   PRIMARY KEY (`id`),
   INDEX `idx_primary_id` (`primary_id` ASC),
   UNIQUE INDEX `primary_id_UNIQUE` (`primary_id` ASC))
