@@ -5,6 +5,7 @@ Collection of utilities that are needed for more than one module
 import pandas as pd
 from datetime import datetime
 import pytz
+import utm
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -120,5 +121,22 @@ def average_df(r, stid):
     df['station_id'] = stid
     
     return df
+
+def df_utm(row):
+    """
+    Calculate the UTM coordinates for a dataframe row
+    
+    Args:
+        row: DataFrame row with 'latitude' and 'longitude'
+        
+        tuple with utm_x, utm_y, utm_zone
+    """
+    
+    try:
+        r = utm.from_latlon(float(row['latitude']), float(row['longitude']))
+        ret = r[0], r[1], str(r[2]) + r[3]
+    except Exception:
+        ret = (None, None, None)
+    return ret
     
     

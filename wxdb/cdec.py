@@ -205,6 +205,9 @@ class CDEC():
         # down the road due to location errors
         DF['reported_lat'] = DF['latitude']
         DF['reported_long'] = DF['longitude']
+        
+        # calculate the UTM coordinates
+        DF['utm_x'], DF['utm_y'], DF['utm_zone'] = zip(*DF.apply(utils.df_utm, axis=1))
          
         # add the source to the DF
         DF['source'] = 'cdec'

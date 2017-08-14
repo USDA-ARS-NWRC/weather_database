@@ -9,6 +9,7 @@ from datetime import datetime
 import pytz
 import grequests
 import json
+
 import utils
 
 import sys
@@ -117,6 +118,9 @@ class Mesowest():
         # down the road due to location errors
         DF['reported_lat'] = DF['latitude']
         DF['reported_long'] = DF['longitude']
+        
+        # calculate the UTM coordinates
+        DF['utm_x'], DF['utm_y'], DF['utm_zone'] = zip(*DF.apply(utils.df_utm, axis=1))
         
         # add the source to the DF
         DF['source'] = 'mesowest'
