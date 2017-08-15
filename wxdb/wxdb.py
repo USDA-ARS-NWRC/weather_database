@@ -124,7 +124,7 @@ class Weather():
             pass
         else:
             self.perform_qc = False
-            self.config['quality_control'] = False
+#             self.config['quality_control'] = False
             
      
     def get_metadata(self):
@@ -146,7 +146,10 @@ class Weather():
         get everything needed
         """
         
-        qc = QC(self.config['quality_control'])
+        if self.perform_qc:
+            qc = QC(self.config['quality_control'])
+        else:
+            qc = False
         
         for s in self.config['data']['sources']:
             if s == 'mesowest':
