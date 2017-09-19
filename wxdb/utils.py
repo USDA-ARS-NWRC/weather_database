@@ -3,6 +3,7 @@ Collection of utilities that are needed for more than one module
 """
 
 import pandas as pd
+import numpy as np
 from datetime import datetime
 import pytz
 import utm
@@ -11,6 +12,10 @@ __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
 __email__ = "scott.havens@ars.usda.gov"
 __date__ = "2017-08-03"
+
+FREEZE = 273.16         # freezing temp K
+BOIL = 373.15           # boiling temperature K
+SEA_LEVEL = 1.013246e5  # sea level pressure
 
 def water_day(indate, timezone):
     """
@@ -138,5 +143,87 @@ def df_utm(row):
     except Exception:
         ret = (None, None, None)
     return ret
+
+def satw(tk):
+    """
+    Saturation vapor pressure of water. from IPW satw
+
+    Args:
+        tk: temperature in Kelvin
+
+    Returns:
+        saturated vapor pressure over water
+
+    20151027 Scott Havens
+    """
+
+    # remove bad values
+    tk[tk < 0] = np.nan
+
+    l10 = np.log(10.0)
+
+    btk = BOIL/tk
+    x = -7.90298*(btk - 1.0) + 5.02808*np.log(btk)/l10 - \
+        1.3816e-7*(np.power(10.0, 1.1344e1*(1.0 - tk/BOIL))-1.) + \
+        8.1328e-3*(np.power(10.0, -3.49149*(btk - 1.0)) - 1.0) + \
+        np.log(SEA_LEVEL)/l10
+
+    x = np.power(10.0, x)
+
+    return x
+
+
+def sati(tk):
+    """
+    saturation vapor pressure over ice. From IPW sati
+
+    Args:
+        tk: temperature in Kelvin
+
+    Returns:
+        saturated vapor pressure over ice
+
+    20151027 Scott Havens
+    """
+
+    # remove bad values
+    tk[tk < 0] = np.nan
+
+    # preallocate
+    x = np.empty(tk.shape)
+
+    # vapor above freezing
+    ind = tk > FREEZE
+    x[ind] = satw(tk[ind])
+
+    # vapor below freezing
+    l10 = np.log(10.0)
+    x[~ind] = 100.0 * np.power(10.0, -9.09718*((FREEZE/tk[~ind]) - 1.0) -
+                               3.56654*np.log(FREEZE/tk[~ind])/l10 +
+                               8.76793e-1*(1.0 - (tk[~ind]/FREEZE)) +
+                               np.log(6.1071)/l10)
+
+    return x
+   
+def rh2vp(ta, rh):
+    """
+    Calculate the vapor pressure from the air temperature and 
+    relative humidity
+    
+    Args:
+        ta: air temperature in Celcius
+        rh: relative humidity, preferabilty on the scale 0-1.0
+        
+    Returns:
+        vapor pressure in Pascals
+    """ 
+    
+    if np.max(rh) >= 1.0:
+        rh = rh / 100.0
+    
+    vp = sati(ta + FREEZE)
+    
+    return vp * rh
+    
     
     

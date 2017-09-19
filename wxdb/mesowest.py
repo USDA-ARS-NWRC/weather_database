@@ -296,6 +296,10 @@ class Mesowest():
         # add the station_id
         r['station_id'] = station_id
         
+        # perform some extra calculations for vapor pressure
+        if ('air_temp' in r.columns) & ('relative_humidity' in r.columns):
+            r['vapor_pressure'] = utils.rh2vp(r['air_temp'], r['relative_humidity']/100.0) 
+        
         # perform average on the dataframe
         df = utils.average_df(r, station_id)
         

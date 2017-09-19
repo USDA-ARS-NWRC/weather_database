@@ -374,6 +374,11 @@ class CDEC():
                 data[stid]['station_id'] = stid
                 data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
                 
+                # perform some extra calculations for vapor pressure
+                if ('air_temp' in data[stid].columns) & ('relative_humidity' in data[stid].columns):
+                    data[stid]['vapor_pressure'] = utils.rh2vp(data[stid]['air_temp'],
+                                                               data[stid]['relative_humidity']/100.0) 
+                
                 # average the dataframe
                 av[stid] = utils.average_df(data[stid], stid)
         
