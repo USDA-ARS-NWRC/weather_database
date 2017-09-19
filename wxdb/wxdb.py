@@ -147,7 +147,7 @@ class Weather():
         """
         
         if self.perform_qc:
-            qc = QC(self.config['quality_control'])
+            qc = QC(self.config['quality_control'], self.db)
         else:
             qc = False
         

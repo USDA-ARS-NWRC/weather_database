@@ -134,7 +134,10 @@ class QC():
         
         if self.db:
             # write out to the database
-            pass
+            self.db.insert_data(data, 
+                                loc='auto',
+                                description='Auto QC data for {}'.
+                                format(data.iloc[0].station_id))
         
         # return the flagged dataframe
         return data

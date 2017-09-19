@@ -161,7 +161,7 @@ class Mesowest():
                                             description='Mesowest data for {} averaged'.
                                             format(df.iloc[0].station_id))
                         count += 1
-                    except IndexError:
+                    except Exception:
                         # the data doest have anything in it
                         q = self.parse_url(rs.url)
                         self._logger.warn('{} - {}'.format(q['stid'][0],data['SUMMARY']['RESPONSE_MESSAGE']))

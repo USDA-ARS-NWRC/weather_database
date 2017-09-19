@@ -60,6 +60,10 @@ class Database():
         if 'avg_del' in k:
             self.avg_del_tables = config['avg_del'].split(',')
         
+        self.auto_tables = None
+        if 'auto' in k:
+            self.auto_tables = config['auto'].split(',')
+        
     def db_connect(self):
         """
         Connect to the database
@@ -98,6 +102,8 @@ class Database():
             table = self.data_tables
         elif loc == 'avg_del':
             table = self.avg_del_tables
+        elif loc == 'auto':
+            table = self.auto_tables
         else:
             raise ValueError('valid values for loc are "metadata", "data", "avg_del"')
                 
