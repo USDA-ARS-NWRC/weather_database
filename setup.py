@@ -17,7 +17,7 @@ test_requirements = [
 
 setup(
     name='wxdb',
-    version='0.1.0',
+    version='2.0.0',
     description="Weather database for meterological station measurements obtained from various sources",
     long_description=readme + '\n\n' + history,
     author="Scott Havens",
