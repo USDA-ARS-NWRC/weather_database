@@ -237,7 +237,7 @@ class CDEC():
         self._logger.info('Client for CDEC data collection: {}'.format(client))
          
         # query to get the mesowest stations for the given client
-        qry = "SELECT primary_id FROM tbl_stations_view WHERE source='cdec' AND client='{}'"
+        client_qry = "SELECT primary_id FROM tbl_stations_view WHERE source='cdec' AND client='{}'"
         cursor = self.db.cnx.cursor()
          
         # get the current local time
@@ -257,7 +257,7 @@ class CDEC():
         for cl in client:
             self._logger.info('Building URLs for client {}'.format(cl))
             
-            cursor.execute(qry.format(cl))
+            cursor.execute(client_qry.format(cl))
             stations = cursor.fetchall()
             stations = [s[0] for s in stations]
             

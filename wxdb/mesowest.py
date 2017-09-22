@@ -187,7 +187,7 @@ class Mesowest():
         self._logger.info('Client for Mesowest data collection: {}'.format(client))
         
         # query to get the mesowest stations for the given client
-        qry = "SELECT primary_id FROM tbl_stations_view WHERE source='mesowest' AND client='{}'"
+        client_qry = "SELECT primary_id FROM tbl_stations_view WHERE source='mesowest' AND client='{}'"
         cursor = self.db.cnx.cursor()
         
         # get the current local time
@@ -205,7 +205,7 @@ class Mesowest():
         for cl in client:
             self._logger.info('Retrieving current data for client {}'.format(cl))
             
-            cursor.execute(qry.format(cl))
+            cursor.execute(client_qry.format(cl))
             stations = cursor.fetchall()
             
             # go through each and get the data
