@@ -105,7 +105,7 @@ class Weather():
                 raise Exception('client must be specified in the [data] config section')
             
             if 'timezone' not in k:
-                self.config['data']['timezone'] = 'US/Mountain'
+                self.config['data']['timezone'] = 'UTC'
                 
             if 'start_time' not in k:
                 self.config['data']['start_time'] = None
