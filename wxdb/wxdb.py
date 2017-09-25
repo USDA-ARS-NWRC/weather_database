@@ -83,6 +83,7 @@ class Weather():
         title = self.title()
         for line in title:
             self._logger.info(line)
+        self._logger.info('wxdb started {}'.format(datetime.now()))
         
         # check to see if metadata or data are in the config file
         self.load_metadata = False
