@@ -69,7 +69,7 @@ class Weather():
         fmt = '%(levelname)s:%(name)s:%(message)s'
         if logfile is not None:
             logging.basicConfig(filename=logfile,
-                                filemode='w',
+                                filemode='a',
                                 level=numeric_level,
                                 format=fmt)
         else:
@@ -78,6 +78,11 @@ class Weather():
 
         self._loglevel = numeric_level
         self._logger = logging.getLogger(__name__)
+        
+        # add the title
+        title = self.title()
+        for line in title:
+            self._logger.info(line)
         
         # check to see if metadata or data are in the config file
         self.load_metadata = False
@@ -178,6 +183,33 @@ class Weather():
                     
         self._logger.info('Elapsed time: {}'.format(datetime.now() - startTime))
         self._logger.info('Done')    
+        
+    def title(self):                                                                            
+        return ['                                                                        dddddddd bbbbbbbb',       
+        '                                                                        d::::::d b::::::b ',   
+        '                                                                        d::::::d b::::::b  ',          
+        '                                                                        d::::::d b::::::b   ',         
+        '                                                                        d:::::d   b:::::b    ',        
+        'wwwwwww           wwwww           wwwwwww xxxxxxx      xxxxxxx  ddddddddd:::::d   b:::::bbbbbbbbb',    
+        ' w:::::w         w:::::w         w:::::w  x:::::x    x:::::x dd::::::::::::::d   b::::::::::::::bb',  
+        '  w:::::w       w:::::::w       w:::::w    x:::::x  x:::::x d::::::::::::::::d   b::::::::::::::::b', 
+        '   w:::::w     w:::::::::w     w:::::w      x:::::xx:::::x d:::::::ddddd:::::d   b:::::bbbbb:::::::b',
+        '    w:::::w   w:::::w:::::w   w:::::w        x::::::::::x  d::::::d    d:::::d   b:::::b    b::::::b',
+        '     w:::::w w:::::w w:::::w w:::::w          x::::::::x   d:::::d     d:::::d   b:::::b     b:::::b',
+        '      w:::::w:::::w   w:::::w:::::w           x::::::::x   d:::::d     d:::::d   b:::::b     b:::::b',
+        '       w:::::::::w     w:::::::::w           x::::::::::x  d:::::d     d:::::d   b:::::b     b:::::b',
+        '        w:::::::w       w:::::::w           x:::::xx:::::x d::::::ddddd::::::dd  b:::::bbbbbb::::::b',
+        '         w:::::w         w:::::w           x:::::x  x:::::x d:::::::::::::::::d  b::::::::::::::::b ',
+        '          w:::w           w:::w           x:::::x    x:::::x d:::::::::ddd::::d  b:::::::::::::::b  ',
+        '           www             www           xxxxxxx      xxxxxxx ddddddddd   ddddd  bbbbbbbbbbbbbbbb   ']
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                                                                                                  
+
     
 class MyParser(ConfigParser):
     def as_dict(self):
