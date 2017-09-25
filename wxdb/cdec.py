@@ -362,25 +362,31 @@ class CDEC():
         av = {}
         for stid in stations:
             if len(data[stid]) > 0:
+                self._logger.debug('Parsing data from {}'.format(stid))
                 data[stid] = pd.concat(data[stid], axis=1)
                 data[stid].dropna(axis=0, how='all', inplace=True)
                 
-                # convert the units
-                data[stid] = utils.convert_units(data[stid], self.units)
-                
-                # truncate and add fields
-                data[stid] = data[stid].truncate(data[stid].first_valid_index().ceil('H'),
-                                                 data[stid].last_valid_index().floor('H'))
-                data[stid]['station_id'] = stid
-                data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
-                
-                # perform some extra calculations for vapor pressure
-                if ('air_temp' in data[stid].columns) & ('relative_humidity' in data[stid].columns):
-                    data[stid]['vapor_pressure'] = utils.rh2vp(data[stid]['air_temp'],
-                                                               data[stid]['relative_humidity']/100.0) 
-                
-                # average the dataframe
-                av[stid] = utils.average_df(data[stid], stid)
+                if len(data[stid]) > 0:
+                    # convert the units
+                    data[stid] = utils.convert_units(data[stid], self.units)
+                    
+                    # truncate and add fields
+                    data[stid] = data[stid].truncate(data[stid].first_valid_index().ceil('H'),
+                                                     data[stid].last_valid_index().floor('H'))
+                    data[stid]['station_id'] = stid
+                    data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
+                    
+                    # perform some extra calculations for vapor pressure
+                    if ('air_temp' in data[stid].columns) & ('relative_humidity' in data[stid].columns):
+                        data[stid]['vapor_pressure'] = utils.rh2vp(data[stid]['air_temp'],
+                                                                   data[stid]['relative_humidity']/100.0) 
+                    
+                    # average the dataframe
+                    av[stid] = utils.average_df(data[stid], stid)
+                    
+                else:
+                    data[stid] = None
+                    av[stid] = None
         
             else:
                 data[stid] = None
