@@ -254,6 +254,7 @@ class CDEC():
             startTime = startTime.tz_convert(self.timezone)
         
         # go through each client and get the stations
+        req = []
         for cl in client:
             self._logger.info('Building URLs for client {}'.format(cl))
             
@@ -262,7 +263,6 @@ class CDEC():
             stations = [s[0] for s in stations]
             
             # go through each and get the data
-            req = []
             for stid in stations:
                         
                 if self.config['start_time'] is None:        
