@@ -6,6 +6,7 @@ import logging
 import coloredlogs
 from datetime import datetime
 import traceback
+import pandas as pd
 
 try:
     from configparser import ConfigParser
@@ -144,6 +145,9 @@ class Weather():
             elif s == 'cdec':
                 CDEC(self.db).metadata()
                 
+        # update the station from tbl_station_update
+        self.update_stations()
+                
     def get_data(self):
         """
         Get the current data from the sources
@@ -162,6 +166,32 @@ class Weather():
                 Mesowest(self.db, self.config['data'], qc).data()
             elif s == 'cdec':
                 CDEC(self.db, self.config['data'], qc).data()
+                
+    def update_stations(self):
+        """
+        Update the station metadata from the table tbl_station_update. This
+        table contains corrected metadata mainly for station coordinates.
+        Perform a join of the two tables by updating the fields provided
+        in tbl_station_update
+        """
+        
+        self.db.db_connect()
+        cursor = self.db.cnx.cursor()
+        
+        qry = "SELECT * FROM tbl_station_update"
+        
+        cursor.execute(qry)
+        su = cursor.fetchall()
+        self.db.db_close()
+        
+        # convert to a dataframe
+        df = pd.DataFrame(su, columns=['id', 'primary_id', 'station_name',
+                                       'latitude','longitude', 'elevation',
+                                       'utm_x', 'utm_y', 'utm_zone'])
+        del df['id']
+        
+        self.db.update_data(df, 'metadata', where='primary_id', description='updating station metadata')
+        
         
     def run(self):
         """

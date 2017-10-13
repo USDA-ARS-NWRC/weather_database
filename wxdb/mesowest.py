@@ -114,6 +114,9 @@ class Mesowest():
         for n in self.network_conversion:
             DF[self.network_conversion[n]] = mdf[n]
         
+        # elevation is reported in feet, convet to meters
+        DF['elevation'] = DF['elevation'].astype(float) / 3.28084
+        
         # these are the reported lat/long's for the station that may get changed
         # down the road due to location errors
         DF['reported_lat'] = DF['latitude']

@@ -269,6 +269,26 @@ CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_level_auto` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `weather_db`.`tbl_station_update`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `weather_db`.`tbl_station_update` ;
+
+CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_station_update` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `primary_id` VARCHAR(10) NOT NULL,
+  `station_name` VARCHAR(256) NULL,
+  `latitude` DECIMAL(15,11) NULL,
+  `longitude` DECIMAL(15,11) NULL,
+  `elevation` DECIMAL(10,3) NULL,
+  `utm_x` DECIMAL(10,3) NULL,
+  `utm_y` DECIMAL(10,3) NULL,
+  `utm_zone` VARCHAR(15) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `primary_id_UNIQUE` (`primary_id` ASC))
+ENGINE = InnoDB;
+
 USE `weather_db` ;
 
 -- -----------------------------------------------------

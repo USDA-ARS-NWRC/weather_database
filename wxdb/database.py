@@ -96,16 +96,7 @@ class Database():
         Insert data into the database for the given table and dataframe
         """
         
-        if loc == 'metadata':
-            table = self.metadata_tables
-        elif loc == 'data':
-            table = self.data_tables
-        elif loc == 'avg_del':
-            table = self.avg_del_tables
-        elif loc == 'auto':
-            table = self.auto_tables
-        else:
-            raise ValueError('valid values for loc are "metadata", "data", "avg_del"')
+        table = self.get_table(loc)
                 
         self.db_connect()
         
@@ -135,6 +126,72 @@ class Database():
                     self._logger.error(err)
                     
         self.db_close()
+        
+    def update_data(self, df, loc, where, description=''):
+        """
+        Update data into the database for the given table and dataframe
+        """
+        
+        table = self.get_table(loc)
+                
+        self.db_connect()
+        
+        for tbl in table:
+            self._logger.info('Adding/updating {} ({} values) to the database table {}'.format(
+                description, len(df), tbl))
+            
+            try:
+                # replace Null with None
+                df = df.where((pd.notnull(df)), None)
+            
+                # create a bulk insert for the data        
+#                 wildcards = ','.join(['%s'] * len(df.columns))
+#                 colnames = ','.join(df.columns)
+
+                for i,row in df.iterrows():
+                    
+                    row.dropna(inplace=True)
+                    w = row[where]
+                    del row[where]
+                    
+                    update = ','.join(['{}=%s'.format(c) for c in row.index])
+                    update_sql = 'UPDATE {0} SET {1} WHERE {2}="{3}"'.format(tbl, update, where, w)
+                
+                    data = [rw for rw in row.values]
+                    cur = self.cnx.cursor()
+                    
+                    cur.execute(update_sql, data)
+                    self.cnx.commit()
+                    
+            except mysql.connector.Error as err:
+                    self._logger.error(err)
+                    
+        self.db_close()
+        
+    def get_table(self, loc):
+        """
+        Determine the tables to insert into based on loc
+        
+        Args:
+            loc: string location, valid values are 
+                ['metadata', 'data', 'avg_del', 'auto']
+                
+        Returns
+            tables for the cooresponding loc
+        """
+        
+        if loc == 'metadata':
+            table = self.metadata_tables
+        elif loc == 'data':
+            table = self.data_tables
+        elif loc == 'avg_del':
+            table = self.avg_del_tables
+        elif loc == 'auto':
+            table = self.auto_tables
+        else:
+            raise ValueError('valid values for loc are "metadata", "data", "avg_del", "auto"')
+        
+        return table
  
 class NumpyMySQLConverter(mysql.connector.conversion.MySQLConverter):
     """ A mysql.connector Converter that handles Numpy types """
