@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `weather_db`.`tbl_metadata` (
   `utm_zone` VARCHAR(15) NULL,
   PRIMARY KEY (`id`),
   INDEX `idx_primary_id` (`primary_id` ASC),
-  UNIQUE INDEX `primary_id_UNIQUE` (`primary_id` ASC))
+  UNIQUE INDEX `primary_id_UNIQUE` (`primary_id` ASC, `source` ASC))
 ENGINE = InnoDB
 PACK_KEYS = Default
 ROW_FORMAT = Default;
