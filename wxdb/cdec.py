@@ -255,15 +255,17 @@ class CDEC():
         
         # go through each client and get the stations
         req = []
+        stations = []
         for cl in client:
             self._logger.info('Building URLs for client {}'.format(cl))
             
             cursor.execute(client_qry.format(cl))
-            stations = cursor.fetchall()
-            stations = [s[0] for s in stations]
+            sta = cursor.fetchall()
+            sta = [s[0] for s in sta]
+            stations = stations + sta
             
             # go through each and get the data
-            for stid in stations:
+            for stid in sta:
                         
                 if self.config['start_time'] is None:        
                     # determine the last value for the station
@@ -354,7 +356,7 @@ class CDEC():
                         self._logger.debug('Got data for {} - {}'.format(stid, sens_name))
                         count += 1
                     except Exception:
-                        self._logger.warn('Error parsing data for {} - {}'.format(stid, sens_name))
+                        self._logger.warn('Error parsing data for {} - {} ({})'.format(stid, sens_name, rs.url))
                         pass
                     
         self._logger.info('Retrieved {} good responses form CDEC'.format(count))
