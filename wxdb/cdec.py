@@ -354,6 +354,7 @@ class CDEC():
                         self._logger.debug('Got data for {} - {}'.format(stid, sens_name))
                         count += 1
                     except Exception:
+                        self._logger.warn('Error parsing data for {} - {}'.format(stid, sens_name))
                         pass
                     
         self._logger.info('Retrieved {} good responses form CDEC'.format(count))
