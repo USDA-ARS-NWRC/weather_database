@@ -32,7 +32,7 @@ declare v_counter int unsigned default 0;
 		wxdb_import.tbl_raw_data
 	WHERE
 		station_id in (select distinct t2.primary_id from weather_db.tbl_stations t1 join weather_db.tbl_metadata t2 ON t1.metadata_id = t2.id)
-	limit v_counter,100000
+	limit v_counter,1000000
 	ON DUPLICATE KEY UPDATE
 		station_id=values(station_id),
 		date_time=values(date_time),
@@ -52,7 +52,7 @@ declare v_counter int unsigned default 0;
 		cloud_factor=values(cloud_factor);
 	commit;
     	SELECT ROW_COUNT();
-    	set v_counter=v_counter+100000;
+    	set v_counter=v_counter+1000000;
   end while;
 
     
