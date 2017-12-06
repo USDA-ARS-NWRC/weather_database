@@ -19,7 +19,7 @@ It is preferable to use a Python [virtual environment](https://virtualenv.pypa.i
 
 1. Create a virtualenv and activate it.
 
-    ````
+    ```
     virtualenv wxdbenv
     source wxdbenv/bin/activate
     ```
