@@ -1,71 +1,54 @@
-README.txt
-WxDataDownload
+# Weather Database
 
-20151210 Scott Havens
+[![GitHub version](https://badge.fury.io/gh/USDA-ARS-NWRC%2FWeatherDatabase.svg)](https://badge.fury.io/gh/USDA-ARS-NWRC%2FWeatherDatabase)
 
-- The 2nd version of the API which will hopefully clean up some of the tables in the database as not all 100 variables are needed.  This will make it fasters and more manageable.
-- Added CDEC data to the mix
+The Weather Database project creates a MySQL database to ingest and manage weather station data from multiple sources. Included in
+the repository are the schema model and everything needed to generate a weather station database. The `wxdb` package is able
+to interact with the database and grab metadata and station data from multiple sources. Currently, the sources supported are:
 
-Create the database weather_v2
+* [California Data Exchange Center (CDEC)](https://cdec.water.ca.gov/)
+* [Mesowest API](https://synopticlabs.org/api/) 
+
+Through the configuration file, `wxdb`can be setup to automatically download all desired stations for a given client and source.
+
 
 ## Installation
 
-### 1. Install ulmo 
-- from git@gitlab.com:ars-snow/ulmo.git
-- sudo python setup.py install
-    - This should install all the necessary discrepancies
-    - sudo pip install html5lib
+
+It is preferable to use a Python [virtual environment](https://virtualenv.pypa.io) to reduce the possibility of a dependency issue.
+
+1. Create a virtualenv and activate it.
+
+    ```
+    virtualenv wxdbenv
+    source wxdbenv/bin/activate
+    ```
+
+**Tip:** The developers recommend using an alias to quickly turn on
+and off your virtual environment.
 
 
-### 2. Create database connection 
-Create:
-* database_connect.php
-* database_connect.py
-* db_connect.sh
+2. Clone WeatherDatabase source code from the USDA-ARS-NWRC github.
 
-Look at the examples for clues
+    ```
+    git clone https://github.com/USDA-ARS-NWRC/WeatherDatabase.git
+    ```
+    
+3. Change directories into the `WeatherDatabase` directory. Install the python requirements.
+   After the requirements are done, install `WeatherDatabase`.
 
+    ```
+    cd WeatherDatabase
+    pip install -r requirements.txt
+    python setup.py install
+    ```
 
-## Station metadata
+To install in developer mode `pip install -e .`
 
-1. tbl_metadata - create a metadata table to store station infromation, query/CreateMetadataTable.sql
-2. Add station data to tbl_metadata, ‘sh metadata.sh’
-2.1 This calls ‘Meoswest/query/LoadMetadata.sql’
-2.2 Calls ‘CDEC/updateMetadata.py’
-3. Gets the variables available at each station
-
-
-## Create the data tables 
-
-- tbl_raw_data - stores the raw data as obtained by Mesowest
-- tbl_level1 - automatic QC that occurs when data is downloaded
-- tbl_level2 - user correct data, extra column date_fixed,user to show the last user/time when a data point was updated
+## Docker
 
 
-## Create the stations table
-
-tbl_stations - Track what stations should be downloaded and to where they belong
-
-source database/CreateStationTable.sql
-
-
-## Load stored procedures into MySQL
-Procedure to remove duplicates and average over the hour
-
-1. open MySQL
-2. source Mesowest/query/AverageDelete.sql
-
-
-## download.sh
-
-1. Download data from CDEC, load into tbl_raw_data & tbl_level1
-2. Get data from Mesowest, load into tbl_raw_data & tbl_level1
-3. Average and remove duplicates from tbl_level1
-
-## Add index to tables
-For faster lookup and queries, add index in database/AddIndex.sql
-
-
-
-
+To make management easier, the authors recommend using [Docker](https://docker.com) which aides in the management, deployment,
+and automation of downloads to the database. The official Docker image is found at the 
+[docker_weather_database](https://github.com/USDA-ARS-NWRC/docker_weather_database).
 
