@@ -15,16 +15,14 @@ Through the configuration file, `wxdb`can be setup to automatically download all
 ## Installation
 
 
-It is preferable to use a Python`virtual environment`_  to reduce the possibility of a dependency issue.
-
-.. _virtual environment: https://virtualenv.pypa.io
+It is preferable to use a Python [virtual environment](https://virtualenv.pypa.io) to reduce the possibility of a dependency issue.
 
 1. Create a virtualenv and activate it.
 
-  .. code:: bash
-
+    ````
     virtualenv wxdbenv
     source wxdbenv/bin/activate
+    ```
 
 **Tip:** The developers recommend using an alias to quickly turn on
 and off your virtual environment.
@@ -32,25 +30,25 @@ and off your virtual environment.
 
 2. Clone WeatherDatabase source code from the USDA-ARS-NWRC github.
 
-  .. code:: bash
-
+    ```
     git clone https://github.com/USDA-ARS-NWRC/WeatherDatabase.git
-
+    ```
+    
 3. Change directories into the `WeatherDatabase` directory. Install the python requirements.
    After the requirements are done, install `WeatherDatabase`.
 
-  .. code:: bash
-
+    ```
     cd WeatherDatabase
     pip install -r requirements.txt
     python setup.py install
+    ```
 
 To install in developer mode `pip install -e .`
 
 ## Docker
 
 
-To make management easier, the authors recommend using `Docker <https://docker.com>`_ which aides in the management, deployment,
+To make management easier, the authors recommend using [Docker](https://docker.com) which aides in the management, deployment,
 and automation of downloads to the database. The official Docker image is found at the 
-`docker_weather_database <https://github.com/USDA-ARS-NWRC/docker_weather_database>`.
+[docker_weather_database](https://github.com/USDA-ARS-NWRC/docker_weather_database).
 
