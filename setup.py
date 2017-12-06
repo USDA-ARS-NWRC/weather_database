@@ -22,10 +22,10 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Scott Havens",
     author_email='scott.havens@ars.usda.gov',
-    url='https://gitlab.com/ars-snow/weather_database',
+    url='https://github.com/USDA-ARS-NWRC/WeatherDatabase',
     packages=find_packages(include=['wxdb']),
     include_package_data=True,
-    license="MIT license",
+    license="GPL-3.0",
     zip_safe=False,
     keywords='wxdb',
     classifiers=[
