@@ -1,6 +1,4 @@
-================
-Weather Database
-================
+# Weather Database
 
 [![GitHub version](https://badge.fury.io/gh/USDA-ARS-NWRC%2FWeatherDatabase.svg)](https://badge.fury.io/gh/USDA-ARS-NWRC%2FWeatherDatabase)
 
@@ -8,14 +6,14 @@ The Weather Database project creates a MySQL database to ingest and manage weath
 the repository are the schema model and everything needed to generate a weather station database. The `wxdb` package is able
 to interact with the database and grab metadata and station data from multiple sources. Currently, the sources supported are:
 
-* `California Data Exchange Center (CDEC)<https://cdec.water.ca.gov/>`
-* `Mesowest API<https://synopticlabs.org/api/>` 
+* [California Data Exchange Center (CDEC)](https://cdec.water.ca.gov/)
+* [Mesowest API](https://synopticlabs.org/api/) 
 
 Through the configuration file, `wxdb`can be setup to automatically download all desired stations for a given client and source.
 
 
-Installation
-------------
+## Installation
+
 
 It is preferable to use a Python`virtual environment`_  to reduce the possibility of a dependency issue.
 
@@ -49,8 +47,8 @@ and off your virtual environment.
 
 To install in developer mode `pip install -e .`
 
-Docker
-------
+## Docker
+
 
 To make management easier, the authors recommend using `Docker <https://docker.com>`_ which aides in the management, deployment,
 and automation of downloads to the database. The official Docker image is found at the 
