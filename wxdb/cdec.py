@@ -58,7 +58,7 @@ class CDEC():
     
     data_csv_url = 'http://cdec.water.ca.gov/cgi-progs/queryCSV'
     
-    timezone = 'Etc/GMT-8' # timezone that the data is retrieved in
+    timezone = 'Etc/GMT+8' # timezone that the data is retrieved in
     
     # sensor mapping 'LONG NAME' : {sensor number, database column}
     sensor_metadata = {
@@ -350,7 +350,7 @@ class CDEC():
                         df = pd.read_csv(StringIO(rs.text), skiprows=2, header=None, parse_dates=[[0,1]], index_col=None, na_values='m')
                         df.columns = ['date_time', sens_name]
                         df.set_index('date_time', inplace=True)
-                        
+                                                
                         if sens_name is not None:
                             data[stid].append(df)
 
@@ -373,6 +373,10 @@ class CDEC():
                     data[stid].dropna(axis=0, how='all', inplace=True)
                     
                     if len(data[stid]) > 0:
+                        
+                        # convert timezone
+                        data[stid] = data[stid].tz_localize(self.timezone).tz_convert('UTC')
+                        
                         # convert the units
                         data[stid] = utils.convert_units(data[stid], self.units)
                         
