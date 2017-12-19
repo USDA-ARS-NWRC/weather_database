@@ -58,10 +58,10 @@ def get_end_time(timezone, end_time=None, to_timezone='UTC'):
     
     mnt = pytz.timezone(timezone)
     if end_time is None:
-        endTime = pd.Timestamp('now')
+        endTime = pd.Timestamp.now('UTC')
     else:
         endTime = pd.to_datetime(end_time)
-    endTime = mnt.localize(endTime)
+        endTime = mnt.localize(endTime)
     return endTime.tz_convert(to_timezone)
 
 

@@ -53,12 +53,12 @@ class Database():
             self.metadata_tables = config['metadata'].split(',')
         
         self.data_table = None
-        if 'data' in k:
-            self.data_tables = config['data'].split(',')
+        if 'level0' in k:
+            self.data_tables = config['level0'].split(',')
             
         self.avg_del_tables = None
-        if 'avg_del' in k:
-            self.avg_del_tables = config['avg_del'].split(',')
+        if 'level1' in k:
+            self.avg_del_tables = config['level1'].split(',')
         
         self.auto_tables = None
         if 'auto' in k:
@@ -182,9 +182,9 @@ class Database():
         
         if loc == 'metadata':
             table = self.metadata_tables
-        elif loc == 'data':
+        elif loc == 'level0':
             table = self.data_tables
-        elif loc == 'avg_del':
+        elif loc == 'level1':
             table = self.avg_del_tables
         elif loc == 'auto':
             table = self.auto_tables

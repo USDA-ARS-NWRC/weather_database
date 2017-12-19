@@ -156,11 +156,11 @@ class Mesowest():
                         data = json.loads(rs.text)
                         df, av = self.meso2df(data)
                         self.db.insert_data(df, 
-                                            loc='data',
+                                            loc='level0',
                                             description='Mesowest data for {}'.
                                             format(df.iloc[0].station_id))
                         self.db.insert_data(av, 
-                                            loc='avg_del',
+                                            loc='level1',
                                             description='Mesowest data for {} averaged'.
                                             format(df.iloc[0].station_id))
                         count += 1
