@@ -67,15 +67,16 @@ class Weather():
         if not isinstance(numeric_level, int):
             raise ValueError('Invalid log level: %s' % loglevel)
 
-        fmt = '%(levelname)s:%(name)s:%(message)s'
+        fmt = '%(asctime)s::%(levelname)s:%(name)s:%(message)s'
         if logfile is not None:
             logging.basicConfig(filename=logfile,
                                 filemode='a',
+                                datefmt='%Y-%m-%d %H:%M:%S',
                                 level=numeric_level,
                                 format=fmt)
         else:
             logging.basicConfig(level=numeric_level)
-            coloredlogs.install(level=numeric_level, fmt=fmt)
+            coloredlogs.install(level=numeric_level, fmt=fmt, datefmt='%Y-%m-%d %H:%M:%S')
 
         self._loglevel = numeric_level
         self._logger = logging.getLogger(__name__)
