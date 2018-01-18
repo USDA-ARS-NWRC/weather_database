@@ -305,7 +305,7 @@ class CDEC():
             
         # send the requests to CDEC
         self._logger.info('Sending {} requests to CDEC'.format(len(req)))
-        res = grequests.map(req)
+        res = grequests.map(req, size=50)
         
         # parse the responses
         data, av = self.cdec2df(res, stations) 
