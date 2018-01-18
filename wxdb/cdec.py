@@ -311,9 +311,11 @@ class CDEC():
         data, av = self.cdec2df(res, stations) 
 
         # insert into the database
-        for stid in stations:
+        for stid in list(data.keys()):
             if data[stid] is not None:
                 self.db.insert_data(data[stid], 'level0', description='CDEC data for {}'.format(stid))
+                
+        for stid in list(av.keys()):
             if av[stid] is not None:
                 self.db.insert_data(av[stid], 'level1', description='CDEC data for {} averaged'.format(stid))
                 # quality control
@@ -334,8 +336,8 @@ class CDEC():
         """
         
         data = {}
-        for stid in stations:
-            data[stid] = []
+#         for stid in stations:
+#             data[stid] = []
         
         count = 0
         for rs in res:
@@ -345,6 +347,9 @@ class CDEC():
                         
                         # determine the station and sensor from the url
                         stid, sens_name = self.parse_url(rs.url)
+                        
+                        if stid not in data.keys():
+                            data[stid] = [];
                         
                         # read in the response
                         df = pd.read_csv(StringIO(rs.text), skiprows=2, header=None, parse_dates=[[0,1]], index_col=None, na_values='m')
@@ -364,43 +369,42 @@ class CDEC():
                     
         # merge the data frames together and get ready for the database
         av = {}
-        for stid in stations:
-            if stid in data.keys():
-                if len(data[stid]) > 0:
-                    self._logger.debug('Parsing data from {}'.format(stid))
+        for stid in data.keys():
+            if len(data[stid]) > 0:
+                self._logger.debug('Parsing data from {}'.format(stid))
+                
+                try:
+                    data[stid] = pd.concat(data[stid], axis=1)
+                    data[stid].dropna(axis=0, how='all', inplace=True)
                     
-                    try:
-                        data[stid] = pd.concat(data[stid], axis=1)
-                        data[stid].dropna(axis=0, how='all', inplace=True)
+                    if len(data[stid]) > 0:
                         
-                        if len(data[stid]) > 0:
-                            
-                            # convert timezone
-                            data[stid] = data[stid].tz_localize(self.timezone).tz_convert('UTC')
-                            
-                            # convert the units
-                            data[stid] = utils.convert_units(data[stid], self.units)
-                            
-                            # truncate and add fields
-                            data[stid] = data[stid].truncate(data[stid].first_valid_index().ceil('H'),
-                                                             data[stid].last_valid_index().floor('H'))
-                            data[stid]['station_id'] = stid
-                            data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
-                            
-                            # perform some extra calculations for vapor pressure
-                            if ('air_temp' in data[stid].columns) & ('relative_humidity' in data[stid].columns):
-                                data[stid]['vapor_pressure'] = utils.rh2vp(data[stid]['air_temp'],
-                                                                           data[stid]['relative_humidity']/100.0) 
-                            
-                            # average the dataframe
-                            av[stid] = utils.average_df(data[stid], stid)
-                            
-                        else:
-                            data[stid] = None
-                            av[stid] = None
-                    
-                    except Exception:
-                        self._logger.warn('Could not merge and convert units for {}'.format(stid))
+                        # convert timezone
+                        data[stid] = data[stid].tz_localize(self.timezone).tz_convert('UTC')
+                        
+                        # convert the units
+                        data[stid] = utils.convert_units(data[stid], self.units)
+                        
+                        # truncate and add fields
+                        data[stid] = data[stid].truncate(data[stid].first_valid_index().ceil('H'),
+                                                         data[stid].last_valid_index().floor('H'))
+                        data[stid]['station_id'] = stid
+                        data[stid]['date_time'] = data[stid].index.strftime('%Y-%m-%d %H:%M')
+                        
+                        # perform some extra calculations for vapor pressure
+                        if ('air_temp' in data[stid].columns) & ('relative_humidity' in data[stid].columns):
+                            data[stid]['vapor_pressure'] = utils.rh2vp(data[stid]['air_temp'],
+                                                                       data[stid]['relative_humidity']/100.0) 
+                        
+                        # average the dataframe
+                        av[stid] = utils.average_df(data[stid], stid)
+                        
+#                         else:
+#                             data[stid] = None
+#                             av[stid] = None
+                
+                except Exception:
+                    self._logger.warn('Could not merge and convert units for {}'.format(stid))
         
             else:
                 data[stid] = None

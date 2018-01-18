@@ -122,7 +122,7 @@ class Database():
                     cur.executemany(insert_sql, d)
                     self.cnx.commit()
                 
-            except mysql.connector.Error as err:
+            except Exception as err:
                     self._logger.error(err)
                     
         self.db_close()
