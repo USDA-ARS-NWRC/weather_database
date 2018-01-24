@@ -80,7 +80,7 @@ class QC():
         # flag options, remove, cap, fill
         if 'flag' in config:
             if not any(config['flag'] in s for s in ['remove', 'cap', 'fill']):
-                raise Exception("quality control flag must be 'remove', 'cap', or 'fill')")
+                raise Exception("quality control flag must be 'remove', 'cap', 'fill')")
         else:
             config['flag'] = 'remove'
         
@@ -93,8 +93,9 @@ class QC():
         
     def run(self, data):
         """
-        Perform the quality control measures
+        Simple quality control measures to check out of range and removal
         """
+        
         stid = data.station_id[0]
         cols = data.columns
         r = pd.DataFrame(index=data.index)

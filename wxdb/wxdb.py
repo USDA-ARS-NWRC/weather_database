@@ -17,6 +17,7 @@ from database import Database
 from mesowest import Mesowest
 from cdec import CDEC
 from quality_control import QC
+from acid.acid import ACID
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -122,17 +123,24 @@ class Weather():
                 self.config['data']['end_time'] = None
             
             
-        if (not self.load_metadata) & (not self.load_data):
-            raise Exception('[metadata] or [data] are not specified in the config file')
+#         if (not self.load_metadata) & (not self.load_data):
+#             raise Exception('[metadata] or [data] are not specified in the config file')
         
         # quality control data
         if 'quality_control' in self.config.keys():
             # parse the options
             self.perform_qc = True
-            pass
         else:
             self.perform_qc = False
 #             self.config['quality_control'] = False
+    
+        # automated cleaning of input data
+        if 'acid' in self.config.keys():
+            # can't do qc and acid at the same time
+            self.perform_acid = True
+            self.perform_qc = False
+        else:
+            self.perform_acid = False
             
      
     def get_metadata(self):
@@ -167,6 +175,16 @@ class Weather():
                 Mesowest(self.db, self.config['data'], qc).data()
             elif s == 'cdec':
                 CDEC(self.db, self.config['data'], qc).data()
+                
+    def qc_data(self):
+        """
+        The Automatic Cleaning of Input Data (ACID) requires longer timeseries
+        of data than is typical for the interval that the data is retireved. So
+        ACID must be performed after the data is loaded into level1 data then
+        pulled back out
+        """
+        
+        ACID(self.config, self.db).run()      
                 
     def update_stations(self):
         """
@@ -209,6 +227,9 @@ class Weather():
             
         if self.load_data:
             self.get_data()
+            
+        if self.perform_acid:
+            self.qc_data()
             
 #         if self.perform_qc:
 #             QC(self.config['quality_control']).run()

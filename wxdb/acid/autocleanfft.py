@@ -4,15 +4,15 @@ import pandas as pd
 from scipy import signal
 import scipy.signal as signal
 import scipy
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 import copy
 from scipy.fftpack import fft
-import seaborn as sns
-import numpy as np
-import copy
+# import seaborn as sns
+# import numpy as np
+# import copy
 
 
-def autocleanfft(raw,ninterp,scutoff,fcutoff,window,nfdays):
+def AutoCleanFFT(raw,ninterp,scutoff,fcutoff,window,nfdays):
     """
     Args:
         raw:     DataFrame of raw data 
@@ -61,10 +61,10 @@ def autocleanfft(raw,ninterp,scutoff,fcutoff,window,nfdays):
         k       = np.arange(n)
         T       = n/Fs
         frq     = k/T               # two sides frequency range
-        frq     = frq[range(n/2)]   # one side frequency range
+        frq     = frq[range(int(n/2))]   # one side frequency range
         y       = copy.copy(temp)
         Y       = fft(y)/n
-        Y       = Y[range(n/2)]
+        Y       = Y[range(int(n/2))]
         
         # Apply a low-pass filter
         B, A    = signal.butter(nf, fcutoff, output='ba')
