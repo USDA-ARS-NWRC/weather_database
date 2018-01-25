@@ -1,8 +1,9 @@
 import logging
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from copy import copy
+from datetime import datetime
 import pytz
 import utils
 from acid_core.autocleanfft import AutoCleanFFT
@@ -114,6 +115,12 @@ class ACID():
         
         # go through each station
         for stid in stations:
+            
+            if self.config['start_time'] is None:        
+                startTime = self.start_time_from_database(stid, endTime)
+                start_time_org = copy(startTime)
+                startTime = startTime - pd.Timedelta(days=self.prepend)
+            
             df = self.db.retrieve_station_data(stid, startTime, endTime)
             
             if not df.empty:
@@ -152,6 +159,29 @@ class ACID():
                     self._logger.warn(e)
         
         self.db.db_close()
+        
+    def start_time_from_database(self, stid, endTime):
+        """
+        Get the start time from the database
+        """
+        cursor = self.db.cnx.cursor()
+        
+        # determine the last value for the station
+        qry = "SELECT max(date_time) + INTERVAL 1 MINUTE AS d FROM tbl_level_auto WHERE station_id='{}'".format(stid)
+        cursor.execute(qry)
+        startTime = cursor.fetchone()[0]                 
+    
+        if startTime is not None:
+            startTime = pd.to_datetime(startTime, utc=True)
+        else:             
+            # start of the water year, do a local time then convert to UTC       
+            wy = utils.water_day(endTime, self.config['timezone'])
+            startTime = pd.to_datetime(datetime(wy-1, 10, 1), utc=False)
+            mnt = pytz.timezone(self.config['timezone'])
+            startTime = mnt.localize(startTime)
+            startTime = startTime.tz_convert('UTC')
+            
+        return startTime
               
     def retrieve_stations(self):
         """

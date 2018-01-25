@@ -1,6 +1,4 @@
-pip>=8.1.2
 bumpversion==0.5.3
-wheel==0.29.0
 watchdog==0.8.3
 flake8==2.6.0
 tox==2.3.1
@@ -9,6 +7,9 @@ Sphinx==1.4.8
 coloredlogs==7.1
 MesoPy==2.0.2
 https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.1.5.tar.gz
-numpy==1.13.1
+numpy==1.14.0
 pandas==0.20.3
 grequests==0.3.0
+scipy==1.0.0
+utm==0.4.0
+pytz==2017.3
