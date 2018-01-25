@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql_xtra
+    container_name: mysql_weather
+    ports:
+      - 32768:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: sweet_password
+      MYSQL_DATABASE: weather_db
+      MYSQL_USER: wxadmin
+      MYSQL_PASSWORD: another_sweet_password
+    volumes:
+      - /database/docker_weather_database:/var/lib/mysql
+      - /home/database/backup/weather_database:/backup
+      - /home/database/WeatherDatabase/database_setup/schema:/docker-entrypoint-initdb.d
+      - /home/database/scripts/bgbackup_wxdb.cnf:/home/bgbackup/bgbackup.cnf
+    networks:
+      - wxdb_mysql_net
+
+  wxdb:
+    build: .
+    container_name: weather_database
+    volumes:
+      - /home/database/scripts/:/home/scripts
+      - /home/database/logs/:/home/logs
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+    networks:
+      - wxdb_mysql_net
+
+networks:
+  wxdb_mysql_net:
+    driver: bridge
