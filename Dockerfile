@@ -13,6 +13,7 @@ RUN cd /code/WeatherDatabase \
     && python3 setup.py install \
     && rm -r /root/.cache/pip
 
+WORKDIR /code/WeatherDatabase/
 CMD ["python"]
 
 
