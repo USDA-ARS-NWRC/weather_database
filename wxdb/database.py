@@ -6,6 +6,7 @@ import mysql.connector
 from mysql.connector import errorcode
 import logging
 import pandas as pd
+import numpy as np
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -63,6 +64,8 @@ class Database():
         self.auto_tables = None
         if 'auto' in k:
             self.auto_tables = config['auto'].split(',')
+            
+        self.conneted = False
         
     def db_connect(self):
         """
@@ -80,6 +83,7 @@ class Database():
             raise err
             
         self.cnx = cnx
+        self.conneted = True
         self._logger.debug('Connected to MySQL database -- {}'.format(self.config['database']))
         
     def db_close(self):
@@ -87,6 +91,7 @@ class Database():
         Ensure that the database connection is closed
         """
         self.cnx.close()
+        self.conneted = False
         self._logger.debug('Disconnected from MySQL database -- {}'.format(self.config['database']))
         
         
@@ -133,8 +138,6 @@ class Database():
         """
         
         table = self.get_table(loc)
-                
-        self.db_connect()
         
         for tbl in table:
             self._logger.info('Adding/updating {} ({} values) to the database table {}'.format(
@@ -167,6 +170,46 @@ class Database():
                     self._logger.error(err)
                     
         self.db_close()
+        
+    def retrieve_station_data(self, stid, start_date, end_date, loc='level1'):
+        """
+        Retrieve all the data from the database for the given station between
+        the start and end dates.
+        
+        Args:
+            stid: string for the primary_id
+            start_date: timestamp for the start date to pull
+            end_date: timestampe for the end date to pull
+            loc: table location to get from
+            
+        Returns:
+            Dataframe for the retquested data
+        """
+        
+        table = self.get_table(loc)[0]
+        
+        if not self.conneted:
+            self.db_connect()
+        
+        try:
+            qry = "SELECT * FROM {0} WHERE station_id='{1}' AND date_time BETWEEN '{2}' AND '{3}'".format(
+                table, stid, start_date.isoformat(), end_date.isoformat())
+
+            df = pd.read_sql(qry, self.cnx, index_col='date_time')
+            
+            if df is None:
+                self._logger.warn('Could not find data for {}'.format(stid))
+                
+            else:
+                # replace None with NaN and drop columns without any data
+                df.fillna(value=np.nan, inplace=True)
+                df.dropna(axis=1, how='all', inplace=True)
+                
+        except mysql.connector.Error as err:
+                self._logger.error(err)
+                
+        return df
+
         
     def get_table(self, loc):
         """

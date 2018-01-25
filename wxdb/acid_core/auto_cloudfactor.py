@@ -6,7 +6,7 @@ from scipy.fftpack import fft
 from scipy import signal
 import pandas as pd
 
-def auto_cloudfactor(solardata,window,scutoff,peakpm,peakfactor):
+def AutoCloudFactor(solardata,window,scutoff,peakpm,peakfactor):
     """
     Args:
         solardata:       DataFrame of solar data 
@@ -38,7 +38,7 @@ def auto_cloudfactor(solardata,window,scutoff,peakpm,peakfactor):
             section     = copy.deepcopy(val[np.where(idx)])
             
             # Calculate theoretical total from getting area underneath max days
-            ipkall      = signal.find_peaks_cwt(section,np.arange(1, 10))
+            ipkall      = np.array(signal.find_peaks_cwt(section,np.arange(1, 10)))
             
             # Get the two highest and sort descending
             ipks        = np.argsort(-section[ipkall])[0:2]

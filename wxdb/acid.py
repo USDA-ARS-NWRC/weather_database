@@ -2,9 +2,11 @@ import logging
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from copy import copy
 import pytz
 import utils
 from acid_core.autocleanfft import AutoCleanFFT
+from acid_core.auto_cloudfactor import AutoCloudFactor
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -79,15 +81,13 @@ class ACID():
     def __init__(self, config, db=None):
         self._logger = logging.getLogger(__name__)
         
-        # flag options, remove, cap, fill
-        
-        
         self.config = config
-        
-        # database placeholder, if 'write_to' given then write
-        # the dataframe to the desired table, if not just return
-        # the dataframe
         self.db = db
+        
+        # number of days to prepend to the data call
+        self.prepend = np.max(np.array([i['nfdays'] for key,i in self.acid.items()] + \
+                                       [self.acid_cf['window']/24]))
+        
         
     def run(self):
         """
@@ -108,19 +108,51 @@ class ACID():
             startTime = pd.to_datetime(self.config['start_time'])
             startTime = mnt.localize(startTime)
             startTime = startTime.tz_convert('UTC')
+            start_time_org = copy(startTime)
+            startTime = startTime - pd.Timedelta(days=self.prepend)
+            
         
         # go through each station
         for stid in stations:
-            stid
-        
-        
-#         if self.db:
-#             # write out to the database
-#             self.db.insert_data(data, 
-#                                 loc='auto',
-#                                 description='ACID data for {}'.
-#                                 format(data.iloc[0].station_id))
+            df = self.db.retrieve_station_data(stid, startTime, endTime)
             
+            if not df.empty:
+                try:
+                    df.drop(['id'], axis=1, inplace=True)
+                    
+                    # each column and apply the cleaning
+                    for key in df.columns:
+                        if key in self.acid.keys():
+                            df[key] = AutoCleanFFT(df[key], **self.acid[key])
+                    
+                    # after cleaning solar, calc cloud factor
+                    if 'solar_radiation' in df.columns:
+                        df['cloud_factor'] = AutoCloudFactor(df['solar_radiation'], **self.acid_cf)
+                        
+                
+                    # truncate to the start and end times
+                    df = df.truncate(start_time_org, endTime)
+                    
+                    # perform some extra calculations for vapor pressure
+                    if ('air_temp' in df.columns) & ('relative_humidity' in df.columns):
+                        df['vapor_pressure'] = utils.rh2vp(df['air_temp'], df['relative_humidity']/100.0) 
+            
+                    # convert to date_time from the returned format to MySQL format
+                    df['date_time'] = df.index.strftime('%Y-%m-%d %H:%M')
+                
+                    if self.db:
+                        # write out to the database
+                        self.db.insert_data(df, 
+                                            loc='auto',
+                                            description='ACID data for {}'.
+                                            format(stid))
+                        
+                except Exception as e:
+                    self._logger.warn('Problem applying ACID to {}'.format(stid))
+                    self._logger.warn(e)
+        
+        self.db.db_close()
+              
     def retrieve_stations(self):
         """
         Retrieve the stations given a list of clients
