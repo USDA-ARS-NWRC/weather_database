@@ -94,9 +94,7 @@ class ACID():
         """
         Perform the quality control measures
         """
-        
-        self.db.db_connect()
-        
+                
         # get stations from the client
         stations = self.retrieve_stations()
         
@@ -158,12 +156,13 @@ class ACID():
                     self._logger.warn('Problem applying ACID to {}'.format(stid))
                     self._logger.warn(e)
         
-        self.db.db_close()
-        
+                
     def start_time_from_database(self, stid, endTime):
         """
         Get the start time from the database
         """
+        
+        self.db.db_connect()
         cursor = self.db.cnx.cursor()
         
         # determine the last value for the station
@@ -181,12 +180,14 @@ class ACID():
             startTime = mnt.localize(startTime)
             startTime = startTime.tz_convert('UTC')
             
+        self.db.db_close()
         return startTime
               
     def retrieve_stations(self):
         """
         Retrieve the stations given a list of clients
         """
+        self.db.db_connect()
         
         # deteremine the client/s for processing
         client = self.config['client']
@@ -206,6 +207,8 @@ class ACID():
         # clean up the stations
         stations = [stid[0] for stid in stations]
         stations = list(set(stations)) # remove duplicate stations
+        
+        self.db.db_close()
         
         return stations
         

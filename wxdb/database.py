@@ -208,6 +208,8 @@ class Database():
         except mysql.connector.Error as err:
                 self._logger.error(err)
                 
+        self.db_close()
+                
         return df
 
         
