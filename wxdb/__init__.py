@@ -10,4 +10,4 @@ from . import database
 from . import mesowest
 from . import cdec
 from . import utils
-from . import acid
+from wxdb import acid_core

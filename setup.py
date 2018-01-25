@@ -23,7 +23,7 @@ setup(
     author="Scott Havens",
     author_email='scott.havens@ars.usda.gov',
     url='https://github.com/USDA-ARS-NWRC/WeatherDatabase',
-    packages=find_packages(include=['wxdb', 'wxdb.acid']),
+    packages=find_packages(include=['wxdb', 'wxdb.acid_core']),
     include_package_data=True,
     license="GPL-3.0",
     zip_safe=False,

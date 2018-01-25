@@ -17,7 +17,7 @@ from database import Database
 from mesowest import Mesowest
 from cdec import CDEC
 from quality_control import QC
-from acid.acid import ACID
+from acid import ACID
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -101,28 +101,9 @@ class Weather():
             
         # process the data section
         if 'data' in self.config.keys():
-            
-            self.config['data']['sources'] =  strip_string(self.config['data']['sources'])
-            self._logger.info('data section found, will load data from sources {}'
-                              .format(self.config['data']['sources']))
+            self.config['data'] = self.process_config(self.config['data'])
             self.load_data = True
-            
-            k = self.config['data'].keys()
-            if 'client' in k:
-                self.config['data']['client'] = strip_string(self.config['data']['client'])
-            else:
-                raise Exception('client must be specified in the [data] config section')
-            
-            if 'timezone' not in k:
-                self.config['data']['timezone'] = 'UTC'
-                
-            if 'start_time' not in k:
-                self.config['data']['start_time'] = None
-            
-            if 'end_time' not in k:
-                self.config['data']['end_time'] = None
-            
-            
+
 #         if (not self.load_metadata) & (not self.load_data):
 #             raise Exception('[metadata] or [data] are not specified in the config file')
         
@@ -139,9 +120,39 @@ class Weather():
             # can't do qc and acid at the same time
             self.perform_acid = True
             self.perform_qc = False
+            
+            self.config['acid'] = self.process_config(self.config['acid'])
         else:
             self.perform_acid = False
             
+    def process_config(self, d):
+        """
+        Process the config settings that will be the same between data and acid. This
+        will be replace with inicheck at some point
+        """
+        
+        k = d.keys()
+        
+        if  'sources' in k:
+            d['sources'] =  strip_string(d['sources'])
+            self._logger.info('data section found, will load data from sources {}'
+                              .format(d['sources']))
+        
+        if 'client' in k:
+            d['client'] = strip_string(d['client'])
+        else:
+            raise Exception('client must be specified in the [data] config section')
+        
+        if 'timezone' not in k:
+            d['timezone'] = 'UTC'
+            
+        if 'start_time' not in k:
+            d['start_time'] = None
+        
+        if 'end_time' not in k:
+            d['end_time'] = None
+            
+        return d
      
     def get_metadata(self):
         """
@@ -184,7 +195,7 @@ class Weather():
         pulled back out
         """
         
-        ACID(self.config, self.db).run()      
+        ACID(self.config['acid'], self.db).run()      
                 
     def update_stations(self):
         """

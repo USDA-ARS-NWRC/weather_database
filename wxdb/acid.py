@@ -2,7 +2,9 @@ import logging
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from acid.autocleanfft import AutoCleanFFT
+import pytz
+import utils
+from acid_core.autocleanfft import AutoCleanFFT
 
 __author__ = "Scott Havens"
 __maintainer__ = "Scott Havens"
@@ -92,17 +94,58 @@ class ACID():
         Perform the quality control measures
         """
         
-        # go client at a time and load the data
+        self.db.db_connect()
+        
+        # get stations from the client
+        stations = self.retrieve_stations()
+        
+        # get the current local time
+        endTime = utils.get_end_time(self.config['timezone'], self.config['end_time'])
+        mnt = pytz.timezone(self.config['timezone'])
+        
+        # if a start time is specified localize it and convert to UTC
+        if self.config['start_time'] is not None:
+            startTime = pd.to_datetime(self.config['start_time'])
+            startTime = mnt.localize(startTime)
+            startTime = startTime.tz_convert('UTC')
+        
+        # go through each station
+        for stid in stations:
+            stid
         
         
+#         if self.db:
+#             # write out to the database
+#             self.db.insert_data(data, 
+#                                 loc='auto',
+#                                 description='ACID data for {}'.
+#                                 format(data.iloc[0].station_id))
+            
+    def retrieve_stations(self):
+        """
+        Retrieve the stations given a list of clients
+        """
         
-        if self.db:
-            # write out to the database
-            self.db.insert_data(data, 
-                                loc='auto',
-                                description='ACID data for {}'.
-                                format(data.iloc[0].station_id))
+        # deteremine the client/s for processing
+        client = self.config['client']
+        self._logger.info('Client for ACID cleaning: {}'.format(client))
         
+        # query to get the mesowest stations for the given client
+        client_qry = "SELECT primary_id FROM tbl_stations_view WHERE client='{}'"
+        cursor = self.db.cnx.cursor()
+        
+        stations = []
+        for cl in client:
+            self._logger.info('Retrieving stations for client {}'.format(cl))
+            
+            cursor.execute(client_qry.format(cl))
+            stations += cursor.fetchall()
+        
+        # clean up the stations
+        stations = [stid[0] for stid in stations]
+        stations = list(set(stations)) # remove duplicate stations
+        
+        return stations
         
     def station_acid(self, data):
         """
