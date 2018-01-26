@@ -2,7 +2,7 @@
 
 """Top-level package for Weather Database."""
 
-__version__ = '2.2.0'
+__version__ = '2.2.1'
 
 # from .wxdb import Weather
 # from .database import Database
