@@ -403,8 +403,9 @@ class CDEC():
 #                             data[stid] = None
 #                             av[stid] = None
                 
-                except Exception:
+                except Exception as e:
                     self._logger.warn('Could not merge and convert units for {}'.format(stid))
+                    self._logger.warn(e)
         
             else:
                 data[stid] = None
