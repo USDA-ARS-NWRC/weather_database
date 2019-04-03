@@ -6,6 +6,7 @@
 *.pyc
 .settings
 docker-compose.yml
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

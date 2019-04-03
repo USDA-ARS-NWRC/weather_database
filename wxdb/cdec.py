@@ -4,6 +4,7 @@ Interact with California Data Exchange Center (CDEC) to get metadata and timeser
 
 import logging
 import pandas as pd
+import numpy as np
 from datetime import datetime
 import pytz
 import grequests
@@ -56,7 +57,7 @@ class CDEC():
     
     station_info_url = 'http://cdec.water.ca.gov/cdecstation2/CDecServlet/getStationInfo'
     
-    data_csv_url = 'http://cdec.water.ca.gov/cgi-progs/queryCSV'
+    data_csv_url = 'http://cdec.water.ca.gov/dynamicapp/req/CSVDataServlet'
     
     timezone = 'Etc/GMT+8' # timezone that the data is retrieved in
     
@@ -292,11 +293,11 @@ class CDEC():
                 for s in self.sensor_metadata.keys():
                     if sens.SENS_LONG_NAME.str.contains(s).any():
                         p = {}
-                        p['station_id'] = stid
-                        p['sensor_num'] = self.sensor_metadata[s]['num'] 
+                        p['Stations'] = stid
+                        p['SensorNums'] = self.sensor_metadata[s]['num'] 
                         p['dur_code'] = duration
-                        p['start_date'] = startTime.strftime('%Y-%m-%d')
-                        p['end_date'] = endTime.strftime('%Y-%m-%d')
+                        p['Start'] = startTime.strftime('%Y-%m-%d')
+                        p['End'] = endTime.strftime('%Y-%m-%d')
                         
                         req.append(grequests.get(self.data_csv_url, params=p))
                         
@@ -305,7 +306,7 @@ class CDEC():
             
         # send the requests to CDEC
         self._logger.info('Sending {} requests to CDEC'.format(len(req)))
-        res = grequests.map(req, size=50)
+        res = grequests.map(req, size=1)
         
         # parse the responses
         data, av = self.cdec2df(res, stations) 
@@ -349,15 +350,27 @@ class CDEC():
                         stid, sens_name = self.parse_url(rs.url)
                         
                         if stid not in data.keys():
-                            data[stid] = [];
+                            data[stid] = []
                         
                         # read in the response
-                        df = pd.read_csv(StringIO(rs.text), skiprows=2, header=None, parse_dates=[[0,1]], index_col=None, na_values='m')
-                        df.columns = ['date_time', sens_name]
-                        df.set_index('date_time', inplace=True)
+                        # df = pd.read_csv(StringIO(rs.text), skiprows=2, header=None, parse_dates=[[0,1]], index_col=None, na_values='m')
+                        df = pd.read_csv(StringIO(rs.text), header=0, parse_dates=['DATE TIME'])
+
+                        # create a new data frame with just date and value
+                        df2 = df[['DATE TIME', 'VALUE']]
+                        df2.columns = ['date_time', sens_name]
+                        df2.set_index('date_time', inplace=True)
+
+                        if df2.empty:
+                            self._logger.warn('No data returned for {} - {}'.format(stid, sens_name))
+                            continue
+
+                        # no data is represented as '---', find and replace
+                        df2 = df2.replace(r'\---', np.nan, regex=True)
+                        df2[sens_name] = pd.to_numeric(df2[sens_name])
                                                 
                         if sens_name is not None:
-                            data[stid].append(df)
+                            data[stid].append(df2)
 
                         self._logger.debug('Got data for {} - {}'.format(stid, sens_name))
                         count += 1
@@ -427,8 +440,8 @@ class CDEC():
         
         o = urlparse(url)
         query = parse_qs(o.query)
-        stid = query['station_id'][0]
-        sens_num = int(query['sensor_num'][0])
+        stid = query['Stations'][0]
+        sens_num = int(query['SensorNums'][0])
         
         sens_name = None
         for v in self.sensor_metadata.values():

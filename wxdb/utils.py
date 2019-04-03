@@ -80,7 +80,7 @@ def convert_units(r, units):
     """
     
     # columns of data frame
-    col = r.columns;
+    col = r.columns
     
     # functions to apply
     f2c = lambda x: (x - 32) * 5 / 9
