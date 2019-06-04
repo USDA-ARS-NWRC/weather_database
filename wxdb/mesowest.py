@@ -37,7 +37,7 @@ class Mesowest():
             for the Mesowest API and will get passed directly to Mesowest.
     """
     
-    token = 'e505002015c74fa6850b2fc13f70d2da'
+    token = '67a320a9f01a40a08b751371a770b63c'
     
     conversion = {
         'LATITUDE': 'latitude',
